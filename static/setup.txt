@@ -1,0 +1,210 @@
+################################################################################
+# JAVASCRIPT JQUERY API
+################################################################################
+
+# jQuery Minified
+page.includeJS.101 = EXT:calajax/js/jquery/1.3.2/jquery.js
+
+# jQuery-ui Minified
+page.includeJS.102 = EXT:calajax/js/jquery_plugins/jquery-ui/1.7.2/jquery-ui.min.js
+page.includeJS.103 = EXT:calajax/js/jquery_plugins/jquery-ui/1.7.2/jquery-ui.draggable.js
+page.includeJS.104 = EXT:calajax/js/jquery_plugins/jquery-ui/1.7.2/jquery-ui.resizable.js
+
+
+# jQuery-week-calendar Minified ( HTTP: http://www.redredred.com.au/projects/jquery-week-calendar/ )
+page.includeJS.110 = EXT:calajax/js/jquery_plugins/jquery-weekcalendar/trunk/jquery.weekcalendar.js
+
+# jQuery-fullcalendar ( HTTP: http://arshaw.com/fullcalendar/ )
+page.includeJS.115 = EXT:calajax/js/jquery_plugins/jquery-fullcalendar/1.3.1/fullcalendar.js
+
+# jQuery-fullcalendar Minified ( HTTP: http://arshaw.com/fullcalendar/ )
+page.includeJS.120 = EXT:calajax/js/jquery_plugins/jquery-monthcalendar/1.2.1/fullcalendar.js
+
+
+# jQuery-colorpicker ( HTTP: http://www.syronex.com/software/jquery-color-picker )
+page.includeJS.130 = EXT:calajax/js/jquery_plugins/jquery-colorpicker/syronex-colorpicker.js
+
+# jQuery-timepicker ( HTTP: http://code.google.com/p/jquery-timepicker/ )
+page.includeJS.140 = EXT:calajax/js/jquery_plugins/jquery-timepicker/timePicker.js
+
+# jQuery-liveSearch ( HTTP: http://bassistance.de/jquery-plugins/jquery-plugin-autocomplete/ )
+page.includeJS.150 = EXT:calajax/js/jquery_plugins/jquery-autocomplete/jquery.autocomplete.js
+
+# jQuery-markItUp ( HTTP: http://markitup.jaysalvat.com/home/ )
+page.includeJS.160 = EXT:calajax/js/jquery_plugins/jquery-markitup/jquery.markitup.js
+
+# jQuery-image-dropdown ( HTTP: http://www.marghoobsuleman.com/blogs/jquery-image-dropdown )
+page.includeJS.180 = EXT:calajax/js/jquery_plugins/jquery-image-dropdown-2.1/uncompressed.jquery.dd.js
+
+# jQuery-jqGrid ( HTTP: http://www.trirand.com/blog/ )
+page.includeJS.190 = EXT:calajax/js/jquery_plugins/jquery-jqGrid/src/grid.loader.js
+
+################################################################################
+# JAVASCRIPT CALAJAX API
+################################################################################
+
+page.includeJS.210 = EXT:calajax/js/js_helper.js
+page.includeJS.220 = EXT:calajax/js/dateformater.js
+
+page.includeJS.240 = EXT:calajax/js/calajax/Calajax.js
+page.includeJS.255 = EXT:calajax/js/calajax/Calajax.Util.js
+page.includeJS.260 = EXT:calajax/js/calajax/Calajax.Observer.js
+page.includeJS.270 = EXT:calajax/js/calajax/Calajax.Translator.js
+page.includeJS.275 = EXT:calajax/js/calajax/Calajax.Rights.js
+page.includeJS.277 = EXT:calajax/js/calajax/Calajax.View.js
+page.includeJS.278 = EXT:calajax/js/calajax/Calajax.EventView.js
+
+page.includeJS.279 = EXT:calajax/js/calajax/Calajax.DayView.js
+
+page.includeJS.280 = EXT:calajax/js/calajax/Calajax.WeekView.js
+page.includeJS.281 = EXT:calajax/js/calajax/Calajax.WeekView.AllDay.js
+page.includeJS.282 = EXT:calajax/js/calajax/Calajax.WeekView.Controller.js
+
+page.includeJS.290 = EXT:calajax/js/calajax/Calajax.MonthView.js
+page.includeJS.300 = EXT:calajax/js/calajax/Calajax.CalendarView.js
+page.includeJS.340 = EXT:calajax/js/calajax/Calajax.MainObjectFactory.js
+page.includeJS.320 = EXT:calajax/js/calajax/Calajax.Interface.js
+page.includeJS.330 = EXT:calajax/js/calajax/Calajax.MenuBar.js
+page.includeJS.350 = EXT:calajax/js/calajax/Calajax.Event.js
+page.includeJS.360 = EXT:calajax/js/calajax/Calajax.Recurrence.js
+page.includeJS.370 = EXT:calajax/js/calajax/Calajax.Location.js
+page.includeJS.380 = EXT:calajax/js/calajax/Calajax.Organizer.js
+
+# ******************************************************************************
+# The following javascript includes must load at the bottom of page
+# We need the page loaded in order to load the registry
+# There is a new config option in 4.3.0 - config.swapJsFromHeaderToFooter
+#
+# We must alert to the need of page.100 free
+# ******************************************************************************
+
+# Registry
+# Registry consumes data from templates/fe_editing.tmpl
+# This is way it must go here
+lib.calajaxRegistryBottomJS = HTML
+lib.calajaxRegistryBottomJS.value (
+<script type="text/javascript" src="typo3conf/ext/calajax/js/calajax/Calajax.Registry.js"></script>
+
+)
+page.100 < lib.calajaxRegistryBottomJS
+
+# Engine Start ( Client Final Code )
+lib.calajaxFinalClientBottomJS = HTML
+lib.calajaxFinalClientBottomJS.value (
+<script type="text/javascript" src="typo3conf/ext/calajax/js/CalajaxFinalClient.js"></script>
+
+)
+page.110 < lib.calajaxFinalClientBottomJS
+
+################################################################################
+# CSS INCLUDES
+################################################################################
+
+page.includeCSS {
+ # jQuery-ui stylesheet
+ 101 = EXT:calajax/js/jquery_plugins/jquery-ui/1.7.2/themes/{$plugin.calajax.design}/jquery-ui.css
+
+ # jQuery-week-calendar stylesheet
+ 102 = EXT:calajax/js/jquery_plugins/jquery-weekcalendar/trunk/jquery.weekcalendar.css
+
+ # jQuery-month-calendar stylesheet
+ 104 = EXT:calajax/js/jquery_plugins/jquery-monthcalendar/1.2.1/fullcalendar.css
+
+ # jQuery-colorpicker stylesheet
+ 105 = EXT:calajax/js/jquery_plugins/jquery-colorpicker/syronex-colorpicker.css
+  
+ # jQuery-timepicker stylesheet
+ 106 = EXT:calajax/js/jquery_plugins/jquery-timepicker/timePicker.css
+ 
+ # jQuery-timepicker stylesheet
+ 107 = EXT:calajax/js/jquery_plugins/jquery-autocomplete/jquery.autocomplete.css
+ 
+ # jQuery-markItUp stylesheet
+ 108 = EXT:calajax/js/jquery_plugins/jquery-markitup/skins/markitup/style.css
+ 
+ # jQuery-markItUp stylesheet
+ 109 = EXT:calajax/js/jquery_plugins/jquery-markitup/sets/description/style.css
+ 
+ # jQuery-image-dropdown stylesheet
+ 110 = EXT:calajax/js/jquery_plugins/jquery-image-dropdown-2.1/dd.css
+ 
+ # jQuery-jqGrid ( HTTP: http://www.trirand.com/blog/ )
+ 111 = EXT:calajax/js/jquery_plugins/jquery-jqGrid/css/ui.jqgrid.css
+
+ # Calajax jQuery-fullcalendar stylesheet
+ 200 = EXT:calajax/res/css/calajax.fullcalendar.css
+
+ # Calajax jQuery-month-calendar overwrite stylesheet
+ 210 = EXT:calajax/res/css/calajax.overwrite.jquery.monthcalendar.css
+ 
+  # Calajax jQuery-week-calendar overwrite stylesheet
+ 220 = EXT:calajax/res/css/calajax.overwrite.jquery.weekcalendar.css
+ 
+ 
+ # Main EXT:calajax CSS
+ 300 = EXT:calajax/res/css/calajax.css
+
+
+ 
+}
+
+plugin.tx_calajax_pi1 = USER_INT
+plugin.tx_calajax_pi1 {
+
+	icons {
+		
+		dayview		= EXT:calajax/res/icons/stock_calendar-view-day.png
+		weekview	= EXT:calajax/res/icons/stock_calendar-view-work-week.png
+		monthview	= EXT:calajax/res/icons/stock_calendar-view-month.png
+		today		= EXT:calajax/res/icons/stock_calendar-today.png
+		next		= EXT:calajax/res/icons/old-go-next.png
+		previous	= EXT:calajax/res/icons/old-go-previous.png
+
+		# Event Icons
+		exturl		= EXT:cal/res/icons/icon_tx_cal_events_exturl.gif
+		intlnk		= EXT:cal/res/icons/icon_tx_cal_events_intlnk.gif
+		todo		= EXT:cal/res/icons/icon_tx_cal_events_todo.gif
+		event		= EXT:cal/res/icons/icon_tx_cal_events.gif
+		meeting		= EXT:cal/res/icons/icon_tx_cal_events_meeting.gif
+
+	}
+
+	events {
+		showIcons	= 0 // Show icon near events ( weekview )
+	}
+
+}
+
+plugin.tx_cal_controller {
+	view {
+		customViews = load_events,load_todos,load_calendars,load_rights,load_locations,load_organizers,search_user_and_group
+		enableAjax = 1
+		dontShowConfirmView = 1
+		event {
+			useDateSelector = 1
+			ajaxTemplate = EXT:calajax/template/fe_editing.tmpl
+		}
+		search {
+			searchLocationFieldList = name, street, zip, city, description
+		}
+	}
+	rights {
+		edit = 1
+		
+		create {
+			event {
+				enableRTE = 0
+			}
+		}
+		edit {
+			event {
+				additionalFields = priority
+			}
+			calendar {
+				additionalFields = headerstyle
+			}
+		}
+	}
+}
+
+ics.10.view.allowedViews = ics,single_ics,event
