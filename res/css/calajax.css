@@ -1,0 +1,873 @@
+/*
+    Document   : calajax
+    Created on : Sep 8, 2009, 11:42:55 AM
+    Author     : Philip Almeida ( philip.almeida@freedomson.com )
+				 Mario Matzulla ( mario.matzulla@freedomson.com )
+    Description: Main EXT:calajax CSS.
+*/
+
+/*
+
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+.calajax-container {
+	min-width: 50em;
+}
+
+
+/*******************************************************************************
+* Event Edit Bar                                                               *
+*******************************************************************************/
+
+.eventEditBar {
+	/* float:right; */
+	cursor: pointer;
+}
+
+/*******************************************************************************
+* Navigation Bar                                                               *
+*******************************************************************************/
+.calajax-container-menubar {
+	
+}
+
+#menuItemPrevious, #menuItemNext {
+	cursor: pointer;
+}
+.calajax-container-menubar .viewItems {
+	position: relative;
+	top: 3px;
+}
+
+.calajax-container-menubar .basictab {
+	padding: 0;
+	margin-left: 0;
+	font: bold 12px Verdana;
+	list-style-type: none;
+	font-weight: normal;
+	text-align: left; /*set to left, center, or right to align the menu as desired*/
+}
+
+.basictab li{
+	display: inline;
+	margin: 0;
+}
+
+.basictab li nobr{
+	text-decoration: none;
+	padding: 3px 4px;
+	background-color: #E8EEF7;
+	color: #112ABB;
+	-moz-border-radius-topleft: 4px;
+	-moz-border-radius-topright: 4px;
+	-webkit-border-radius-topleft: 4px;
+	-webkit-border-radius-topright: 4px;
+	cursor: pointer;
+}
+
+
+.basictab li nobr.active{
+	background-color: #C3D9FF;
+}
+
+.basictab li.selected a{ /*selected tab effect*/
+	position: relative;
+	top: 1px;
+	padding-top: 4px;
+	background-color: #DBFF6C;
+	color: black;
+}
+
+.calajax-container-menubar ul {
+	margin:0px;
+	padding:10px;
+	display:table !important;
+}
+.calajax-container-menubar li {
+	display:table;
+	float:left;
+	text-align:center;
+
+}
+
+.calajax-container-menubar li button {
+	margin-right: 5px;
+	cursor: pointer;
+}
+
+.calajax-container-menubar li span {
+	margin-right: 5px;
+	cursor: pointer;
+}
+
+.calajax-container-menubar li span.next {
+	background-image:url(../../res/images/next.png);
+}
+
+.calajax-container-menubar li span.previous {
+	background-image:url(../../res/images/prev.png);
+}
+
+.calajax-container-menubar li span.next, .calajax-container-menubar li span.previous {
+	background-repeat:no-repeat;
+	color:transparent;
+	font-size:16px;
+}
+
+.calajax-container-menubar li div {
+	padding-top:5px;
+}
+
+/*******************************************************************************
+* View Containers                                                              *
+*******************************************************************************/
+
+.calajax-container {
+	font-size: 1em;
+	display:table;
+	width: 100%;
+	font-family:helvetica;
+	/* height: 500px; */
+}
+
+.calajax-container button {
+	background: #FFF;
+	color: #333;
+}
+
+.calajax-container-header {
+	width:100%;
+}
+
+.calajax-container-loading-main {
+	position:absolute;
+	top:0;
+	left:0;
+	white-space:nowrap;
+}
+.calajax-container-loading{
+	padding:10px;
+	display:table;
+	float: left;
+}
+
+.calajax-container-loading-image{
+	background-image:url(../../res/icons/loading.gif);
+	background-repeat:repeat-x;
+	width: 16px;
+	height: 16px;
+	float: left;
+	margin: 10px;
+	margin-right:0px;
+	margin-top:20px;
+}
+
+.calajax-container-view {
+	display:table;
+	width: 100%;
+	padding: 2px;
+	background-color: #C3D9FF;
+	-moz-border-radius-topleft: 4px;
+	-moz-border-radius-topright: 4px;
+	-webkit-border-radius-topleft: 4px;
+	-webkit-border-radius-topright: 4px;
+}
+
+.calajax-container-menubar .viewItems {
+	float: right;
+}
+
+.calajax-container-weekview,
+.month-large {
+	/*display:table;
+	float:left;*/
+}
+
+#calendar_edit_container label {
+	clear: left;
+	float: left;
+	width: 6em;
+	margin-top: 0px;
+	margin-bottom: 5px;
+	line-height: 1.6em;
+}
+
+#calendar_edit_container .calendar_owner a {  
+	display: block;  
+	border: 1px solid #aaa;  
+	text-decoration: none;  
+	background-color: #fafafa;  
+	color: #123456;  
+	margin: 2px;  
+	clear:both;  
+}
+
+#calendar_edit_container .calendar_owner div {  
+	float:left;  
+	text-align: center;  
+	margin-right: 5px;  
+}
+
+#calendar_edit_container .calendar_owner select {  
+	width: 150px;  
+	height: 80px;  
+}
+
+#calendar_edit_container .calendar_owner {
+	min-width: 400px;
+}
+
+.calendar-list{
+	background-color:#FFFFFF;
+	background-repeat:repeat-x;
+	border-bottom:1px solid #DDDDDD;
+	clear:both;
+	display:table;
+	float:left;
+	width:200px;
+
+}
+
+.calendar-list ul{
+}
+.calendar-list li{
+	list-style:none;
+	padding-left:5px;
+	padding-right:5px;
+	padding-bottom:5px;
+}
+
+/*******************************************************************************
+* Color Scheme                                                                 *
+*******************************************************************************/
+
+/**************** color: default (blue) ******************/
+
+.default_catheader {
+	background: none;
+	background-color: #668CD9;
+	color: #FFFFFF;
+}
+
+.fc-view-month ._allday, .fc-view-month .default_catheader_allday, .fc-view-basicWeek .default_catheader_allday, .fc-view-basicDay .default_catheader_allday, .jColorSelect .default_catheader {
+	background-color: #668CD9;
+	color: #FFFFFF;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	display: table;
+}
+
+.fc-view-month .default_catheader {
+	background: none;
+	color: #668CD9;
+}
+
+.calendarEditor_default_catheader, .calendarEditor_ {
+	background-color: #C6D8EC !important;
+	border: 1px solid #668CD9 !important;
+}
+
+.calendarName_default_catheader, .calendarName_ {
+	background-color: #668CD9 !important;
+}
+
+.showEvent_default_catheader_allday .ui-widget-header {
+	background: none;
+	background-color: #C6D8EC !important;
+}
+
+.showEvent_default_catheader .ui-widget-header {
+	background: none;
+	color: #668CD9 !important;
+}
+
+.wc-container .default_catheader {
+	background-color: #C6D8EC;
+	border: 1px solid #668CD9;
+}
+
+.wc-container .default_catheader .wc-time {
+	background-color: #668CD9;
+	-moz-border-radius: 0px !important;
+}
+
+/**************** color: grey ******************/
+
+.grey_catheader {
+	background: none;
+	background-color: #73738C;
+	color: #FFFFFF;
+}
+
+.fc-view-month .grey_catheader_allday, .fc-view-basicWeek .grey_catheader_allday, .fc-view-basicDay .grey_catheader_allday, .jColorSelect .grey_catheader {
+	background-color: #73738C;
+	color: #FFFFFF;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	display: table;
+}
+
+.fc-view-month .grey_catheader {
+	background: none;
+	color: #73738C;
+}
+
+.calendarEditor_grey_catheader {
+	background-color: #C7C7D1 !important;
+	border: 1px solid #73738C !important;
+}
+
+.calendarName_grey_catheader {
+	background-color: #73738C !important;
+}
+
+.showEvent_grey_catheader_allday .ui-widget-header {
+	background: none;
+	background-color: #C7C7D1 !important;
+}
+
+.showEvent_grey_catheader .ui-widget-header {
+	background: none;
+	color: #73738C !important;
+}
+
+.wc-container .grey_catheader {
+	background-color: #C7C7D1;
+	border: 1px solid #73738C;
+}
+
+.wc-container .grey_catheader .wc-time {
+	background-color: #73738C;
+	-moz-border-radius: 0px !important;
+}
+
+/**************** color: yellow ******************/
+
+.yellow_catheader {
+	background: none;
+	background-color: #E0C240;
+	color: #FFFFFF;
+}
+
+.fc-view-month .yellow_catheader_allday, .fc-view-basicWeek .yellow_catheader_allday, .fc-view-basicDay .yellow_catheader_allday, .jColorSelect .yellow_catheader {
+	background-color: #E0C240;
+	color: #FFFFFF;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	display: table;
+}
+
+.fc-view-month .yellow_catheader {
+	background: none;
+	color: #B4981D;
+}
+
+.calendarEditor_yellow_catheader {
+	background-color: #F5ECC2 !important;
+	border: 1px solid #E0C240 !important;
+}
+
+.calendarName_yellow_catheader {
+	background-color: #E0C240 !important;
+}
+
+.showEvent_yellow_catheader_allday .ui-widget-header {
+	background: none;
+	background-color: #F5ECC2 !important;
+}
+
+.showEvent_yellow_catheader .ui-widget-header {
+	background: none;
+	color: #E0C240 !important;
+}
+
+.wc-container .yellow_catheader {
+	background-color: #E0C240;
+	border: 1px solid #AB8B00;
+}
+
+.wc-container .yellow_catheader .wc-time {
+	border: none;
+	background-color: #AB8B00;
+	-moz-border-radius: 0px !important;
+}
+
+/**************** color: orange ******************/
+
+.orange_catheader {
+	background: none;
+	background-color: #FF8000;
+	color: #FFFFFF;
+}
+
+.fc-view-month .orange_catheader_allday, .fc-view-basicWeek .orange_catheader_allday, .fc-view-basicDay .orange_catheader_allday, .jColorSelect .orange_catheader {
+	background-color: #FF8000;
+	color: #FFFFFF;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	display: table;
+}
+
+.fc-view-month .orange_catheader {
+	background: none;
+	color: #FF8000;
+}
+
+.calendarEditor_orange_catheader {
+	background-color: #FFCC99 !important;
+	border: 1px solid #FF8000 !important;
+}
+
+.calendarName_orange_catheader {
+	background-color: #FF8000 !important;
+}
+
+.showEvent_orange_catheader_allday .ui-widget-header {
+	background: none;
+	background-color: #FFCC99 !important;
+}
+
+.showEvent_orange_catheader .ui-widget-header {
+	background: none;
+	color: #FF8000 !important;
+}
+
+.wc-container .orange_catheader {
+	background-color: #FFCC99;
+	border: 1px solid #FF8000;
+}
+
+.wc-container .orange_catheader .wc-time {
+	background-color: #FF8000;
+	-moz-border-radius: 0px !important;
+}
+
+/**************** color: red ******************/
+
+.red_catheader {
+	background: none;
+	background-color: #D96666;
+	color: #FFFFFF;
+}
+
+.fc-view-month .red_catheader_allday, .fc-view-basicWeek .red_catheader_allday, .fc-view-basicDay .red_catheader_allday, .jColorSelect .red_catheader {
+	background-color: #D96666;
+	color: #FFFFFF;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	display: table;
+}
+
+.fc-view-month .red_catheader {
+	background: none;
+	color: #D96666;
+}
+
+.calendarEditor_red_catheader {
+	background-color: #F09D9D !important;
+	border: 1px solid #D96666 !important;
+}
+
+.calendarName_red_catheader {
+	background-color: #D96666 !important;
+}
+
+.showEvent_red_catheader_allday .ui-widget-header {
+	background: none;
+	background-color: #F09D9D !important;
+}
+
+.showEvent_red_catheader .ui-widget-header {
+	background: none;
+	color: #F09D9D !important;
+}
+
+.wc-container .red_catheader {
+	background-color: #F09D9D;
+	border: 1px solid #D96666;
+}
+
+.wc-container .red_catheader .wc-time {
+	background-color: #D96666;
+	-moz-border-radius: 0px !important;
+}
+
+/**************** color: pink ******************/
+
+.pink_catheader {
+	background: none;
+	background-color: #B257A2;
+	color: #FFFFFF;
+}
+
+.fc-view-month .pink_catheader_allday, .fc-view-basicWeek .pink_catheader_allday, .fc-view-basicDay .pink_catheader_allday, .jColorSelect .pink_catheader {
+	background-color: #B257A2;
+	color: #FFFFFF;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	display: table;
+}
+
+.fc-view-month .pink_catheader {
+	background: none;
+	color: #B257A2;
+}
+
+.calendarEditor_pink_catheader {
+	background-color: #E2C0DC !important;
+	border: 1px solid #B257A2 !important;
+}
+
+.calendarName_pink_catheader {
+	background-color: #B257A2 !important;
+}
+
+.showEvent_pink_catheader_allday .ui-widget-header {
+	background: none;
+	background-color: #E2C0DC !important;
+}
+
+.showEvent_pink_catheader .ui-widget-header {
+	background: none;
+	color: #B257A2 !important;
+}
+
+.wc-container .pink_catheader {
+	background-color: #E2C0DC;
+	border: 1px solid #B257A2;
+}
+
+.wc-container .pink_catheader .wc-time {
+	background-color: #B257A2;
+	-moz-border-radius: 0px !important;
+}
+
+/**************** color: green ******************/
+
+.green_catheader {
+	background: none;
+	background-color: #65AD89;
+	color: #FFFFFF;
+}
+
+.fc-view-month .green_catheader_allday, .fc-view-basicWeek .green_catheader_allday, .fc-view-basicDay .green_catheader_allday, .jColorSelect .green_catheader {
+	background-color: #65AD89;
+	color: #FFFFFF;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	display: table;
+}
+
+.fc-view-month .green_catheader {
+	background: none;
+	color: #65AD89;
+}
+
+.calendarEditor_green_catheader {
+	background-color: #C2EBC9 !important;
+	border: 1px solid #65AD89 !important;
+}
+
+.calendarName_green_catheader {
+	background-color: #65AD89 !important;
+}
+
+.showEvent_green_catheader_allday .ui-widget-header {
+	background: none;
+	background-color: #C2EBC9 !important;
+}
+
+.showEvent_green_catheader .ui-widget-header {
+	background: none;
+	color: #65AD89 !important;
+}
+
+.wc-container .green_catheader {
+	background-color: #C2EBC9;
+	border: 1px solid #65AD89;
+}
+
+.wc-container .green_catheader .wc-time {
+	background-color: #65AD89;
+	-moz-border-radius: 0px !important;
+}
+
+/**************** styling for all colors: editor and name ******************/
+
+.calendarName_plain, .calendarName_, .calendarName_default_catheader, .calendarName_yellow_catheader, .calendarName_orange_catheader, .calendarName_red_catheader, .calendarName_pink_catheader, .calendarName_default_catheader, .calendarName_default_catheader, .calendarName_green_catheader, .calendarName_grey_catheader  {
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	padding-left: 3px;
+	padding-right: 3px;
+	cursor:pointer;cursor:hand;
+	color: #ffffff;
+	min-width: 4em;
+}
+
+.calendarEditor_, .calendarEditor_yellow_catheader, .calendarEditor_orange_catheader, .calendarEditor_red_catheader, .calendarEditor_pink_catheader, .calendarEditor_default_catheader, .calendarEditor_default_catheader, .calendarEditor_green_catheader, .calendarEditor_grey_catheader  {
+	background: url(../images/arrowdown.png) no-repeat;
+	background-position:-1px -3px;
+	float:left;
+	width:13px;
+	height:13px;
+	cursor:pointer;
+	overflow:hidden; /* for IE6 */
+	border:1px solid #666666;
+	margin:1px;
+	margin-left: 7px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
+div.ui-draggable span.editable, .calajax-container-weekview_head span.editable{
+	background-image: url(../images/edit.png);
+	background-repeat: no-repeat;
+	display: inline-block;
+	width: 8px;
+	margin-left:3px;
+}
+div.ui-draggable span.deletable, .calajax-container-weekview_head span.deletable{
+	background-image: url(../images/delete.gif);
+	background-repeat: no-repeat;
+	display: inline-block;
+	width: 8px;
+	margin-left:1px;
+}
+
+.completed .event_text{
+	text-decoration: line-through;
+}
+
+.table_allday .event_text {
+	font-size: 0.8em;
+	padding-left: 2px;
+}
+
+.table_allday .event, .month-large .event {
+	cursor: pointer;
+}
+
+#month-large .tempEvent {
+	-moz-opacity: 0.3;
+}
+
+/**************** edit_event_view_title_details ****************/
+
+#edit_event_view{
+	text-align: left;
+}
+
+.modulebody {
+	border:1px solid #D2E6D2;
+	margin:1px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	padding: 5px;
+	background-color: #D2E6D2;
+}
+
+#edit_event_view .label {
+	clear: left;
+	float: left;
+	width: 6em;
+	margin-top: 0px;
+	line-height: 0.6em;
+}
+
+#edit_event_view .data {
+	margin-left: 6em;
+	margin-top: 0px;
+	display: block;
+}
+
+#edit_event_view .newLocation {
+	clear:left;
+}
+
+#edit_event_view .newLocation .label {
+	margin-left: 2em;
+	margin-top: 10px;
+}
+
+#edit_event_view .newLocation .fieldinput {
+	width: 60%;
+	margin-top: 10px;
+}
+
+#edit_event_view input.fieldinput, #edit_event_view textarea.fieldinput {
+	width: 87%;
+	border: 1px solid #B2B2B2;
+	display: block;
+}
+
+#edit_event_view .field {
+	padding: 2px 0;
+	margin-top: 3px;
+}
+
+.markItUp {
+	width: auto !important;
+}
+
+.markItUpEditor {
+	height: 150px;
+}
+
+.recurring-container {
+	margin-left: 2em;
+}
+
+.recurring-container h4, .recurring-container h5 {
+	display:inline;
+	font-size:100%;
+	margin:0;
+}
+
+.recurring-container .label {
+	line-height: 1.4em !important;
+}
+
+.recurring-container .group {
+	border-top:1px solid #ffffff;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+.recurring-container .repeat, .recurring-container .interval {
+	margin-left: 1em;
+}
+
+.recurring-container .interval {
+
+}
+
+#edit_event_view .group {
+	white-space:nowrap;
+}
+
+/**************** widgets ******************/
+
+.reset {
+	clear:both;
+}
+
+.error {
+	border:1px solid red !important;
+}
+
+#month-large {
+	/* min-width: 40em; */
+}
+
+.list-container {
+	background-color: #C3D9FF;
+	border:2px solid #C3D9FF;
+	margin:1px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	margin-bottom: 5px;
+}
+
+.list-container H3 {
+	padding-left: 5px;
+	color: #ffffff;
+	margin: 0;
+}
+
+.list-container ul {
+	border:1px solid #C3D9FF;
+	margin:1px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	padding: 5px;
+	background-color: #ffffff !important;
+	display: table;
+	width: 90%;
+}
+
+.list-container ul li {
+	list-style-type: none;
+}
+
+.list-container ul li ul {
+	cursor:pointer;cursor:hand;
+}
+
+.list-container ul li ul li{
+	text-align: center;
+}
+
+.list-container .list-container-bottom {
+	height: 1.3em;
+	padding: 2px;
+}
+
+.list-container li input, .list-container li div {
+	float:left;
+}
+
+.list-container li div {
+
+}
+
+.list-container li div:first-child {
+	padding: 2px;
+	min-width: 7em;
+	padding-left: 4px;
+	cursor:pointer;cursor:hand;
+}
+
+.new_calendar {
+	float:left;
+	cursor:pointer;
+	text-decoration: underline;
+	color: blue;
+}
+
+.ui-dialog .ui-dialog-content {
+	font-size: 0.5em;
+}
+
+.ui-dialog .date_holder {
+	font-size: 0.5em;
+}
+
+.ui-dialog span.date {
+	display: block;
+	font-size: 0.5em;
+	font-weight: normal;
+}
+
+.ui-dialog .eb-root label {
+	clear: left;
+	float: left;
+	display: block;
+}
+
+.ui-dialog .eb-root div {
+	float: left;
+	margin-left: 1.5em;
+	display: block;
+}
+
+.ui-dialog-buttonpane {
+	font-size: 0.5em;
+	margin: 0px;
+	padding: 0 1em 0 0.4em;
+}
+
+#event_display_container .event-description {
+	margin-top: 5px;
+}
+
+.ac_results .street {
+	font-size: 0.3em;
+}
+
+#calendar_owner option {
+	background-repeat:no-repeat;
+	height:15px;
+	padding-left:22px;
+	padding-top:1px;
+}
