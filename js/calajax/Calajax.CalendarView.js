@@ -75,7 +75,7 @@ Calajax.CalendarView.calendar = {
  		for(var calendarId in this.container){
  			if(Calajax.Rights.admin == 1){
  				return this.container;
- 			}
+ 			} 
  			if( typeof( this.container[calendarId].owner.fe_users ) !== "undefined"
 					|| this.container[calendarId].owner.fe_users ){
 	 			for(var feUserId in this.container[calendarId].owner.fe_users){
