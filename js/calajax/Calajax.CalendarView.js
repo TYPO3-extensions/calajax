@@ -76,14 +76,16 @@ Calajax.CalendarView.calendar = {
  			if(Calajax.Rights.admin == 1){
  				return this.container;
  			}
- 			if(this.container[calendarId].owner.fe_users){
+ 			if( typeof( this.container[calendarId].owner.fe_users ) !== "undefined"
+					|| this.container[calendarId].owner.fe_users ){
 	 			for(var feUserId in this.container[calendarId].owner.fe_users){
 	 				if(this.container[calendarId].owner.fe_users[feUserId] == Calajax.Rights.userId){
 	 					calendarArray[calendarId] = (this.container[calendarId]);
 	 				}
 	 			}
 	 		}
- 			if(this.container[calendarId].owner.fe_groups){
+ 			if( typeof( this.container[calendarId].owner.fe_groups ) !== "undefined"
+					|| this.container[calendarId].owner.fe_groups ){
 	 			for(var groupId in this.container[calendarId].owner.fe_groups){
 	 				if(this.container[calendarId].owner.fe_groups[groupId]){
 	 					calendarArray[calendarId] = (this.container[calendarId]);
