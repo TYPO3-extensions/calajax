@@ -490,7 +490,7 @@ Calajax.CalendarView.task = {
 		 			optionsStr += '<option value="CANCELLED" '+(task.status=="CANCELLED"?"selected='selected'":"")+' title="typo3conf/ext/calajax/res/images/cross.png">&nbsp;</option>';
 		 			optionsStr += '</select>';
 	 			} else {
-	 				optionsStr = '<span class="event_status_'+(task.status!=''?task.status.toLowerCase():0)+'" title="'+(task.status!=''?task.status.toLowerCase():0)+'">&nbsp;</span>';
+	 				optionsStr = '<span class="event_status_'+((task.status!='' && task.status != undefined)?task.status.toLowerCase():0)+'" title="'+((task.status!=''&&task.status!=undefined)?task.status.toLowerCase():0)+'">&nbsp;</span>';
 	 			}
 	 			taskList.append('<li>'+optionsStr+'<span id="task-list-item'+task.uid+'" class="task-list-item-text" title="jumpt to it">'+task.title+'</span></li>');
 	 			var statusSelect = taskList.find('#task_status_'+task.uid);
