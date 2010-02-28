@@ -784,14 +784,14 @@ Calajax.EventView.displayEvent = function(eventRef){
 	
 	var buttons = {};
 	if(eventRef.isallowedtoedit==1){
-		buttons[jQuery.FullCalendar2.buttonText.edit] = function(){
+		buttons[jQuery.fullCalendar.buttonText.edit] = function(){
 			dialogContent.dialog("close");
 			Calajax.Registry.divcontainer.lastView = Calajax.Registry.divcontainer.currentView; 
 			Calajax.Main.eventViewCommand.execute(eventRef);
 		};
 	}
 	if(eventRef.isallowedtodelete==1){
-		buttons[jQuery.FullCalendar2.buttonText.deleteText] = function(){
+		buttons[jQuery.fullCalendar.buttonText.deleteText] = function(){
 			dialogContent.dialog("close");
 			Calajax.Event.deleteEvent(eventRef, function(data){});
 			Calajax.Main.removeAndAddEvents(eventRef.id,[]);

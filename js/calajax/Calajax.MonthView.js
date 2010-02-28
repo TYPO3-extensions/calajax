@@ -57,7 +57,7 @@ Calajax.MonthView.prototype	= {
 		}
 		
 		jQuery('#' + this.placeHolderId).html('');
-		this.fullcalendarObject = jQuery('#' + this.placeHolderId).FullCalendar2({
+		this.fullcalendarObject = jQuery('#' + this.placeHolderId).fullCalendar({
 			
 			monthNames : this.translate( 'longMonths' ),
 			monthNamesShort : this.translate( 'shortMonths' ),
@@ -70,7 +70,12 @@ Calajax.MonthView.prototype	= {
 			weekMode : 'liquid',
 			aspectRatio: 1.7,
 			editable: true,
-			header: false,
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay'
+			},
+			buttonText: this.translate( 'buttonText' ),
 			columnFormat: {month:'ddd'},
 			events: Calajax.MonthView.loadEvents(),
 			eventClick: function(calEvent) {
@@ -98,7 +103,15 @@ Calajax.MonthView.prototype	= {
 				Calajax.Event.startEventSave(ev);
 			},
 			eventRender: function(event, element){
-				return Calajax.Event.renderEventForMonth(event);
+				var view = Calajax.MainObjectFactory.getObject( 'monthview' ).fullcalendarObject.fullCalendar('getView').name
+				switch(view){
+					case 'month':
+						return Calajax.Event.renderEventForMonth(event);
+					case 'day':
+						return Calajax.Event.renderEventForDay(event);
+					case 'week':
+						return Calajax.Event.renderEventForWeek(event);
+				}
 			},
 			
 			dayClick: function(date){
@@ -120,26 +133,26 @@ Calajax.MonthView.prototype	= {
 				// +------------------------------------------------------------
 				// | Activate links on day column header
 				// +------------------------------------------------------------
-				if ( Calajax.Registry.options.activateHeaderLinksOnMonthView == true ) {
+				//if ( Calajax.Registry.options.activateHeaderLinksOnMonthView == true ) {
 
 					Calajax.Util.addDayViewLinks();
 
-				}
+				//}
 
 			}
 		});
 	},
 	
 	next : function () {
-		this.fullcalendarObject.FullCalendar2('next');
+		this.fullcalendarObject.fullCalendar('next');
 	},
 	
 	previous : function () {
-		this.fullcalendarObject.FullCalendar2('prev');
+		this.fullcalendarObject.fullCalendar('prev');
 	},
 	
 	today : function () {
-		this.fullcalendarObject.FullCalendar2('today');
+		this.fullcalendarObject.fullCalendar('today');
 	},
 
 
@@ -153,11 +166,11 @@ Calajax.MonthView.prototype	= {
 			this.currentDate = Calajax.Registry.getdate;
 		}
 		Calajax.CalendarView.calendar.emptyCalendarEvents();
-		this.fullcalendarObject.FullCalendar2('gotoMonth', Calajax.Registry.getdate.getFullYear(), Calajax.Registry.getdate.getMonth());
+		this.fullcalendarObject.fullCalendar('gotoDate', Calajax.Registry.getdate.getFullYear(), Calajax.Registry.getdate.getMonth(), Calajax.Registry.getdate.getDate());
 	},
 	
 	removeAndAddEvents : function (eventId, events) {
-		this.fullcalendarObject.FullCalendar2( 'removeAndAddEvents', eventId, events );
+		this.fullcalendarObject.fullCalendar( 'removeAndAddEvents', eventId, events );
 	},
 
 };

@@ -44,7 +44,7 @@ Calajax.Event = function (data) {
 	};
 	
 	this.id = this.uid;
-	this.calendar_id = this.calendar_uid;
+	this.calendar_id = this.calendar_uid?this.calendar_uid:this.calendaruid;
 	if(parseInt(this.eventtype) == 4) {
 		this.model_type = 'tx_cal_todo';
 		this.objecttype = 'todo';
@@ -122,8 +122,10 @@ Calajax.Event = function (data) {
 			if(this.allday==1 || this.startObject.format('yyyymmdd') != this.endObject.format('yyyymmdd')){
 				this.headerstyle = this.headerstyle+"_allday";
 				this.showTime = false;
+				this.allDay = true;
 			} else {
 				this.showTime = true;
+				this.allDay = false;
 			}
 		}
 	};
@@ -274,7 +276,7 @@ Calajax.Event.renderEventForMonth = function(event){
 	var eventStr = event.title;
 	if(event.showTime){
 		if (event.start.getHours() || event.start.getMinutes() || event.end.getHours() || event.end.getMinutes()) {
-			eventStr = jQuery.FullCalendar2.formatDate(event.start, Calajax.Registry.format.monthEventTime) + ' ' + eventStr;
+			eventStr = jQuery.fullCalendar.formatDate(event.start, Calajax.Registry.format.monthEventTime) + ' ' + eventStr;
 		}
 	}
 	

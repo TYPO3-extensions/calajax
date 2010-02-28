@@ -238,24 +238,43 @@
 	padding-bottom:5px;
 }
 
+.fc-content {
+	-moz-border-radius-topleft:4px;
+	-moz-border-radius-topright:4px;
+	background-color:#C3D9FF;
+	display:table;
+	padding:2px;
+	width:100%;
+	border: 0px;
+}
+
+.fc-content .fc-not-today {
+	background:none repeat scroll 0 0 #FFFFFF;
+}
+
+.fc-content th {
+	background:none repeat scroll 0 0 #E8EEF7;
+}
+
 /*******************************************************************************
 * Color Scheme                                                                 *
 *******************************************************************************/
 
 /**************** color: default (blue) ******************/
 
-.default_catheader {
+.default_catheader, .default_catheader a {
 	background: none;
 	background-color: #668CD9;
 	color: #FFFFFF;
 }
 
-.fc-view-month ._allday, .fc-view-month .default_catheader_allday, .fc-view-basicWeek .default_catheader_allday, .fc-view-basicDay .default_catheader_allday, .jColorSelect .default_catheader {
+.fc-view-month ._allday, .fc-view-month .default_catheader_allday, .fc-view-basicWeek .default_catheader_allday, .fc-agenda-head .default_catheader_allday, .fc-agenda-head .default_catheader_allday a, .jColorSelect .default_catheader {
 	background-color: #668CD9;
 	color: #FFFFFF;
 	-moz-border-radius: 2px;
 	-webkit-border-radius: 2px;
 	display: table;
+	border-color: #668CD9;
 }
 
 .fc-view-month .default_catheader {
@@ -282,30 +301,37 @@
 	color: #668CD9 !important;
 }
 
-.wc-container .default_catheader {
+.fc-agenda-body .default_catheader {
 	background-color: #C6D8EC;
 	border: 1px solid #668CD9;
 }
 
-.wc-container .default_catheader .wc-time {
+.fc-agenda-body .default_catheader a {
+	border-color: #668CD9;
+}
+
+.fc-agenda-body .default_catheader .fc-event-time {
 	background-color: #668CD9;
+	border-color: #668CD9;
 	-moz-border-radius: 0px !important;
 }
 
 /**************** color: grey ******************/
 
-.grey_catheader {
+.grey_catheader, .grey_catheader a {
 	background: none;
 	background-color: #73738C;
 	color: #FFFFFF;
+	border-color: #73738C;
 }
 
-.fc-view-month .grey_catheader_allday, .fc-view-basicWeek .grey_catheader_allday, .fc-view-basicDay .grey_catheader_allday, .jColorSelect .grey_catheader {
+.fc-view-month .grey_catheader_allday, .fc-agenda-head .grey_catheader_allday, .fc-agenda-head .grey_catheader_allday a, .jColorSelect .grey_catheader {
 	background-color: #73738C;
 	color: #FFFFFF;
 	-moz-border-radius: 2px;
 	-webkit-border-radius: 2px;
 	display: table;
+	border-color: #73738C;
 }
 
 .fc-view-month .grey_catheader {
@@ -332,30 +358,37 @@
 	color: #73738C !important;
 }
 
-.wc-container .grey_catheader {
+.fc-agenda-body .grey_catheader {
 	background-color: #C7C7D1;
 	border: 1px solid #73738C;
 }
 
-.wc-container .grey_catheader .wc-time {
+.fc-agenda-body .grey_catheader a {
+	border-color: #73738C;
+}
+
+.fc-agenda-body .grey_catheader .fc-event-time {
 	background-color: #73738C;
 	-moz-border-radius: 0px !important;
+	border-color: #73738C;
 }
 
 /**************** color: yellow ******************/
 
-.yellow_catheader {
+.yellow_catheader, .yellow_catheader a {
 	background: none;
 	background-color: #E0C240;
 	color: #FFFFFF;
+	border-color: #E0C240;
 }
 
-.fc-view-month .yellow_catheader_allday, .fc-view-basicWeek .yellow_catheader_allday, .fc-view-basicDay .yellow_catheader_allday, .jColorSelect .yellow_catheader {
+.fc-view-month .yellow_catheader_allday, .fc-agenda-head .yellow_catheader_allday, .fc-agenda-head .yellow_catheader_allday a, .jColorSelect .yellow_catheader {
 	background-color: #E0C240;
 	color: #FFFFFF;
 	-moz-border-radius: 2px;
 	-webkit-border-radius: 2px;
 	display: table;
+	border-color: #E0C240;
 }
 
 .fc-view-month .yellow_catheader {
@@ -382,31 +415,37 @@
 	color: #E0C240 !important;
 }
 
-.wc-container .yellow_catheader {
+.fc-agenda-body .yellow_catheader {
 	background-color: #E0C240;
 	border: 1px solid #AB8B00;
 }
 
-.wc-container .yellow_catheader .wc-time {
-	border: none;
+.fc-agenda-body .yellow_catheader a {
+	border-color: #E0C240;
+}
+
+.fc-agenda-body .yellow_catheader .fc-event-time {
+	border-color: #E0C240;
 	background-color: #AB8B00;
 	-moz-border-radius: 0px !important;
 }
 
 /**************** color: orange ******************/
 
-.orange_catheader {
+.orange_catheader, .orange_catheader a {
 	background: none;
 	background-color: #FF8000;
 	color: #FFFFFF;
+	border-color: #FF8000;
 }
 
-.fc-view-month .orange_catheader_allday, .fc-view-basicWeek .orange_catheader_allday, .fc-view-basicDay .orange_catheader_allday, .jColorSelect .orange_catheader {
+.fc-view-month .orange_catheader_allday, .fc-agenda-head .orange_catheader_allday, .fc-agenda-head .orange_catheader_allday a, .jColorSelect .orange_catheader {
 	background-color: #FF8000;
 	color: #FFFFFF;
 	-moz-border-radius: 2px;
 	-webkit-border-radius: 2px;
 	display: table;
+	border-color: #FF8000;
 }
 
 .fc-view-month .orange_catheader {
@@ -433,30 +472,37 @@
 	color: #FF8000 !important;
 }
 
-.wc-container .orange_catheader {
+.fc-agenda-body .orange_catheader {
 	background-color: #FFCC99;
 	border: 1px solid #FF8000;
 }
 
-.wc-container .orange_catheader .wc-time {
+.fc-agenda-body .orange_catheader a {
+	border-color: #FF8000;
+}
+
+.fc-agenda-body .orange_catheader .fc-event-time {
 	background-color: #FF8000;
 	-moz-border-radius: 0px !important;
+	border-color: #FF8000;
 }
 
 /**************** color: red ******************/
 
-.red_catheader {
+.red_catheader, .red_catheader a {
 	background: none;
 	background-color: #D96666;
 	color: #FFFFFF;
+	border-color: #D96666;
 }
 
-.fc-view-month .red_catheader_allday, .fc-view-basicWeek .red_catheader_allday, .fc-view-basicDay .red_catheader_allday, .jColorSelect .red_catheader {
+.fc-view-month .red_catheader_allday, .fc-agenda-head .red_catheader_allday, .fc-agenda-head .red_catheader_allday a, .jColorSelect .red_catheader {
 	background-color: #D96666;
 	color: #FFFFFF;
 	-moz-border-radius: 2px;
 	-webkit-border-radius: 2px;
 	display: table;
+	border-color: #D96666;
 }
 
 .fc-view-month .red_catheader {
@@ -483,30 +529,37 @@
 	color: #F09D9D !important;
 }
 
-.wc-container .red_catheader {
+.fc-agenda-body .red_catheader {
 	background-color: #F09D9D;
 	border: 1px solid #D96666;
 }
 
-.wc-container .red_catheader .wc-time {
+.fc-agenda-body .red_catheader a {
+	border-color: #D96666;
+}
+
+.fc-agenda-body .red_catheader .fc-event-time {
 	background-color: #D96666;
 	-moz-border-radius: 0px !important;
+	border-color: #D96666;
 }
 
 /**************** color: pink ******************/
 
-.pink_catheader {
+.pink_catheader, .pink_catheader a {
 	background: none;
 	background-color: #B257A2;
 	color: #FFFFFF;
+	border-color: #B257A2;
 }
 
-.fc-view-month .pink_catheader_allday, .fc-view-basicWeek .pink_catheader_allday, .fc-view-basicDay .pink_catheader_allday, .jColorSelect .pink_catheader {
+.fc-view-month .pink_catheader_allday, .fc-agenda-head .pink_catheader_allday, .fc-agenda-head .pink_catheader_allday a, .jColorSelect .pink_catheader {
 	background-color: #B257A2;
 	color: #FFFFFF;
 	-moz-border-radius: 2px;
 	-webkit-border-radius: 2px;
 	display: table;
+	border-color: #B257A2;
 }
 
 .fc-view-month .pink_catheader {
@@ -533,30 +586,35 @@
 	color: #B257A2 !important;
 }
 
-.wc-container .pink_catheader {
+.fc-agenda-body .pink_catheader {
 	background-color: #E2C0DC;
 	border: 1px solid #B257A2;
 }
 
-.wc-container .pink_catheader .wc-time {
+.fc-agenda-body .pink_catheader a {
+	border-color: #B257A2;
+}
+
+.fc-agenda-body .pink_catheader .fc-event-time {
 	background-color: #B257A2;
 	-moz-border-radius: 0px !important;
+	border-color: #B257A2;
 }
 
 /**************** color: green ******************/
-
-.green_catheader {
+.green_catheader, .green_catheader a {
 	background: none;
 	background-color: #65AD89;
 	color: #FFFFFF;
 }
 
-.fc-view-month .green_catheader_allday, .fc-view-basicWeek .green_catheader_allday, .fc-view-basicDay .green_catheader_allday, .jColorSelect .green_catheader {
+.fc-view-month .green_catheader_allday, .fc-agenda-head .green_catheader_allday, .fc-agenda-head .green_catheader_allday a, .jColorSelect .green_catheader {
 	background-color: #65AD89;
 	color: #FFFFFF;
 	-moz-border-radius: 2px;
 	-webkit-border-radius: 2px;
 	display: table;
+	border-color: #65AD89;
 }
 
 .fc-view-month .green_catheader {
@@ -583,13 +641,18 @@
 	color: #65AD89 !important;
 }
 
-.wc-container .green_catheader {
+.fc-agenda-body .green_catheader {
 	background-color: #C2EBC9;
 	border: 1px solid #65AD89;
 }
 
-.wc-container .green_catheader .wc-time {
+.fc-agenda-body .green_catheader a {
+	border-color: #65AD89;
+}
+
+.fc-agenda-body .green_catheader .fc-event-time {
 	background-color: #65AD89;
+	border-color: #65AD89;
 	-moz-border-radius: 0px !important;
 }
 

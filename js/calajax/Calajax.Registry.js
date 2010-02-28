@@ -67,7 +67,7 @@ Calajax.Registry = {
 	 */
 	divcontainer : {
 
-		menuBar:		'calajax-container-menubar',
+		//menuBar:		'calajax-container-menubar',
 		loading :		'calajax-container-loading-main',
 		dayView:		'calajax-container-dayview',
 		weekView :		'calajax-container-weekview',
@@ -133,6 +133,7 @@ Calajax.Registry = {
 	 },
 
 	 options : {
+	 	 debug : 0,
 		 activateHeaderLinksOnWeekView : 1, // Activate links to access day view on weekview
 		 activateHeaderLinksOnMonthView : 1, // Activate links to access day view on monthview
 		 weekstart : 1,

@@ -41,27 +41,27 @@ Calajax.CalendarView.calendar = {
 		);
 	},
  	setCalendar: function(calendarArray) {
-		this.container = [];
+		Calajax.CalendarView.calendar.container = [];
  		for(var i=0; i < calendarArray.length; i++){
- 			if(calendarArray[i].headerstyle == ''){
+ 			if(!calendarArray[i].headerstyle || calendarArray[i].headerstyle == ''){
  				calendarArray[i].headerstyle = 'default_catheader';
  			}
  			if(calendarArray[i].events == undefined){
 	 			calendarArray[i].events = [];
 	 		}
  			calendarArray[i].oldHeaderStyle = calendarArray[i].headerstyle;
- 			this.container[calendarArray[i].uid] = calendarArray[i];
+ 			Calajax.CalendarView.calendar.container[calendarArray[i].uid] = calendarArray[i];
  		}
  	},
  	addCalendar: function(calendar) {
  		if(calendar.events == undefined){
  			calendar.events = [];
  		}
- 		if(this.container[calendar.uid] == undefined) {
- 			this.container[calendar.uid] = calendar;
+ 		if(Calajax.CalendarView.calendar.container[calendar.uid] == undefined) {
+ 			Calajax.CalendarView.calendar.container[calendar.uid] = calendar;
  		} else {
- 			calendar.events = this.container[calendar.uid].events;
- 			this.container[calendar.uid] = calendar;
+ 			calendar.events = Calajax.CalendarView.calendar.container[calendar.uid].events;
+ 			Calajax.CalendarView.calendar.container[calendar.uid] = calendar;
  		}
  	},
  	removeCalendar: function(calendarId) {
@@ -70,25 +70,25 @@ Calajax.CalendarView.calendar = {
  	getCalendar: function(id) {
  		return this.container[id];
  	},
- 	getCalendarsWithCreatePermission: function() {
+	getCalendarsWithCreatePermission: function() {
  		var calendarArray = [];
- 		for(var calendarId in this.container){
+ 		for(var calendarId in Calajax.CalendarView.calendar.container){
  			if(Calajax.Rights.admin == 1){
- 				return this.container;
+ 				return Calajax.CalendarView.calendar.container;
  			}
- 			if( typeof( this.container[calendarId].owner.fe_users ) !== "undefined"
-					|| this.container[calendarId].owner.fe_users ){
-	 			for(var feUserId in this.container[calendarId].owner.fe_users){
+ 			if( typeof( Calajax.CalendarView.calendar.container[calendarId].owner.fe_users ) !== "undefined"
+					|| Calajax.CalendarView.calendar.container[calendarId].owner.fe_users ){
+	 			for(var feUserId in Calajax.CalendarView.calendar.container[calendarId].owner.fe_users){
 	 				if(this.container[calendarId].owner.fe_users[feUserId] == Calajax.Rights.userId){
-	 					calendarArray[calendarId] = (this.container[calendarId]);
+	 					calendarArray[calendarId] = (Calajax.CalendarView.calendar.container[calendarId]);
 	 				}
 	 			}
 	 		}
- 			if( typeof( this.container[calendarId].owner.fe_groups ) !== "undefined"
-					|| this.container[calendarId].owner.fe_groups ){
-	 			for(var groupId in this.container[calendarId].owner.fe_groups){
-	 				if(this.container[calendarId].owner.fe_groups[groupId]){
-	 					calendarArray[calendarId] = (this.container[calendarId]);
+ 			if( typeof( Calajax.CalendarView.calendar.container[calendarId].owner.fe_groups ) !== "undefined"
+					|| Calajax.CalendarView.calendar.container[calendarId].owner.fe_groups ){
+	 			for(var groupId in Calajax.CalendarView.calendar.container[calendarId].owner.fe_groups){
+	 				if(Calajax.CalendarView.calendar.container[calendarId].owner.fe_groups[groupId]){
+	 					calendarArray[calendarId] = (Calajax.CalendarView.calendar.container[calendarId]);
 	 				}
 	 			}
 	 		}
@@ -98,15 +98,19 @@ Calajax.CalendarView.calendar = {
  	
  	subscribeToCalendar: function(renderedEvent, savedEvent){
  		renderedEvent['originalEvent'] = savedEvent;
- 		var calendar = this.getCalendar(savedEvent.calendar_id);
- 		if(calendar.displayValue == "hidden"){
- 			renderedEvent.hide();
+ 		var calendar = Calajax.CalendarView.calendar.getCalendar(savedEvent.calendar_id);
+ 		if(calendar){
+	 		if(calendar.displayValue == "hidden"){
+	 			renderedEvent.hide();
+	 		}
+	 		calendar.events.push(renderedEvent);
+ 		} else {
+ 			Calajax.Util.errorHandler( 'could not find calendar with the id: ' + savedEvent.calendar_id );
  		}
- 		calendar.events.push(renderedEvent);
  	},
  	emptyCalendarEvents: function() {
- 		for(var calendarId in this.container){
- 			this.container[calendarId].events = [];
+ 		for(var calendarId in Calajax.CalendarView.calendar.container){
+ 			Calajax.CalendarView.calendar.container[calendarId].events = [];
  		}
  	},
  	action: function(ev, calendarId) {
@@ -137,7 +141,7 @@ Calajax.CalendarView.calendar = {
 		}
 		/*** WEEK VIEW END ***/
 
-		var calendar = this.getCalendar(calendarId);
+		var calendar = Calajax.CalendarView.calendar.getCalendar(calendarId);
  		if(!calendar.events){
  			calendar.events = [];
  		}
@@ -324,7 +328,7 @@ Calajax.CalendarView.editCalendarView = function (calendarRef, clickEvent){
 	var buttonDefinition = {};
 	
 	if(calendar.isallowedtoedit==1 || calendar.uid == undefined){
-		buttonDefinition[jQuery.FullCalendar2.buttonText.save] = function(){
+		buttonDefinition[jQuery.fullCalendar.buttonText.save] = function(){
 			if(!validate()){
 				return false;
 			}
@@ -368,7 +372,7 @@ Calajax.CalendarView.editCalendarView = function (calendarRef, clickEvent){
 	}
 	
 	if(calendar.isallowedtodelete==1){
-		buttonDefinition[jQuery.FullCalendar2.buttonText.deleteText] = function(){
+		buttonDefinition[jQuery.fullCalendar.buttonText.deleteText] = function(){
 			jQuery.get(
 				Calajax.Registry.request.requestUrl,
 				{
@@ -394,9 +398,9 @@ Calajax.CalendarView.editCalendarView = function (calendarRef, clickEvent){
 		};
 	};
 	
-	var dialogTitle = jQuery.FullCalendar2.buttonText.edit + " - " + calendar.title;
+	var dialogTitle = jQuery.fullCalendar.buttonText.edit + " - " + calendar.title;
 	if(calendar.uid == undefined){
-		dialogTitle = jQuery.FullCalendar2.buttonText.create;
+		dialogTitle = jQuery.fullCalendar.buttonText.create;
 	}
 	
 	
@@ -437,30 +441,30 @@ Calajax.CalendarView.task = {
 		);
 	},
  	setTasks: function(taskArray) {
-		this.container = [];
+		Calajax.CalendarView.calendar.container = [];
  		for(var i=0; i < taskArray.length; i++){
- 			this.container[taskArray[i].uid] = taskArray[i];
+ 			Calajax.CalendarView.calendar.container[taskArray[i].uid] = taskArray[i];
  		}
  	},
  	addTask: function(task) {
  		if(task.completed < 100){
- 			this.container[task.uid] = task;
+ 			Calajax.CalendarView.calendar.container[task.uid] = task;
  		} else {
  			Calajax.CalendarView.task.removeTask(task.uid);
  		}
  	},
  	removeTask: function(taskId) {
- 		delete this.container[taskId];
+ 		delete Calajax.CalendarView.calendar.container[taskId];
  	},
  	removeCalendar: function(calendarId){
- 		for(var i in this.container){
- 			if(this.container[i].calendar_id == calendarId){
- 				delete this.container[i];
+ 		for(var i in Calajax.CalendarView.calendar.container){
+ 			if(Calajax.CalendarView.calendar.container[i].calendar_id == calendarId){
+ 				delete Calajax.CalendarView.calendar.container[i];
  			}
  		}
  	},
  	getTask: function(id) {
- 		return this.container[id];
+ 		return Calajax.CalendarView.calendar.container[id];
  	},
  	
  	renderView: function(){
@@ -584,8 +588,6 @@ Calajax.CalendarView.prototype	= {
 			}
 		});
 		
-		jQuery.FullCalendar2.buttonText = this.translate( 'buttonText' );
-	
 		this.renderCalendarList();
 	},
 	
@@ -600,11 +602,12 @@ Calajax.CalendarView.prototype	= {
 
 			try{
 				if(Calajax.Rights.create.calendar==true){
-					createHtml = '<div id="calendar-list-bottom" class="list-container-bottom"><a class="new_calendar">'+jQuery.FullCalendar2.buttonText.create+'</a></div>';
+					createHtml = '<div id="calendar-list-bottom" class="list-container-bottom"><a class="new_calendar">'+jQuery.fullCalendar.buttonText.create+'</a></div>';
 				}
 			} catch(e){
 				Calajax.Util.errorHandler(e);
 			}
+			var CalendarViewObject = Calajax.MainObjectFactory.getObject( 'calendarview' );
 
 			for (var calendarId in Calajax.CalendarView.calendar.container) {
 				var calendar = Calajax.CalendarView.calendar.container[calendarId];
@@ -639,7 +642,6 @@ Calajax.CalendarView.prototype	= {
 						}				
 					);
 				}
-				
 			}
 			if(createHtml!=''){
 				

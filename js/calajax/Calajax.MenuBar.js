@@ -65,18 +65,18 @@ Calajax.MenuBar = function( container ) { // implements Composite, MenuObject
   this.element.style.display = 'none';
 
   // Append bar to document
-  this.container.appendChild( this.element );
+//  this.container.appendChild( this.element );
 };
 
 Calajax.MenuBar.prototype = {
 	add: function( menuObject ) {
 		Calajax.Interface.ensureImplements( Calajax.menuObject, Calajax.Composite, Calajax.MenuObject);
-		this.menus[menuObject.name] = menuObject;
-		if(this.menus[menuObject.name].command.render){
-			//do nothing
-		} else {
-			this.element.appendChild(this.menus[menuObject.name].getElement());
-		}
+//		this.menus[menuObject.name] = menuObject;
+//		if(this.menus[menuObject.name].command.render){
+//			//do nothing
+//		} else {
+//			this.element.appendChild(this.menus[menuObject.name].getElement());
+//		}
 	},
 	remove: function(name) {
 		delete this.menus[name];
@@ -264,16 +264,16 @@ Calajax.MenuCommand.prototype.execute = function(object) {
 		 */
 		Calajax.Util.setCurrentViewRegistryData();
 
-		for ( item in this.menuBar.menus) {
-			// HIDE VIEW
-			if ( this.menuBar.menus[item].command.objectInstance != false && this.menuBar.menus[item].command.type == 'view' ) {
-				this.menuBar.menus[item].command.objectInstance.hide();		// Hide
-				this.menuBar.menus[item].command.state = 0;					// Reset command state ( Inactive )
-				if(jQuery.isFunction(this.menuBar.menus[item].element.removeClass)){
-					this.menuBar.menus[item].element.removeClass('active');
-				}
-			}
-		}
+//		for ( item in this.menuBar.menus) {
+//			// HIDE VIEW
+//			if ( this.menuBar.menus[item].command.objectInstance != false && this.menuBar.menus[item].command.type == 'view' ) {
+//				this.menuBar.menus[item].command.objectInstance.hide();		// Hide
+//				this.menuBar.menus[item].command.state = 0;					// Reset command state ( Inactive )
+//				if(jQuery.isFunction(this.menuBar.menus[item].element.removeClass)){
+//					this.menuBar.menus[item].element.removeClass('active');
+//				}
+//			}
+//		}
 
 		// Lazy loading...
 		// Ask for a new object instance from factory at first call
@@ -284,9 +284,9 @@ Calajax.MenuCommand.prototype.execute = function(object) {
 			// INITIALIZE VIEW ( ONE TIME ONLY )
 			this.objectInstance.init(object);
 			this.state = 1 // We are wake up :) ( ACTIVE )
-			if(jQuery.isFunction(this.menuBar.menus[Calajax.Registry.divcontainer.currentView].element.addClass)){
-				this.menuBar.menus[Calajax.Registry.divcontainer.currentView].element.addClass('active');
-			}
+//			if(jQuery.isFunction(this.menuBar.menus[Calajax.Registry.divcontainer.currentView].element.addClass)){
+//				this.menuBar.menus[Calajax.Registry.divcontainer.currentView].element.addClass('active');
+//			}
 
 			/* Alert view that the command has activate it */
 			//this.objectInstance.activatedViaCommand();

@@ -92,17 +92,33 @@ Calajax.Util = {
 
 		requestObject.data['tx_cal_controller[pid]'] = pid;
 
+		if(Calajax.Registry.options.debug == 1){
+			jQuery('#calajax-debug-container').show();
+			var dataValues = '';
+			for(var d in requestObject.data){
+				dataValues += '&'+d+'='+requestObject.data[d];
+			}
+			jQuery('#calajax-debug').append('url:' + requestObject.url + ' - dataType:' + requestObject.dataType + ' - data:' + dataValues + '<br/>');
+		}
+
 		// ERROR
-		if (typeof requestObject.error == 'undefined' )
+		if (typeof requestObject.error == 'undefined' ) {
 			requestObject.error = function (XMLHttpRequest, textStatus, errorThrown) {
+			
+				if(Calajax.Registry.options.debug == 1){
+					jQuery('#calajax-debug').append('Request Failed! Code' + textStatus + 'Error: ' + errorThrown + '<br/>');
+				}
 
 				// TODO: stop application, resend request until done if not exit and terminate application
 				Calajax.Util.errorHandler( 'Request Failed! Code' + textStatus );
+				Calajax.Util.errorHandler( 'Error: ' + errorThrown );
+				Calajax.Util.errorHandler( 'data: ' + this.data );
+				Calajax.Util.errorHandler( 'url: ' + this.url );
 				// typically only one of textStatus or errorThrown
 				// will have info
 				// this; // the options for this ajax request
 			}
-
+		}
 
 		jQuery.ajax( requestObject );
 
@@ -192,7 +208,7 @@ Calajax.Util = {
 	addDayViewLinks: function() {
 
 		var currentView = Calajax.Registry.divcontainer.currentView;
-		var DayViewObject = Calajax.MainObjectFactory.getObject( 'dayview' );
+		var MonthViewObject = Calajax.MainObjectFactory.getObject( 'monthview' );
 		var ViewInstance = Calajax.Registry.currentView.Instance
 		var ViewObject = Calajax.Registry.currentView.Object
 		var firstDay = new Date( ViewObject.viewStart );
@@ -211,18 +227,22 @@ Calajax.Util = {
 		jQuery( "#" + ViewInstance.placeHolderId + " ." + dayClass ).each( function( i, val ) {
 
 			var currentDate = new Date( firstDay.getFullYear(), firstDay.getMonth(), (firstDay.getDate() + i) );
-
-			jQuery(val).html('<a href="#1" title="' + jQuery(val).html() + '">' + jQuery(val).html() + '</div>');
-			jQuery(val).children().click( function( e ) {
-
-				Calajax.Registry.getdate = currentDate;
-
-				jQuery( "#" + Calajax.Registry.divcontainer.menuBar + " #menuItemDay" ).click();
-				jQuery( DayViewObject.wCalBodyID ).weekCalendar('gotoDate', currentDate);
-				
-				e.stopPropagation();
-
-			})
+			if(jQuery(val).html().search(/<a href=.+/)==-1){
+				jQuery(val).html('<a href="#1" title="' + jQuery(val).html() + '">' + jQuery(val).html() + '</a>');
+				jQuery(val).children().click( function( e ) {
+	
+					Calajax.Registry.getdate = currentDate;
+	
+					//jQuery( "#" + Calajax.Registry.divcontainer.menuBar + " #menuItemDay" ).click();
+					MonthViewObject.fullcalendarObject.fullCalendar('gotoDate', Calajax.Registry.getdate.getFullYear(),Calajax.Registry.getdate.getMonth(),Calajax.Registry.getdate.getDate());
+					MonthViewObject.fullcalendarObject.fullCalendar('changeView', 'agendaDay');
+					
+					//jQuery( this.wCalBodyID ).weekCalendar( 'gotoDate', Calajax.Registry.getdate);
+					
+					e.stopPropagation();
+	
+				});
+			}
 		});
 
 	}

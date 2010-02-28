@@ -36,9 +36,9 @@ Calajax.WeekView.AllDay = {
 	builded: new Array(), // Day and Week Instances
 
 	load : function( currentViewObj ){
-		// jQuery( currentViewObj.fullCalendarDef.placeholder ).FullCalendar2( 'removeEvents');
-		jQuery( currentViewObj.fullCalendarDef.placeholder ).FullCalendar2( 'addEventSource',  Calajax.Registry.events.AllDayEvents );
-		jQuery( currentViewObj.fullCalendarDef.placeholder ).FullCalendar2( 'gotoDate', currentViewObj.viewStart.format('yyyy'), currentViewObj.viewStart.format('mm') - 1 , currentViewObj.viewStart.format('d') );
+		// jQuery( currentViewObj.fullCalendarDef.placeholder ).fullCalendar( 'removeEvents');
+		jQuery( currentViewObj.fullCalendarDef.placeholder ).fullCalendar( 'addEventSource',  Calajax.Registry.events.AllDayEvents );
+		jQuery( currentViewObj.fullCalendarDef.placeholder ).fullCalendar( 'gotoDate', currentViewObj.viewStart.format('yyyy'), currentViewObj.viewStart.format('mm') - 1 , currentViewObj.viewStart.format('d') );
 	},
 
 	build : function( currentView ) {
@@ -64,13 +64,13 @@ Calajax.WeekView.AllDay = {
 
 		jQuery( '#' + viewPlaceHolder + ' .wc-header' ).after('<table class="table_allday" cellpadding="0" callspacing="0"><td class="table_allday_time"></td><td class="table_allday_content"><div id="' + placeHolder + '" class="' + placeHolder + '"></div></td></tr></table>');
 
-		jQuery( '#' + viewPlaceHolder +  ' #' + placeHolder ).FullCalendar2( currentViewObj.fullCalendarDef );
+		jQuery( '#' + viewPlaceHolder +  ' #' + placeHolder ).fullCalendar( currentViewObj.fullCalendarDef );
 		
 		Calajax.WeekView.AllDay.builded[ currentView ] = true;
 
 		currentViewObj.fullCalendarDef.placeholder = '#'  + viewPlaceHolder +  ' #' + placeHolder;
 
-		jQuery( currentViewObj.fullCalendarDef.placeholder ).FullCalendar2( 'gotoDate', currentViewObj.viewStart.format('yyyy'), currentViewObj.viewStart.format('mm') - 1 , currentViewObj.viewStart.format('d') );
+		jQuery( currentViewObj.fullCalendarDef.placeholder ).fullCalendar( 'gotoDate', currentViewObj.viewStart.format('yyyy'), currentViewObj.viewStart.format('mm') - 1 , currentViewObj.viewStart.format('d') );
 
 	}
 

@@ -16,7 +16,7 @@
 	// -->
 		/*]]>*/
 	</script>
-	
+
 	
 <!-- -->
 <!-- EXTENSION MAIN CONTAINER -->
@@ -26,118 +26,14 @@
 <div id="calajax-container" class="calajax-container">
 
 	<!-- -->
-	<!-- HEADER START -->
-	<!-- -->
-
-	<div id="calajax-container-header" class="calajax-container-header">
-
-			<!-- -->
-			<!-- MENUBAR -->
-			<!-- -->
-
-			<!-- ID set at the registry object -->
-			<!-- calajax-container-menubar: Start -->
-			<div id="calajax-container-menubar" class="calajax-container-menubar">
-				<div class="viewItems">
-					<ul class="basictab">
-						<li>
-							<nobr id="menuItemDay">###L_DAY###</nobr>
-						</li>
-						<li>
-							<nobr id="menuItemWeek">###L_WEEK###</nobr>
-						</li>
-						<li>
-							<nobr id="menuItemMonth">###L_MONTH###</nobr>
-						</li>
-					</ul>
-				</div>
-				<table>
-					<tbody>
-						<tr>
-							<td>
-								<img id="menuItemPrevious" title="###L_PREV###" src="typo3conf/ext/calajax/res/images/previous.png"/>
-							</td>
-							<td>
-								<img id="menuItemNext" title="###L_NEXT###" src="typo3conf/ext/calajax/res/images/next.png"/>
-							</td>
-							<td>
-								<input type="button" value="###L_TODAY###" id="menuItemToday" />
-							</td>
-							<td>
-								<span id="timeInfo"></span>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<!-- calajax-container-menubar: End -->
-
-			<!-- -->
-			<!-- LOADING -->
-			<!-- -->
-
-			<!-- ID set at the registry object -->
-			<!-- calajax-container-loading-main: Start -->
-			<div id="calajax-container-loading-main" class="calajax-container-loading-main">
-
-				<!-- calajax-container-loading-image: Start -->
-				<div id='calajax-container-loading-image' class="calajax-container-loading-image"></div>
-				<!-- calajax-container-loading-image: End -->
-
-				<!-- calajax-container-loading: Start -->
-				<div id='calajax-container-loading' class="calajax-container-loading">
-					<b>Loading</b><br/>
-					Please wait
-				</div>
-				<!-- calajax-container-loading: End -->
-
-			</div>
-			<!-- calajax-container-loading-main: End -->
-
-	</div>
-
-	<!-- -->
-	<!-- HEADER END -->
-	<!-- -->
-
-	<!-- -->
 	<!-- VIEW'S CONTAINER -->
 	<!-- -->
 
 	<!-- calajax-container-view: Start -->
-	<div id="calajax-container-view" class="calajax-container-view">
-
-		<!-- -->
-		<!-- DAYVIEW -->
-		<!-- -->
-
-		<!-- ID set at the registry object -->
-		<!-- calajax-container-dayview: Start -->
-		<div id='calajax-container-dayview' class="calajax-container-dayview">
-		</div>
-		<!-- calajax-container-dayview: End -->
-
-		<!-- -->
-		<!-- WEEKVIEW -->
-		<!-- -->
-
-		<!-- ID set at the registry object -->
-		<!-- calajax-container-weekview: Start -->
-		<div id='calajax-container-weekview' class="calajax-container-weekview">
-		</div>
-		<!-- calajax-container-weekview: End -->
-
-		<!-- -->
-		<!-- MONTHVIEW -->
-		<!-- -->
-
 		<!-- ID set at the registry object -->
 		<!-- month-large: Start -->
 		<div id='month-large' class="month-large"></div>
 		<!-- month-large: End -->
-
-
-	</div>
 	<!-- calajax-container-view: End -->
 
 </div>
@@ -485,7 +381,12 @@
 			<div id="pager4" class="scroll" style="text-align:center;"></div>
 		</div>
 
-
-
+<!-- -->
+<!-- DEBUG -->
+<!-- -->
+		<div id="calajax-debug-container" style='display:none;'>
+			<h3>Debug output</h3>
+			<div id="calajax-debug" class="scroll"></div>
+		</div>
 
 <!-- ###FE-EDITING### end -->

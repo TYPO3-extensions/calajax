@@ -54,7 +54,7 @@ Calajax.StartingView.prototype = {
 
 	builted : false,
 	build : function(){
-
+		
 		if  ( this.builted ) return;
 
 		/***********************************************************************
@@ -65,30 +65,30 @@ Calajax.StartingView.prototype = {
 		/* Create the menu bar. */
 		var calajaxMenuBar = new Calajax.MenuBar( Calajax.Registry.divcontainer.menuBar );
 
-		/* Create the commands and inject menu bar object for show/hide functionality. */
-		this.dayViewCommand		= new Calajax.MenuCommand( 'dayview', calajaxMenuBar );
-		
-		this.dayViewCommand.render = function(command) {
-			jQuery(document).ready(function(){
-				var that = command;
-				Calajax.Util.addEvent( jQuery('#menuItemDay'), 'click', function( e ) { // Invoke the command on click.
-					that.command.execute( command );
-				});
-				that.element = jQuery('#menuItemDay');
-			});
-		};
-		
-		this.weekViewCommand	= new Calajax.MenuCommand( 'weekview', calajaxMenuBar );
-		
-		this.weekViewCommand.render = function(command) {
-			jQuery(document).ready(function(){
-				var that = command;
-				Calajax.Util.addEvent( jQuery('#menuItemWeek'), 'click', function( e ) { // Invoke the command on click.
-					that.command.execute( command );
-				});
-				that.element = jQuery('#menuItemWeek');
-			});
-		};
+//		/* Create the commands and inject menu bar object for show/hide functionality. */
+//		this.dayViewCommand		= new Calajax.MenuCommand( 'dayview', calajaxMenuBar );
+//		
+//		this.dayViewCommand.render = function(command) {
+//			jQuery(document).ready(function(){
+//				var that = command;
+//				Calajax.Util.addEvent( jQuery('#menuItemDay'), 'click', function( e ) { // Invoke the command on click.
+//					that.command.execute( command );
+//				});
+//				that.element = jQuery('#menuItemDay');
+//			});
+//		};
+//		
+//		this.weekViewCommand	= new Calajax.MenuCommand( 'weekview', calajaxMenuBar );
+//		
+//		this.weekViewCommand.render = function(command) {
+//			jQuery(document).ready(function(){
+//				var that = command;
+//				Calajax.Util.addEvent( jQuery('#menuItemWeek'), 'click', function( e ) { // Invoke the command on click.
+//					that.command.execute( command );
+//				});
+//				that.element = jQuery('#menuItemWeek');
+//			});
+//		};
 		
 		this.monthViewCommand	= new Calajax.MenuCommand( 'monthview', calajaxMenuBar );
 		
@@ -107,41 +107,41 @@ Calajax.StartingView.prototype = {
 		this.organizerViewCommand= new Calajax.MenuCommand( 'organizerview', calajaxMenuBar );
 		
 		/* Navigation commands */
-		var prevCommand			= new Calajax.MenuCommandNav( 'previous' );
-		
-		prevCommand.render = function(command) {
-			jQuery(document).ready(function(){
-				Calajax.Util.addEvent( jQuery('#menuItemPrevious'), 'click', function( e ) { // Invoke the command on click.
-					command.command.execute( command );
-				});
-			});
-		};
-		
-		var todayCommand		= new Calajax.MenuCommandNav( 'today' );
-		
-		todayCommand.render = function(command) {
-			jQuery(document).ready(function(){
-				Calajax.Util.addEvent( jQuery('#menuItemToday'), 'click', function( e ) { // Invoke the command on click.
-					command.command.execute( command );
-				});
-			});
-		};
-		
-		var nextCommand			= new Calajax.MenuCommandNav( 'next' );
-		
-		nextCommand.render = function(command) {
-			jQuery(document).ready(function(){
-				Calajax.Util.addEvent( jQuery('#menuItemNext'), 'click', function( e ) { // Invoke the command on click.
-					command.command.execute( command );
-				});
-			});
-		};
-
-		/* The result buttons. */
-		var dayViewButton = new Calajax.Menu( 'dayview', this.dayViewCommand );
-		var weekViewButton = new Calajax.Menu( 'weekview', this.weekViewCommand );
-		var monthViewButton = new Calajax.Menu( 'monthview', this.monthViewCommand );
-		
+//		var prevCommand			= new Calajax.MenuCommandNav( 'previous' );
+//		
+//		prevCommand.render = function(command) {
+//			jQuery(document).ready(function(){
+//				Calajax.Util.addEvent( jQuery('#menuItemPrevious'), 'click', function( e ) { // Invoke the command on click.
+//					command.command.execute( command );
+//				});
+//			});
+//		};
+//		
+//		var todayCommand		= new Calajax.MenuCommandNav( 'today' );
+//		
+//		todayCommand.render = function(command) {
+//			jQuery(document).ready(function(){
+//				Calajax.Util.addEvent( jQuery('#menuItemToday'), 'click', function( e ) { // Invoke the command on click.
+//					command.command.execute( command );
+//				});
+//			});
+//		};
+//		
+//		var nextCommand			= new Calajax.MenuCommandNav( 'next' );
+//		
+//		nextCommand.render = function(command) {
+//			jQuery(document).ready(function(){
+//				Calajax.Util.addEvent( jQuery('#menuItemNext'), 'click', function( e ) { // Invoke the command on click.
+//					command.command.execute( command );
+//				});
+//			});
+//		};
+//
+//		/* The result buttons. */
+//		var dayViewButton = new Calajax.Menu( 'dayview', this.dayViewCommand );
+//		var weekViewButton = new Calajax.Menu( 'weekview', this.weekViewCommand );
+//		var monthViewButton = new Calajax.Menu( 'monthview', this.monthViewCommand );
+//		
 		/* Pseudo buttons */
 		var eventViewButton = new Calajax.Menu( 'eventview', this.eventViewCommand );
 		eventViewButton.dontShow = true;
@@ -150,23 +150,23 @@ Calajax.StartingView.prototype = {
 		var organizerViewButton = new Calajax.Menu( 'organizerview', this.organizerViewCommand );
 		organizerViewButton.dontShow = true;
 
-		var prevViewButton = new Calajax.Menu( 'previous', prevCommand );
-		var todayViewButton = new Calajax.Menu( 'today', todayCommand );
-		var nextViewButton = new Calajax.Menu( 'next', nextCommand );
+//		var prevViewButton = new Calajax.Menu( 'previous', prevCommand );
+//		var todayViewButton = new Calajax.Menu( 'today', todayCommand );
+//		var nextViewButton = new Calajax.Menu( 'next', nextCommand );
 		
 
 		/* Add buttons to menubar */
-		calajaxMenuBar.add( dayViewButton );
-		calajaxMenuBar.add( weekViewButton );
-		calajaxMenuBar.add( monthViewButton );
+//		calajaxMenuBar.add( dayViewButton );
+//		calajaxMenuBar.add( weekViewButton );
+//		calajaxMenuBar.add( monthViewButton );
 		calajaxMenuBar.add( eventViewButton );
 		calajaxMenuBar.add( locationViewButton );
 		calajaxMenuBar.add( organizerViewButton );
 
 		/* Navigation */
-		calajaxMenuBar.add( prevViewButton );
-		calajaxMenuBar.add( nextViewButton );
-		calajaxMenuBar.add( todayViewButton );
+//		calajaxMenuBar.add( prevViewButton );
+//		calajaxMenuBar.add( nextViewButton );
+//		calajaxMenuBar.add( todayViewButton );
 		
 
 		// Activate default View by running execute

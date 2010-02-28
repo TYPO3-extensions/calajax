@@ -347,22 +347,22 @@ Calajax.WeekView.prototype = {
 	},
 
 	beforeNavigation : function () {
-		jQuery( ' #' + Calajax.WeekView.fullCalendarDef.placeholder ).FullCalendar2( 'removeEvents');
+		jQuery( ' #' + Calajax.WeekView.fullCalendarDef.placeholder ).fullCalendar( 'removeEvents');
 	},
 
 	next : function() {
-		// jQuery( Calajax.WeekView.AllDay.placeHolder ).FullCalendar2( 'next' );
+		// jQuery( Calajax.WeekView.AllDay.placeHolder ).fullCalendar( 'next' );
 		this.beforeNavigation();
 		jQuery( this.wCalBodyID ).weekCalendar( 'nextWeek' );
 
 	},
 	previous : function() {
-		// jQuery( Calajax.WeekView.AllDay.placeHolder ).FullCalendar2( 'prev' );
+		// jQuery( Calajax.WeekView.AllDay.placeHolder ).fullCalendar( 'prev' );
 		this.beforeNavigation();
 		jQuery( this.wCalBodyID ).weekCalendar( 'prevWeek' );
 	},
 	today : function() {
-		//jQuery( Calajax.WeekView.AllDay.placeHolder ).FullCalendar2( 'today' );
+		//jQuery( Calajax.WeekView.AllDay.placeHolder ).fullCalendar( 'today' );
 		this.beforeNavigation();
 		jQuery( this.wCalBodyID ).weekCalendar( 'today' );
 	},
@@ -401,7 +401,7 @@ Calajax.WeekView.prototype = {
 			}
 		}
 		jQuery( this.wCalBodyID ).weekCalendar( 'removeAndAddEvents', eventId, regularEvents );
-		jQuery( ' #' + Calajax.WeekView.fullCalendarDef.placeholder ).FullCalendar2( 'removeAndAddEvents', eventId, allDayEvents );
+		jQuery( ' #' + Calajax.WeekView.fullCalendarDef.placeholder ).fullCalendar( 'removeAndAddEvents', eventId, allDayEvents );
 	}
 }
 
@@ -441,7 +441,7 @@ Calajax.WeekView.loadEvents = function() {
 
 		Calajax.Util.showLoadingMask();
 
-		jQuery( ' #' + Calajax.WeekView.fullCalendarDef.placeholder ).FullCalendar2( 'removeEvents');
+		jQuery( ' #' + Calajax.WeekView.fullCalendarDef.placeholder ).fullCalendar( 'removeEvents');
 
 		/* Set loading state on allday and wc */
 		Calajax.WeekView.Controller.wcIsLoaded = Calajax.WeekView.AllDay.state = 2;

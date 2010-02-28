@@ -358,23 +358,23 @@ Calajax.DayView.prototype = {
 	},
 
 	beforeNavigation : function () {
-		jQuery( ' #' + Calajax.DayView.fullCalendarDef.placeholder ).FullCalendar2( 'removeEvents');
+		jQuery( ' #' + Calajax.DayView.fullCalendarDef.placeholder ).fullCalendar( 'removeEvents');
 	},
 
 	next : function() {
-		// jQuery( Calajax.WeekView.AllDay.placeHolder ).FullCalendar2( 'next' );
+		// jQuery( Calajax.WeekView.AllDay.placeHolder ).fullCalendar( 'next' );
 		this.beforeNavigation();
 		Calajax.DayView.calendarDef.firstDayOfWeek = Calajax.Registry.getdate.getDay();
 		jQuery( this.wCalBodyID ).weekCalendar( 'gotoDate', Calajax.Registry.getdate);
 	},
 	previous : function() {
-		// jQuery( Calajax.WeekView.AllDay.placeHolder ).FullCalendar2( 'prev' );
+		// jQuery( Calajax.WeekView.AllDay.placeHolder ).fullCalendar( 'prev' );
 		this.beforeNavigation();
 		Calajax.DayView.calendarDef.firstDayOfWeek = Calajax.Registry.getdate.getDay();
 		jQuery( this.wCalBodyID ).weekCalendar( 'gotoDate', Calajax.Registry.getdate);
 	},
 	today : function() {
-		//jQuery( Calajax.WeekView.AllDay.placeHolder ).FullCalendar2( 'today' );
+		//jQuery( Calajax.WeekView.AllDay.placeHolder ).fullCalendar( 'today' );
 		this.beforeNavigation();
 		var now = new Date();
 		Calajax.Registry.getdate = now;
@@ -436,7 +436,7 @@ Calajax.DayView.loadEvents = function() {
 
 		Calajax.Util.showLoadingMask();
 
-		jQuery( ' #' + Calajax.DayView.fullCalendarDef.placeholder ).FullCalendar2( 'removeEvents');
+		jQuery( ' #' + Calajax.DayView.fullCalendarDef.placeholder ).fullCalendar( 'removeEvents');
 
 		/* Set loading state on allday and wc */
 		Calajax.WeekView.Controller.wcIsLoaded = Calajax.WeekView.AllDay.state = 2;
