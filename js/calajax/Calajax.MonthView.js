@@ -114,6 +114,11 @@ Calajax.MonthView.prototype	= {
 				}
 			},
 			
+			eventAfterRender: function(event, eventElement){
+				eventElement.myClass = event.className;
+				Calajax.CalendarView.calendar.subscribeToCalendar(eventElement, event);
+			},
+			
 			dayClick: function(date){
 				if(Calajax.Rights.create.event==true) {
 					Calajax.Registry.divcontainer.lastView = Calajax.Registry.divcontainer.currentView; 
@@ -123,7 +128,7 @@ Calajax.MonthView.prototype	= {
 								endObject : new Date(date),
 								allday : 1,
 								event_type : 0,
-								freq : "none",
+								freq : "none"
 							}));
 				}
 	            return false;
@@ -171,7 +176,7 @@ Calajax.MonthView.prototype	= {
 	
 	removeAndAddEvents : function (eventId, events) {
 		this.fullcalendarObject.fullCalendar( 'removeAndAddEvents', eventId, events );
-	},
+	}
 
 };
 

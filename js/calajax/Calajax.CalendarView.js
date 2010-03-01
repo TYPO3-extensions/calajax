@@ -19,7 +19,8 @@ Calajax.CalendarView = function(){
 	status[4] = 'WAITING';
 
 	this.currentStatus = 0; // Default status INACTIVE
-}
+};
+
 
 Calajax.CalendarView.calendar = {
 	isDataLoaded: false,
@@ -30,7 +31,7 @@ Calajax.CalendarView.calendar = {
 				{
 				'eID': 'cal_ajax',
 				'tx_cal_controller[pid]': pid,
-				'tx_cal_controller[view]': 'load_calendars',
+				'tx_cal_controller[view]': 'load_calendars'
 			},
 			function(data) {
 				Calajax.CalendarView.calendar.setCalendar(data);
@@ -65,10 +66,10 @@ Calajax.CalendarView.calendar = {
  		}
  	},
  	removeCalendar: function(calendarId) {
- 		delete this.container[calendarId];
+ 		delete Calajax.CalendarView.calendar.container[calendarId];
  	},
  	getCalendar: function(id) {
- 		return this.container[id];
+ 		return Calajax.CalendarView.calendar.container[id];
  	},
 	getCalendarsWithCreatePermission: function() {
  		var calendarArray = [];
@@ -189,7 +190,7 @@ Calajax.CalendarView.calendar = {
 			eID:"cal_ajax",
 			"tx_cal_controller[view]":"save_calendar",
 			"tx_cal_controller[pid]":Calajax.Registry.request.pid,
-			"tx_cal_controller[type]":"tx_cal_calendar",
+			"tx_cal_controller[type]":"tx_cal_calendar"
 		};
 		for(var i=0; i < allowedParams.length; i++){
 			if(calendar[allowedParams[i]] != undefined){
@@ -214,7 +215,7 @@ Calajax.CalendarView.calendar = {
 			},
 			Calajax.Registry.request.dataType // Json by default ( see registry )
 		);
-	},
+	}
 };
 
 Calajax.CalendarView.editCalendarInitiated = false;
@@ -244,7 +245,7 @@ Calajax.CalendarView.editCalendarView = function (calendarRef, clickEvent){
 			columns:7,
 			click: function(color){
     			colorField.val(color);
-    		},
+    		}
 		}
 	);
     var ownerContainer = jQuery('#calendar_owner_container');
@@ -255,7 +256,7 @@ Calajax.CalendarView.editCalendarView = function (calendarRef, clickEvent){
 			{
 			'eID': 'cal_ajax',
 			'tx_cal_controller[pid]': pid,
-			'tx_cal_controller[view]': 'search_user_and_group',
+			'tx_cal_controller[view]': 'search_user_and_group'
 		},
 		function(data) {
 			var owner = '<select name="available" size="5" id="calendar_owner" multiple="true" style="width:200px;">';
@@ -381,7 +382,7 @@ Calajax.CalendarView.editCalendarView = function (calendarRef, clickEvent){
 					"tx_cal_controller[view]":"remove_calendar",
 					"tx_cal_controller[pid]":pid,
 					"tx_cal_controller[type]":"tx_cal_calendar",
-					"tx_cal_controller[uid]":calendar.uid,
+					"tx_cal_controller[uid]":calendar.uid
 				},
 				function(data){
 					//
@@ -416,7 +417,7 @@ Calajax.CalendarView.editCalendarView = function (calendarRef, clickEvent){
         cancel : function(){
             dialogContent.dialog("close");
         },
-        width:'auto',
+        width:'auto'
     });
 };
 
@@ -430,7 +431,7 @@ Calajax.CalendarView.task = {
 				{
 				'eID': 'cal_ajax',
 				'tx_cal_controller[pid]': pid,
-				'tx_cal_controller[view]': 'load_todos',
+				'tx_cal_controller[view]': 'load_todos'
 			},
 			function(data) {
 				Calajax.CalendarView.task.setTasks(data);
@@ -441,30 +442,30 @@ Calajax.CalendarView.task = {
 		);
 	},
  	setTasks: function(taskArray) {
-		Calajax.CalendarView.calendar.container = [];
+		Calajax.CalendarView.task.container = [];
  		for(var i=0; i < taskArray.length; i++){
- 			Calajax.CalendarView.calendar.container[taskArray[i].uid] = taskArray[i];
+ 			Calajax.CalendarView.task.container[taskArray[i].uid] = taskArray[i];
  		}
  	},
  	addTask: function(task) {
  		if(task.completed < 100){
- 			Calajax.CalendarView.calendar.container[task.uid] = task;
+ 			Calajax.CalendarView.task.container[task.uid] = task;
  		} else {
  			Calajax.CalendarView.task.removeTask(task.uid);
  		}
  	},
  	removeTask: function(taskId) {
- 		delete Calajax.CalendarView.calendar.container[taskId];
+ 		delete Calajax.CalendarView.task.container[taskId];
  	},
  	removeCalendar: function(calendarId){
- 		for(var i in Calajax.CalendarView.calendar.container){
- 			if(Calajax.CalendarView.calendar.container[i].calendar_id == calendarId){
- 				delete Calajax.CalendarView.calendar.container[i];
+ 		for(var i in Calajax.CalendarView.task.container){
+ 			if(Calajax.CalendarView.task.container[i].calendar_id == calendarId){
+ 				delete Calajax.CalendarView.task.container[i];
  			}
  		}
  	},
  	getTask: function(id) {
- 		return Calajax.CalendarView.calendar.container[id];
+ 		return Calajax.CalendarView.task.container[id];
  	},
  	
  	renderView: function(){
@@ -546,7 +547,7 @@ Calajax.CalendarView.prototype	= {
 	 * Acts as a bridge for the real translator object
 	 */
 	 translate : function ( tag ) {
-		 return Calajax.Translator.getTranslation( this.getTranslationKey(), tag )
+		 return Calajax.Translator.getTranslation( this.getTranslationKey(), tag );
 	 },
 	 
 	init: function(){
@@ -667,13 +668,13 @@ Calajax.CalendarView.prototype	= {
 	activateViaCommand : function(){
 		this.renderCalendarList();
 	}
-}
+};
 
 Calajax.CalendarView.adminTasks = [];
 
 Calajax.CalendarView.registerAdminTask = function(id, name, callback){
 	Calajax.CalendarView.adminTasks[id] = {'name':name,'callback':callback};
-}
+};
 
 Calajax.CalendarView.renderAdminTasks = function(){
 	var adminList = jQuery('#' + Calajax.Registry.divcontainer.administration);
