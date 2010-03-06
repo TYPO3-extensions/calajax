@@ -58,7 +58,6 @@ Calajax.MonthView.prototype	= {
 		
 		jQuery('#' + this.placeHolderId).html('');
 		this.fullcalendarObject = jQuery('#' + this.placeHolderId).fullCalendar({
-			
 			monthNames : this.translate( 'longMonths' ),
 			monthNamesShort : this.translate( 'shortMonths' ),
 			dayNames : this.translate( 'longDays' ),
@@ -92,15 +91,18 @@ Calajax.MonthView.prototype	= {
 					ev.end_date = ev.parent_enddate;
 					ev.start_time = ev.parent_starttime;
 					ev.end_time = ev.parent_endtime;
-					delete ev.startObject;
-					delete ev.endObject;
-					ev = new Calajax.Event(ev);
-					ev.startObject = new Date(ev.startObject.getTime()+(dayDelta*60*60*24*1000));
-					ev.endObject = new Date(ev.endObject.getTime()+(dayDelta*60*60*24*1000)-20);
-					ev.start = ev.startObject;
-					ev.end = ev.endObject;
 				}
+				delete ev.startObject;
+				delete ev.endObject;
+				ev = new Calajax.Event(ev);
+				ev.start_time = ev.start_time + minuteDelta * 60;
+				ev.end_time = ev.end_time + minuteDelta * 60;
+				ev.startObject = new Date(ev.startObject.getTime()+(dayDelta*60*60*24*1000)+(minuteDelta * 60));
+				ev.endObject = new Date(ev.endObject.getTime()+(dayDelta*60*60*24*1000)+(minuteDelta * 60));
+				ev.start = ev.startObject;
+				ev.end = ev.endObject;
 				Calajax.Event.startEventSave(ev);
+				
 			},
 			eventRender: function(event, element){
 				var view = Calajax.MainObjectFactory.getObject( 'monthview' ).fullcalendarObject.fullCalendar('getView').name
@@ -129,7 +131,8 @@ Calajax.MonthView.prototype	= {
 								allday : 1,
 								event_type : 0,
 								freq : "none"
-							}));
+							})
+						);
 				}
 	            return false;
 			},
@@ -175,7 +178,7 @@ Calajax.MonthView.prototype	= {
 	},
 	
 	removeAndAddEvents : function (eventId, events) {
-		this.fullcalendarObject.fullCalendar( 'removeAndAddEvents', eventId, events );
+		//this.fullcalendarObject.fullCalendar( 'removeAndAddEvents', eventId, events );
 	}
 
 };

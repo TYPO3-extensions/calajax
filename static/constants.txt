@@ -8,6 +8,6 @@ plugin.tx_cal_controller.view {
 }
 
 plugin.calajax {
-	# cat=Cal Ajax (General)/general/1; type=options[smoothness, flick]; label=jQuery theme
-	design = smoothness
+	# cat=Cal Ajax (General)/general/1; type=options[smoothness, flick, redmond]; label=jQuery theme
+	design = redmond
 }

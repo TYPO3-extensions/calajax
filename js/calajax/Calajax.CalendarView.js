@@ -325,11 +325,15 @@ Calajax.CalendarView.editCalendarView = function (calendarRef, clickEvent){
 		}
 		return noFault;
 	};
+	
+	var CalendarViewObject = Calajax.MainObjectFactory.getObject( 'calendarview' );
+	var translation = CalendarViewObject.translate( 'buttonText' );
 
 	var buttonDefinition = {};
 	
 	if(calendar.isallowedtoedit==1 || calendar.uid == undefined){
-		buttonDefinition[jQuery.fullCalendar.buttonText.save] = function(){
+		
+		buttonDefinition[translation.save] = function(){
 			if(!validate()){
 				return false;
 			}
@@ -373,7 +377,7 @@ Calajax.CalendarView.editCalendarView = function (calendarRef, clickEvent){
 	}
 	
 	if(calendar.isallowedtodelete==1){
-		buttonDefinition[jQuery.fullCalendar.buttonText.deleteText] = function(){
+		buttonDefinition[translation.deleteText] = function(){
 			jQuery.get(
 				Calajax.Registry.request.requestUrl,
 				{
@@ -399,15 +403,15 @@ Calajax.CalendarView.editCalendarView = function (calendarRef, clickEvent){
 		};
 	};
 	
-	var dialogTitle = jQuery.fullCalendar.buttonText.edit + " - " + calendar.title;
+	var dialogTitle = translation.edit + " - " + calendar.title;
 	if(calendar.uid == undefined){
-		dialogTitle = jQuery.fullCalendar.buttonText.create;
+		dialogTitle = translation.create;
 	}
 	
 	
 	dialogContent.dialog({
         modal: false,
-        position: [(clickEvent.pageX + Calajax.Registry.format.calendarEditPanelOffsetX),clickEvent.pageY],
+        //position: [(clickEvent.pageX + Calajax.Registry.format.calendarEditPanelOffsetX),clickEvent.pageY],
         title: dialogTitle,
         buttons: buttonDefinition,
         close: function() {
@@ -578,6 +582,8 @@ Calajax.CalendarView.prototype	= {
 			monthNames: longMonths,
 			dayNamesMin: shortDays,
 			dayNamesShort: shortDays,
+			numberOfMonths: 2,
+			showCurrentAtPos: 0,
 			onSelect: function(dateText, inst){
 				Calajax.Registry.getdate = new Date();
 				var then = Calajax.Util.getDateFromYYYYMMDD(dateText);
@@ -590,6 +596,7 @@ Calajax.CalendarView.prototype	= {
 		});
 		
 		this.renderCalendarList();
+		jQuery('#left-accordion').accordion({autoHeight:false});
 	},
 	
 	renderCalendarList : function() {
@@ -601,15 +608,17 @@ Calajax.CalendarView.prototype	= {
 			var createHtml = '';
 			jQuery('#calendar-list-bottom').remove();
 
+			var CalendarViewObject = Calajax.MainObjectFactory.getObject( 'calendarview' );
+			
 			try{
 				if(Calajax.Rights.create.calendar==true){
-					createHtml = '<div id="calendar-list-bottom" class="list-container-bottom"><a class="new_calendar">'+jQuery.fullCalendar.buttonText.create+'</a></div>';
+					var translation = CalendarViewObject.translate( 'buttonText' );
+					createHtml = '<div id="calendar-list-bottom" class="list-container-bottom"><a class="new_calendar">'+translation.create+'</a></div>';
 				}
 			} catch(e){
 				Calajax.Util.errorHandler(e);
 			}
-			var CalendarViewObject = Calajax.MainObjectFactory.getObject( 'calendarview' );
-
+			
 			for (var calendarId in Calajax.CalendarView.calendar.container) {
 				var calendar = Calajax.CalendarView.calendar.container[calendarId];
 				if(typeof calendar == 'object'){

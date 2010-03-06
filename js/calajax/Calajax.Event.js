@@ -301,8 +301,8 @@ Calajax.Event.renderEventForMonth = function(event){
 		_class += ' completed';
 	}
 
-	var result =  jQuery(  "<div class='event " + _class + "'>" + eventStr + "</div>" ).append( event.editBar() )[0];
-
+	//var result =  jQuery(  "<div class='event " + _class + "'>" + eventStr + "</div>" ).append( event.editBar() )[0];
+	var result = "<div class='event " + _class + "'>" + eventStr + "</div>";
 	return result;
 };
 

@@ -11,6 +11,150 @@
    Syntax recommendation http://www.w3.org/TR/REC-CSS2/
 */
 
+.tx_cal_controller_ajax {
+	width: 1000px;
+}
+
+.left {
+  float:left;
+  width: 13em;
+  font-family:Lucida Grande,Lucida Sans,Arial,sans-serif;
+}
+
+.left .ui-accordion .ui-accordion-header a {
+	font-size: 0.4em;
+}
+
+.center {
+  float:left;
+  font-family:Lucida Grande,Lucida Sans,Arial,sans-serif;
+}
+
+.ui-buttonbar {
+  margin: 0px;
+  padding: 0px;
+
+}
+
+.ui-buttonbar {
+  margin: 0px;
+  padding: 0px;
+}
+
+.ui-buttonbar .ui-widget-header {
+  border: 1px solid #dfeffc;
+  background-repeat: repeat-x;
+  list-style:none outside none;
+  padding: 3px 5px;
+  float:left;
+  border:1px solid #79B7E7;
+}
+
+.ui-buttonbar li {
+	height: 20px;
+	line-height: 20px;
+}
+
+.center .ui-buttonbar li:hover {
+  border: 1px solid #79b7e7;
+  background-image: url('../../js/jquery_plugins/jquery-ui/1.7.2/themes/redmond/images/ui-bg_glass_75_d0e5f5_1x400.png');
+  color: #1d5987;
+}
+
+.ui-buttonbar-title{
+  width: 100%;
+}
+
+.ui-datepicker-group, .ui-datepicker-inline {
+	font-size: 0.8em;
+	line-height: 1;
+}
+
+.ui-datepicker th {
+	padding: 0px;
+}
+
+.ui-datepicker-group .ui-widget-header, .ui-datepicker-inline .ui-widget-header {
+	background: none;
+	border: 0px;
+	color: #000000;
+}
+
+.ui-widget-header .ui-buttonbar-icon{
+  background-repeat: no-repeat;
+  padding-left: 20px;
+  margin-left: 3px;
+}
+
+.ui-widget-header .ui-buttonbar-new {
+  background-image: url('../images/new.png');
+}
+
+.ui-widget-header .ui-buttonbar-refresh {
+  background-image: url('../images/refresh.png');
+}
+
+.ui-widget-header .search-field {
+  height: 16px;
+  font-size: xx-small;
+  vertical-align:text-top;
+  border: 1px solid #EDEDED;
+}
+
+.ui-widget-header .ui-buttonbar-search{
+  background-image: url('../images/search.png');
+}
+
+.ui-widget-header .ui-buttonbar-tasklist{
+  background-image: url('../images/task_list.png');
+}
+
+.ui-widget-header .ui-buttonbar-settings{
+  background-image: url('../images/settings.png');
+}
+
+.ui-widget-header .ui-buttonbar-help{
+  background-image: url('../images/help.png');
+}
+
+.ui-widget-header .ui-buttonbar-logout{
+  background-image: url('../images/logout.png');
+}
+
+.ui-datepicker-group {
+	clear:both;
+}
+
+.ui-datepicker-calendar .ui-state-default {
+	background: none;
+	border-width: 0px;
+}
+
+.ui-datepicker-calendar .ui-state-active {
+	border-width: 1px;
+	border-color: red;
+}
+
+#calendar-nav {
+	padding: 0px;
+}
+
+#calendar-nav, #calendar-nav .ui-datepicker {
+	width: auto !important;
+	border-top: 0px;
+	-moz-border-radius: 0px;
+}
+
+.ui-datepicker-group, .ui-datepicker-inline {
+	width: 100% !important;
+}
+
+#left-accordion .ui-accordion-content {
+	padding: 0px;
+	overflow: hidden;
+}
+
+
 .calajax-container {
 	min-width: 50em;
 }
@@ -141,26 +285,20 @@
 }
 
 .calajax-container-loading-main {
-	position:absolute;
-	top:0;
-	left:0;
-	white-space:nowrap;
-}
-.calajax-container-loading{
-	padding:10px;
-	display:table;
-	float: left;
+	 
 }
 
-.calajax-container-loading-image{
-	background-image:url(../../res/icons/loading.gif);
-	background-repeat:repeat-x;
-	width: 16px;
-	height: 16px;
-	float: left;
-	margin: 10px;
-	margin-right:0px;
-	margin-top:20px;
+.fadingMessage {
+	left:50%;
+	position:absolute;
+	top:50%;
+	z-index:10;
+	border: 1px solid #AAAAAA;
+	background-color: #FFFFFF;
+	padding: 10px 20px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	font-weight: bold;
 }
 
 .calajax-container-view {
@@ -218,20 +356,16 @@
 	min-width: 400px;
 }
 
-.calendar-list{
-	background-color:#FFFFFF;
-	background-repeat:repeat-x;
-	border-bottom:1px solid #DDDDDD;
-	clear:both;
+#calendar-list{
+	list-style-type:none;
 	display:table;
-	float:left;
-	width:200px;
-
+	padding:0px;
+	width: 100%;
 }
 
-.calendar-list ul{
+#calendar-list ul{
 }
-.calendar-list li{
+#calendar-list li{
 	list-style:none;
 	padding-left:5px;
 	padding-right:5px;
@@ -239,13 +373,9 @@
 }
 
 .fc-content {
-	-moz-border-radius-topleft:4px;
-	-moz-border-radius-topright:4px;
-	background-color:#C3D9FF;
 	display:table;
-	padding:2px;
+
 	width:100%;
-	border: 0px;
 }
 
 .fc-content .fc-not-today {
@@ -294,11 +424,13 @@
 .showEvent_default_catheader_allday .ui-widget-header {
 	background: none;
 	background-color: #C6D8EC !important;
+	border-width: 0px;
 }
 
 .showEvent_default_catheader .ui-widget-header {
 	background: none;
 	color: #668CD9 !important;
+	border-width: 0px;
 }
 
 .fc-agenda-body .default_catheader {
@@ -351,11 +483,13 @@
 .showEvent_grey_catheader_allday .ui-widget-header {
 	background: none;
 	background-color: #C7C7D1 !important;
+	border-width: 0px;
 }
 
 .showEvent_grey_catheader .ui-widget-header {
 	background: none;
 	color: #73738C !important;
+	border-width: 0px;
 }
 
 .fc-agenda-body .grey_catheader {
@@ -408,11 +542,13 @@
 .showEvent_yellow_catheader_allday .ui-widget-header {
 	background: none;
 	background-color: #F5ECC2 !important;
+	border-width: 0px;
 }
 
 .showEvent_yellow_catheader .ui-widget-header {
 	background: none;
 	color: #E0C240 !important;
+	border-width: 0px;
 }
 
 .fc-agenda-body .yellow_catheader {
@@ -465,11 +601,13 @@
 .showEvent_orange_catheader_allday .ui-widget-header {
 	background: none;
 	background-color: #FFCC99 !important;
+	border-width: 0px;
 }
 
 .showEvent_orange_catheader .ui-widget-header {
 	background: none;
 	color: #FF8000 !important;
+	border-width: 0px;
 }
 
 .fc-agenda-body .orange_catheader {
@@ -522,11 +660,13 @@
 .showEvent_red_catheader_allday .ui-widget-header {
 	background: none;
 	background-color: #F09D9D !important;
+	border-width: 0px;
 }
 
 .showEvent_red_catheader .ui-widget-header {
 	background: none;
 	color: #F09D9D !important;
+	border-width: 0px;
 }
 
 .fc-agenda-body .red_catheader {
@@ -579,11 +719,13 @@
 .showEvent_pink_catheader_allday .ui-widget-header {
 	background: none;
 	background-color: #E2C0DC !important;
+	border-width: 0px;
 }
 
 .showEvent_pink_catheader .ui-widget-header {
 	background: none;
 	color: #B257A2 !important;
+	border-width: 0px;
 }
 
 .fc-agenda-body .pink_catheader {
@@ -634,11 +776,13 @@
 .showEvent_green_catheader_allday .ui-widget-header {
 	background: none;
 	background-color: #C2EBC9 !important;
+	border-width: 0px;
 }
 
 .showEvent_green_catheader .ui-widget-header {
 	background: none;
 	color: #65AD89 !important;
+	border-width: 0px;
 }
 
 .fc-agenda-body .green_catheader {
@@ -666,6 +810,10 @@
 	cursor:pointer;cursor:hand;
 	color: #ffffff;
 	min-width: 4em;
+	float:left;
+	width:79%;
+	overflow:hidden;
+	font-size: 0.8em;
 }
 
 .calendarEditor_, .calendarEditor_yellow_catheader, .calendarEditor_orange_catheader, .calendarEditor_red_catheader, .calendarEditor_pink_catheader, .calendarEditor_default_catheader, .calendarEditor_default_catheader, .calendarEditor_green_catheader, .calendarEditor_grey_catheader  {
@@ -683,14 +831,14 @@
 	-webkit-border-radius: 3px;
 }
 
-div.ui-draggable span.editable, .calajax-container-weekview_head span.editable{
+div.event span.editable, .calajax-container-weekview_head span.editable{
 	background-image: url(../images/edit.png);
 	background-repeat: no-repeat;
 	display: inline-block;
 	width: 8px;
 	margin-left:3px;
 }
-div.ui-draggable span.deletable, .calajax-container-weekview_head span.deletable{
+div.event span.deletable, .calajax-container-weekview_head span.deletable{
 	background-image: url(../images/delete.gif);
 	background-repeat: no-repeat;
 	display: inline-block;
@@ -709,6 +857,7 @@ div.ui-draggable span.deletable, .calajax-container-weekview_head span.deletable
 
 .table_allday .event, .month-large .event {
 	cursor: pointer;
+	font-size: 0.8em;
 }
 
 #month-large .tempEvent {
@@ -722,12 +871,6 @@ div.ui-draggable span.deletable, .calajax-container-weekview_head span.deletable
 }
 
 .modulebody {
-	border:1px solid #D2E6D2;
-	margin:1px;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	padding: 5px;
-	background-color: #D2E6D2;
 }
 
 #edit_event_view .label {
@@ -739,9 +882,11 @@ div.ui-draggable span.deletable, .calajax-container-weekview_head span.deletable
 }
 
 #edit_event_view .data {
-	margin-left: 6em;
 	margin-top: 0px;
-	display: block;
+}
+
+#edit_event_view .ui-accordion-content {
+	height: auto !important;
 }
 
 #edit_event_view .newLocation {
@@ -759,9 +904,13 @@ div.ui-draggable span.deletable, .calajax-container-weekview_head span.deletable
 }
 
 #edit_event_view input.fieldinput, #edit_event_view textarea.fieldinput {
-	width: 87%;
+	width: 270px;
 	border: 1px solid #B2B2B2;
 	display: block;
+}
+
+#edit_event_view textarea.fieldinput {
+	width: 350px;
 }
 
 #edit_event_view .field {
@@ -798,7 +947,6 @@ div.ui-draggable span.deletable, .calajax-container-weekview_head span.deletable
 }
 
 .recurring-container .repeat, .recurring-container .interval {
-	margin-left: 1em;
 }
 
 .recurring-container .interval {
@@ -820,6 +968,7 @@ div.ui-draggable span.deletable, .calajax-container-weekview_head span.deletable
 }
 
 #month-large {
+	margin-top: 10px;
 	/* min-width: 40em; */
 }
 
@@ -888,6 +1037,15 @@ div.ui-draggable span.deletable, .calajax-container-weekview_head span.deletable
 	color: blue;
 }
 
+.ui-accordion .ui-accordion-header .ui-icon {
+	left:-1.5em;
+}
+
+#ui-datepicker-div, div.time-picker {
+    z-index: 1005; /* must be > than ui-widget-overlay (1000) */
+}
+
+
 .ui-dialog .ui-dialog-content {
 	font-size: 0.5em;
 }
@@ -933,4 +1091,8 @@ div.ui-draggable span.deletable, .calajax-container-weekview_head span.deletable
 	height:15px;
 	padding-left:22px;
 	padding-top:1px;
+}
+
+.ui-widget-overlay {
+	background:url("../../js/jquery_plugins/jquery-ui/1.7.2/themes/smoothness/images/ui-bg_glass_diagonals_thick.png") repeat scroll 50% 50% #AAAAAA;
 }

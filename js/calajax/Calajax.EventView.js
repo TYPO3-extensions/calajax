@@ -148,7 +148,7 @@ Calajax.EventView.prototype	= {
 				that.endtimeField.show();
 			}
 		});
-		this.byDayRows = this.eventViewObject.find("div[class='byday-row']");
+		this.byDayRows = this.eventViewObject.find("span[class='byday-row']");
 		this.byDayField = this.eventViewObject.find("input[name='tx_cal_controller\[byday\]']");
 		this.byMonthDayRows = this.eventViewObject.find("div[class='bymonthday-row']");
 		this.byMonthDayField = this.eventViewObject.find("input[name='tx_cal_controller\[bymonthday\]']");
@@ -201,13 +201,13 @@ Calajax.EventView.prototype	= {
 		this.intervalField = this.eventViewObject.find("select[name='tx_cal_controller\[interval\]']");
 		this.addByDayRecurrenceField = this.eventViewObject.find("img[class='addByDayRecurrence']");
 		this.addByDayRecurrenceField.click(function(){
-			that.byDayRows.append(generateByDayRow(""));
+			that.byDayRows.append(that.generateByDayRow(""));
 			that.byDayRowChanged();
 		});
 		
 		this.addByMonthDayRecurrenceField = this.eventViewObject.find("img[class='addByMonthDayRecurrence']");
 		this.addByMonthDayRecurrenceField.click(function(){
-			that.byMonthDayRows.append(generateByMonthDayRow(""));
+			that.byMonthDayRows.append(that.generateByMonthDayRow(""));
 			that.byMonthDayRowChanged();
 		});
 		
@@ -233,7 +233,7 @@ Calajax.EventView.prototype	= {
 		
 		this.calendarIdField = this.eventViewObject.find("select[name='tx_cal_controller\[calendar_id\]']");
 		this.descriptionField = this.eventViewObject.find("textarea[name='tx_cal_controller\[description\]']");
-		this.descriptionField.markItUp(Calajax.Registry.options.myHtmlSettings);
+		//this.descriptionField.markItUp(Calajax.Registry.options.myHtmlSettings);
 		this.locationTextField = this.eventViewObject.find("input[name='locationText']");
 		var locationUrl = Calajax.Registry.request.requestUrl+
 			'&eID=cal_ajax'+
@@ -266,29 +266,19 @@ Calajax.EventView.prototype	= {
 		this.existingLocationSelector = this.eventViewObject.find("#existingLocationSelector");
 		this.existingLocationSelector.click(function(){
 			if(that.existingLocationSelector.attr('checked')==true){
-				that.eventViewObject.find("div[class='existingLocation']").slideDown("fast");
-				that.eventViewObject.find("div[class='newLocation']").slideUp("fast");
+				that.eventViewObject.find("span[class='existingLocation']").slideDown("fast");
+				that.eventViewObject.find("span[class='newLocation']").slideUp("fast");
 			}
 		});
 		
 		this.newLocationSelector = this.eventViewObject.find("#newLocationSelector");
 		this.newLocationSelector.click(function(){
 			if(that.newLocationSelector.attr('checked')==true){
-				that.eventViewObject.find("div[class='existingLocation']").slideUp("fast");
-				that.eventViewObject.find("div[class='newLocation']").slideDown("fast");
+				that.eventViewObject.find("span[class='existingLocation']").slideUp("fast");
+				that.eventViewObject.find("span[class='newLocation']").slideDown("fast");
 			}
 		});
 		this.locationIdField = this.eventViewObject.find("input[name='tx_cal_controller\[location_id\]']");
-		
-		this.eventViewObject.find("button:[name='cancel']").click(function(){
-			Calajax.Main.showLastView();
-			return false;
-		});
-		
-		this.eventViewObject.find("button:[name='save']").click(function(){
-			that.saveEvent();
-			return false;
-		});
 		
 		this.newLocationName = this.eventViewObject.find("input[name='tx_cal_controller\[location_name\]']");
 		this.newLocationStreet = this.eventViewObject.find("input[name='tx_cal_controller\[location_street\]']");
@@ -392,8 +382,8 @@ Calajax.EventView.prototype	= {
 		this.descriptionField.val(eventRef.description);
 		
 		
-		this.eventViewObject.find("div[class='existingLocation']").show();
-		this.eventViewObject.find("div[class='newLocation']").hide();
+		this.eventViewObject.find("span[class='existingLocation']").show();
+		this.eventViewObject.find("span[class='newLocation']").hide();
 		
 		if(eventRef.location_id > 0){
 			
@@ -404,16 +394,6 @@ Calajax.EventView.prototype	= {
 		
 		this.locationIdField.val(eventRef.location_id);
 		
-		if(eventRef.uid > 0 && parseInt(eventRef.isallowedtodelete) == 1) {
-			this.eventViewObject.find("button:[name='delete']").unbind("click").click(function(){
-				Calajax.Event.deleteEvent(eventRef, function(data){});
-				Calajax.Main.showLastView();
-				return false;
-			}).show();
-		} else {
-			this.eventViewObject.find("button:[name='delete']").hide();
-		}
-		
 		this.freqField.trigger("click");
 		if(parseInt(eventRef.until) < 20000000){
 			this.untilFieldSelector.trigger("click");
@@ -422,7 +402,52 @@ Calajax.EventView.prototype	= {
 		}
 		this.existingLocationSelector.click();
 		
-		this.eventViewObject.show();
+		var CalendarViewObject = Calajax.MainObjectFactory.getObject( 'calendarview' );
+		var translation = CalendarViewObject.translate( 'buttonText' );
+		
+		var buttons = {};
+		
+		buttons[translation.cancel] = function(){
+			that.eventViewObject.dialog("close");
+		};
+		
+		if(allowedToCreateEvents || parseInt(eventRef.isallowedtoedit) == 1){
+			buttons[translation.save] = function(){
+				that.eventViewObject.dialog("close");
+				that.saveEvent();
+			};
+		}
+		if(eventRef.uid > 0 && parseInt(eventRef.isallowedtodelete) == 1) {
+			buttons[translation.deleteText] = function(){
+				that.eventViewObject.dialog("close");
+				that.deleteEvent();
+			};
+		}
+		
+		jQuery('#edit_event_view_title_details').accordion({collapsible: true, active: false});
+		
+		var dialogTitle = create_event_label;
+		if(eventRef.uid > 0){
+			dialogTitle = edit_event_label;
+		}
+		
+		this.eventViewObject.dialog({
+			modal: true,
+			width: 600,
+			title: dialogTitle,
+			autoOpen: false,
+			position: 'center',
+			close: function() {
+				that.eventViewObject.dialog("destroy");
+				//that.eventViewObject.hide();
+				Calajax.Main.showLastView();
+			},
+			buttons: buttons,
+		});
+		this.eventViewObject.dialog('open');
+		
+		//dialogContent.dialog('option', 'dialogClass', 'showEvent_'+eventRef.headerstyle);
+		//this.eventViewObject.show();
 		this.titleField.focus();
 		
 		//timePicker uses the position of the rendered object to display the options.
@@ -782,16 +807,19 @@ Calajax.EventView.displayEvent = function(eventRef){
 		}
 	});
 	
+	var CalendarViewObject = Calajax.MainObjectFactory.getObject( 'calendarview' );
+	var translation = CalendarViewObject.translate( 'buttonText' );
+	
 	var buttons = {};
 	if(eventRef.isallowedtoedit==1){
-		buttons[jQuery.fullCalendar.buttonText.edit] = function(){
+		buttons[translation.edit] = function(){
 			dialogContent.dialog("close");
 			Calajax.Registry.divcontainer.lastView = Calajax.Registry.divcontainer.currentView; 
 			Calajax.Main.eventViewCommand.execute(eventRef);
 		};
 	}
 	if(eventRef.isallowedtodelete==1){
-		buttons[jQuery.fullCalendar.buttonText.deleteText] = function(){
+		buttons[translation.deleteText] = function(){
 			dialogContent.dialog("close");
 			Calajax.Event.deleteEvent(eventRef, function(data){});
 			Calajax.Main.removeAndAddEvents(eventRef.id,[]);
@@ -809,6 +837,7 @@ Calajax.EventView.displayEvent = function(eventRef){
 		buttons: buttons,
 	});
 	dialogContent.dialog('option', 'dialogClass', 'showEvent_'+eventRef.headerstyle);
+	Calajax.Util.hideLoadingMask();
 };
 
 //+----------------------------------------------------------------------------

@@ -31,7 +31,7 @@ page.includeJS.140 = EXT:calajax/js/jquery_plugins/jquery-timepicker/timePicker.
 page.includeJS.150 = EXT:calajax/js/jquery_plugins/jquery-autocomplete/jquery.autocomplete.js
 
 # jQuery-markItUp ( HTTP: http://markitup.jaysalvat.com/home/ )
-page.includeJS.160 = EXT:calajax/js/jquery_plugins/jquery-markitup/jquery.markitup.js
+#page.includeJS.160 = EXT:calajax/js/jquery_plugins/jquery-markitup/jquery.markitup.js
 
 # jQuery-image-dropdown ( HTTP: http://www.marghoobsuleman.com/blogs/jquery-image-dropdown )
 page.includeJS.180 = EXT:calajax/js/jquery_plugins/jquery-image-dropdown-2.1/uncompressed.jquery.dd.js
@@ -102,7 +102,10 @@ page.110 < lib.calajaxFinalClientBottomJS
 
 page.includeCSS {
  # jQuery-ui stylesheet
- 101 = EXT:calajax/js/jquery_plugins/jquery-ui/1.7.2/themes/{$plugin.calajax.design}/jquery-ui.css
+ 101 = EXT:calajax/js/jquery_plugins/jquery-ui/1.7.2/themes/base/jquery-ui.css
+ 
+ 102 = EXT:calajax/js/jquery_plugins/jquery-ui/1.7.2/themes/{$plugin.calajax.design}/jquery-ui.css
+ 
 
  # jQuery-week-calendar stylesheet
  #102 = EXT:calajax/js/jquery_plugins/jquery-weekcalendar/trunk/jquery.weekcalendar.css
@@ -120,10 +123,10 @@ page.includeCSS {
  107 = EXT:calajax/js/jquery_plugins/jquery-autocomplete/jquery.autocomplete.css
  
  # jQuery-markItUp stylesheet
- 108 = EXT:calajax/js/jquery_plugins/jquery-markitup/skins/markitup/style.css
+ #108 = EXT:calajax/js/jquery_plugins/jquery-markitup/skins/markitup/style.css
  
  # jQuery-markItUp stylesheet
- 109 = EXT:calajax/js/jquery_plugins/jquery-markitup/sets/description/style.css
+ #109 = EXT:calajax/js/jquery_plugins/jquery-markitup/sets/description/style.css
  
  # jQuery-image-dropdown stylesheet
  110 = EXT:calajax/js/jquery_plugins/jquery-image-dropdown-2.1/dd.css
@@ -132,7 +135,7 @@ page.includeCSS {
  111 = EXT:calajax/js/jquery_plugins/jquery-jqGrid/css/ui.jqgrid.css
 
  # Calajax jQuery-fullcalendar stylesheet
- #200 = EXT:calajax/res/css/calajax.fullcalendar.css
+ 200 = EXT:calajax/res/css/calajax.fullcalendar.css
 
  # Calajax jQuery-month-calendar overwrite stylesheet
  #210 = EXT:calajax/res/css/calajax.overwrite.jquery.monthcalendar.css

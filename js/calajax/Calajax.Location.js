@@ -29,6 +29,21 @@ Calajax.LocationView.prototype = {
 		var that = this;
 		var lastSel;
 		this.locationContainer = jQuery('#'+Calajax.Registry.divcontainer.locationView);
+		
+		this.locationContainer.dialog({
+			modal: true,
+			width: 600,
+			title: '',
+			autoOpen: false,
+			position: 'center',
+			close: function() {
+				that.locationContainer.dialog("destroy");
+				//that.eventViewObject.hide();
+				Calajax.Main.showLastView();
+			},
+			//buttons: buttons,
+		});
+		
 		this.locationTable = this.locationContainer.find("table[class='location-table']");
 		this.locationTable.jqGrid({ 
 			//cellsubmit: Calajax.Registry.request.requestUrl,
@@ -55,18 +70,18 @@ Calajax.LocationView.prototype = {
 			forceFit: true,
 			pager : '#pager3',
 			afterSaveCell : function(){
-				alert('c');
+				//alert('c');
 				//that.afterEditCell,
 			},
 			afterEditCell : function(){
-				alert('a');
+				//alert('a');
 				//that.afterEditCell,
 			},
 			beforeCellSubmit: function(){
-				alert('b');
+				//alert('b');
 				//that.beforeCellSubmit,
 			},
-			loadBeforeSend: that.loadBeforeSend,
+			loadBeforeSend: that.loadBeforeSend
 
 		});
 		

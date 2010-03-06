@@ -704,7 +704,7 @@ $.fn.fullCalendar = function(options) {
 				//eventsChanged();
 				view.clearEvents();
 				view.renderEvents(events);
-				eventsDirtyExcept(view);
+				//eventsDirtyExcept(view);
 			}
 			// **** changes from Mario Matzulla: end****/
 			

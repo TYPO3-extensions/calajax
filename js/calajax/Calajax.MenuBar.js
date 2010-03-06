@@ -71,7 +71,7 @@ Calajax.MenuBar = function( container ) { // implements Composite, MenuObject
 Calajax.MenuBar.prototype = {
 	add: function( menuObject ) {
 		Calajax.Interface.ensureImplements( Calajax.menuObject, Calajax.Composite, Calajax.MenuObject);
-//		this.menus[menuObject.name] = menuObject;
+		this.menus[menuObject.name] = menuObject;
 //		if(this.menus[menuObject.name].command.render){
 //			//do nothing
 //		} else {
@@ -264,16 +264,18 @@ Calajax.MenuCommand.prototype.execute = function(object) {
 		 */
 		Calajax.Util.setCurrentViewRegistryData();
 
-//		for ( item in this.menuBar.menus) {
-//			// HIDE VIEW
-//			if ( this.menuBar.menus[item].command.objectInstance != false && this.menuBar.menus[item].command.type == 'view' ) {
-//				this.menuBar.menus[item].command.objectInstance.hide();		// Hide
-//				this.menuBar.menus[item].command.state = 0;					// Reset command state ( Inactive )
+		for ( item in this.menuBar.menus) {
+			// HIDE VIEW
+			if ( this.menuBar.menus[item].command.objectInstance != false && this.menuBar.menus[item].command.type == 'view' ) {
+				if(this.menuBar.menus[item].name != 'monthview'){
+					this.menuBar.menus[item].command.objectInstance.hide();		// Hide
+				}
+				this.menuBar.menus[item].command.state = 0;					// Reset command state ( Inactive )
 //				if(jQuery.isFunction(this.menuBar.menus[item].element.removeClass)){
 //					this.menuBar.menus[item].element.removeClass('active');
 //				}
-//			}
-//		}
+			}
+		}
 
 		// Lazy loading...
 		// Ask for a new object instance from factory at first call
