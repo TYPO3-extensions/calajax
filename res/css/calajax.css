@@ -118,7 +118,19 @@
 }
 
 .ui-widget-header .ui-buttonbar-logout{
-  background-image: url('../images/logout.png');
+  background-image: url('../images/lock.png');
+}
+
+.ui-widget-header .ui-buttonbar-login{
+  background-image: url('../images/lock_open.png');
+}
+
+#cal_login_form_table {
+	background-color: #FFFFFF;
+	color: #2E6E9E;
+	border:1px solid #2E6E9E;
+	margin-top: 3px;
+	text-align:right;
 }
 
 .ui-datepicker-group {
@@ -157,6 +169,21 @@
 
 .calajax-container {
 	min-width: 50em;
+}
+
+.cal-login form{
+	z-index: 1000;
+	position: relative;
+}
+
+#calendar-list-container .new_calendar {
+	background-image: url('../images/new.png');
+	background-repeat: no-repeat;
+	padding-left: 20px;
+	margin-left: 3px;
+	font-size: 0.6em;
+	margin-bottom: 5px;
+	line-height:1.6em;
 }
 
 
@@ -361,6 +388,7 @@
 	display:table;
 	padding:0px;
 	width: 100%;
+	margin: 0px;
 }
 
 #calendar-list ul{
@@ -370,6 +398,7 @@
 	padding-left:5px;
 	padding-right:5px;
 	padding-bottom:5px;
+	font-size: 0.8em;
 }
 
 .fc-content {
@@ -813,7 +842,6 @@
 	float:left;
 	width:79%;
 	overflow:hidden;
-	font-size: 0.8em;
 }
 
 .calendarEditor_, .calendarEditor_yellow_catheader, .calendarEditor_orange_catheader, .calendarEditor_red_catheader, .calendarEditor_pink_catheader, .calendarEditor_default_catheader, .calendarEditor_default_catheader, .calendarEditor_green_catheader, .calendarEditor_grey_catheader  {

@@ -48,7 +48,40 @@
 	    <li class="ui-widget-header"><a href="#" class="ui-buttonbar-icon ui-buttonbar-tasklist">Task list</a></li>
 	    <li class="ui-widget-header"><a href="#" class="ui-buttonbar-icon ui-buttonbar-settings">Settings</a></li>
 	    <li class="ui-widget-header"><a href="#" class="ui-buttonbar-icon ui-buttonbar-help">Help</a></li>
-	    <li class="ui-widget-header"><a href="#" class="ui-buttonbar-icon ui-buttonbar-logout">Logout</a></li>
+	    <!-- ###USER_LOGIN### start -->
+	    <li class="ui-widget-header cal-login" id="cal_login">
+			<form style="margin-bottom:0;" action="###LOGIN_ACTION###" method="post" name="cal_login_form">
+				<input type="hidden" name="logintype" value="###LOGIN_TYPE###" />
+				<input type="hidden" name="pid" value="###USER_FOLDER###" />
+				<input type="hidden" name="redirect_url" value="###REDIRECT_URL###" />
+				
+				<!-- ###LOGOUT### start --><a href="#" onclick="document.cal_login_form.submit()" class="ui-buttonbar-icon ui-buttonbar-logout" >[###USERNAME###] ###L_LOGIN###</a><!-- ###LOGOUT### end -->
+				
+
+				<!-- ###LOGIN### start -->
+				<a href="#" class="ui-buttonbar-icon ui-buttonbar-login" id="cal_login_link">###L_LOGIN###</a>
+				<table id="cal_login_form_table">
+					<tbody>
+						<tr>
+							<th>###L_USERNAME###:</th>
+							<td><input type="text" name="user" size="10" /></td>
+						</tr>
+						<tr>
+							<th>###L_PASSWORD###:</th>
+							<td><input type="password" name="pass" size="10" /></td>
+						</tr>
+						<tr>
+							<td colspan="2"><input type="submit" value="###L_LOGIN_BUTTON###"/></td>
+						</tr>
+					</tbody>
+				</table>
+				<script type="text/javascript">
+					
+				</script>
+				<!-- ###LOGIN### end -->
+			</form>
+	    </li>
+	    <!-- ###USER_LOGIN### end -->
 	  </ul>
 		<!-- calajax-container: Start -->
 		<div id="calajax-container" class="calajax-container">
