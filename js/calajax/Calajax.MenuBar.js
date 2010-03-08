@@ -63,6 +63,11 @@ Calajax.MenuBar = function( container ) { // implements Composite, MenuObject
   this.menus = {};
   this.element = document.createElement('ul');
   this.element.style.display = 'none';
+  
+  jQuery('#superfish-menu').superfish();
+  //jQuery('#ui-buttonbar-new').click(function() { jQuery('#ui-buttonbar-sub-new').toggle('blind',{},500)});
+  //jQuery('#cal_login_link').click(function() { jQuery('#cal_login_form_table').toggle('blind',{},500)});
+  jQuery('#left-accordion').accordion({autoHeight:false}).show();
 
   // Append bar to document
 //  this.container.appendChild( this.element );
@@ -226,7 +231,7 @@ Calajax.MenuCommandNav.prototype.execute = function() {
 	}
 	jQuery("#calendar-nav").datepicker('setDate', new Date(Calajax.Registry.getdate.getTime()));
 	// Calajax.Util.hideLoadingMask();
-}
+};
 
 
 /*
@@ -285,7 +290,7 @@ Calajax.MenuCommand.prototype.execute = function(object) {
 
 			// INITIALIZE VIEW ( ONE TIME ONLY )
 			this.objectInstance.init(object);
-			this.state = 1 // We are wake up :) ( ACTIVE )
+			this.state = 1; // We are wake up :) ( ACTIVE )
 //			if(jQuery.isFunction(this.menuBar.menus[Calajax.Registry.divcontainer.currentView].element.addClass)){
 //				this.menuBar.menus[Calajax.Registry.divcontainer.currentView].element.addClass('active');
 //			}

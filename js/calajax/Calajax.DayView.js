@@ -34,7 +34,7 @@ Calajax.DayView = function() {
 	// Containg div
 	this.placeHolderId = Calajax.Registry.divcontainer.dayView;
 
-}
+};
 
 
 Calajax.DayView.prototype = {
@@ -189,7 +189,7 @@ Calajax.DayView.prototype = {
 
 			}
 
-		}
+		};
 
 	},
 
@@ -329,7 +329,7 @@ Calajax.DayView.prototype = {
 				Calajax.WeekView.Controller.calendarAfterLoad( calendar );
 
 			}
-		}
+		};
 	},
 
 	/*
@@ -398,11 +398,11 @@ Calajax.DayView.prototype = {
 	removeAndAddEvents : function (eventId, events) {
 		jQuery( this.wCalBodyID ).weekCalendar( 'removeAndAddEvents', eventId, events );
 	}
-}
+};
 
 /* Calendar definitions object */
-Calajax.DayView.calendarDef = {}
-Calajax.DayView.fullCalendarDef = {}
+Calajax.DayView.calendarDef = {};
+Calajax.DayView.fullCalendarDef = {};
 
 // TODO: Optimize duplicate code
 Calajax.DayView.showEvents = function( catId ) {
@@ -414,8 +414,8 @@ Calajax.DayView.showEvents = function( catId ) {
 				try { jQuery( events[id].calEventElement[0] ).show(); } catch(e) {}
 			}
 		}
-	)
-}
+	);
+};
 
 // TODO: Optimize duplicate code
 Calajax.DayView.hideEvents = function( catId ) {
@@ -427,8 +427,8 @@ Calajax.DayView.hideEvents = function( catId ) {
 				try { jQuery( events[id].calEventElement[0] ).hide(); } catch(e) {}
 			}
 		}
-	)
-}
+	);
+};
 
 Calajax.DayView.loadEvents = function() {
 
@@ -483,7 +483,7 @@ Calajax.DayView.loadEvents = function() {
 			callback(events);
 		});
 	};
-}
+};
 
 // +----------------------------------------------------------------------------
 // | Extend View

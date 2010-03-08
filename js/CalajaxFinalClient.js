@@ -235,7 +235,3 @@ jQuery.extend( true, Calajax.StartingView.prototype, new Calajax.View() );
 
 Calajax.Main = new Calajax.StartingView();
 Calajax.Main.init();
-
-jQuery('#cal_login_link').click(function() { jQuery('#cal_login_form_table').toggle('blind',{},500)});
-jQuery('#cal_login_form_table').hide();
-//jQuery('#cal-login').toggle('blind',{},500);

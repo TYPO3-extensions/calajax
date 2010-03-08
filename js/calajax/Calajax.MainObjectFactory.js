@@ -43,6 +43,7 @@ Calajax.MainObjectFactory = {
 	LocationViewString: 'locationview',
 	OrganizerViewString: 'organizerview',
 	CalendarViewString: 'calendarview',
+	CategoryViewString: 'categoryview',
 
 	DayView : false,
 	WeekView : false,
@@ -51,6 +52,7 @@ Calajax.MainObjectFactory = {
 	LocationView : false,
 	OrganizerView : false,
 	CalendarView : false,
+	CategoryView : false,
 
 	/**
 	 * Application containers
@@ -108,8 +110,15 @@ Calajax.MainObjectFactory = {
 				this.CalendarView = new Calajax.CalendarView();
 			}
 			return this.CalendarView;
+			
+			// CalendarView Object Creation
+		case Calajax.MainObjectFactory.CategoryViewString:
+			if ( this.CategoryView == false ) {
+				this.CategoryView = new Calajax.CategoryView();
+			}
+			return this.CategoryView;
 		}
-	},
+	}
 
 };
 

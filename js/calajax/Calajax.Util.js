@@ -117,7 +117,7 @@ Calajax.Util = {
 				// typically only one of textStatus or errorThrown
 				// will have info
 				// this; // the options for this ajax request
-			}
+			};
 		}
 
 		jQuery.ajax( requestObject );
@@ -147,7 +147,7 @@ Calajax.Util = {
 		var aTemp = [];
 		for (var sKey in aInput)
 		aTemp.push([sKey, aInput[sKey]]);
-		aTemp.sort(function () {return arguments[0][0] < arguments[1][0]});
+		aTemp.sort(function () {return arguments[0][0] < arguments[1][0];});
 	
 		var aOutput = [];
 		for (var nIndex = aTemp.length-1; nIndex >=0; nIndex--)
@@ -198,7 +198,7 @@ Calajax.Util = {
 		default:
 			Calajax.Registry.currentView.Object = Calajax.MonthView;
 			Calajax.Registry.currentView.placeHolder = Calajax.Registry.divcontainer.monthView;
-			break
+			break;
 		}
 	},
 
@@ -209,8 +209,8 @@ Calajax.Util = {
 
 		var currentView = Calajax.Registry.divcontainer.currentView;
 		var MonthViewObject = Calajax.MainObjectFactory.getObject( 'monthview' );
-		var ViewInstance = Calajax.Registry.currentView.Instance
-		var ViewObject = Calajax.Registry.currentView.Object
+		var ViewInstance = Calajax.Registry.currentView.Instance;
+		var ViewObject = Calajax.Registry.currentView.Object;
 		var firstDay = new Date( ViewObject.viewStart );
 
 		switch( currentView ) {
@@ -247,4 +247,4 @@ Calajax.Util = {
 
 	}
 
-}
+};

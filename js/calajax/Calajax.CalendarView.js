@@ -596,7 +596,6 @@ Calajax.CalendarView.prototype	= {
 		});
 		
 		this.renderCalendarList();
-		jQuery('#left-accordion').accordion({autoHeight:false});
 	},
 	
 	renderCalendarList : function() {

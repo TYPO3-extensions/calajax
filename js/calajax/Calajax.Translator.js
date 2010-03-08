@@ -89,7 +89,7 @@ Calajax.Translator = {
 		 */
 
 		// Get request pi_var name for translation request
-		var requestActionVar = Calajax.Registry.translator.requestActionVar
+		var requestActionVar = Calajax.Registry.translator.requestActionVar;
 
 		// Create request object for data parameter of jQuery get method
 		var translatorRequestPost = {};
@@ -107,7 +107,7 @@ Calajax.Translator = {
 		});
 
 	}
-}
+};
 
 // +----------------------------------------------------------------------------
 // | Observer Class Extend

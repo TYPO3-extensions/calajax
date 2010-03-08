@@ -33,7 +33,7 @@
 
 Calajax.Observer = function () {
     this.fns = [];
-}
+};
 Calajax.Observer.prototype = {
     subscribe : function( fn ) {
         this.fns.push(fn);

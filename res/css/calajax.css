@@ -12,7 +12,7 @@
 */
 
 .tx_cal_controller_ajax {
-	width: 1000px;
+	width: 100%;
 }
 
 .left {
@@ -45,9 +45,13 @@
   border: 1px solid #dfeffc;
   background-repeat: repeat-x;
   list-style:none outside none;
-  padding: 3px 5px;
+  padding: 3px 0px;
   float:left;
   border:1px solid #79B7E7;
+}
+
+.ui-buttonbar .ui-widget-header a {
+	padding-right: 5px;
 }
 
 .ui-buttonbar li {
@@ -56,9 +60,31 @@
 }
 
 .center .ui-buttonbar li:hover {
-  border: 1px solid #79b7e7;
-  background-image: url('../../js/jquery_plugins/jquery-ui/1.7.2/themes/redmond/images/ui-bg_glass_75_d0e5f5_1x400.png');
-  color: #1d5987;
+  #border: 1px solid #79b7e7;
+  #background-image: url('../../js/jquery_plugins/jquery-ui/1.7.2/themes/redmond/images/ui-bg_glass_75_d0e5f5_1x400.png');
+  #color: #1d5987;
+}
+
+.ui-buttonbar-sub {
+	list-style-type:none;
+	margin-bottom:0;
+	margin-left:0;
+	margin-right:0;
+	margin-top:4px;
+	width:100%;
+	padding: 0px;
+	border: 1px solid #1D5987;
+	z-index: 1000;
+	position: relative;
+}
+
+.ui-buttonbar-sub li a{
+	color:#1D5987;
+	background-image:none;
+}
+
+.ui-buttonbar-sub li:hover {
+	background-image:none;
 }
 
 .ui-buttonbar-title{
@@ -125,12 +151,12 @@
   background-image: url('../images/lock_open.png');
 }
 
+.cal-login ul li{
+	height: 5.6em;
+}
+
 #cal_login_form_table {
-	background-color: #FFFFFF;
-	color: #2E6E9E;
-	border:1px solid #2E6E9E;
-	margin-top: 3px;
-	text-align:right;
+	text-align: right;
 }
 
 .ui-datepicker-group {
@@ -1071,6 +1097,9 @@ div.event span.deletable, .calajax-container-weekview_head span.deletable{
 
 #ui-datepicker-div, div.time-picker {
     z-index: 1005; /* must be > than ui-widget-overlay (1000) */
+    font-family: Lucida Grande,Lucida Sans,Arial,sans-serif;
+	font-size: 1em;
+	width: 5em;
 }
 
 
@@ -1092,10 +1121,10 @@ div.event span.deletable, .calajax-container-weekview_head span.deletable{
 	clear: left;
 	float: left;
 	display: block;
+	min-width: 6em;
 }
 
 .ui-dialog .eb-root div {
-	float: left;
 	margin-left: 1.5em;
 	display: block;
 }
@@ -1106,7 +1135,7 @@ div.event span.deletable, .calajax-container-weekview_head span.deletable{
 	padding: 0 1em 0 0.4em;
 }
 
-#event_display_container .event-description {
+#event_display_container .event-description, #event_display_container .event-description-label {
 	margin-top: 5px;
 }
 
@@ -1123,4 +1152,10 @@ div.event span.deletable, .calajax-container-weekview_head span.deletable{
 
 .ui-widget-overlay {
 	background:url("../../js/jquery_plugins/jquery-ui/1.7.2/themes/smoothness/images/ui-bg_glass_diagonals_thick.png") repeat scroll 50% 50% #AAAAAA;
+}
+
+.sf-shadow ul {
+	background-image: none;
+	-moz-border-radius: 0px;
+	background-color:#FFFFFF;
 }

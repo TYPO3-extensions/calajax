@@ -127,6 +127,28 @@ Calajax.Event = function (data) {
 				this.showTime = true;
 				this.allDay = false;
 			}
+			this.className = [this.headerstyle];
+		}
+	};
+	
+	this.getCategoryIds = function(){
+		var categoryIds = [];
+		for(var i in this.categories){
+			categoryIds.push(this.categories[i].uid);
+		}
+		return categoryIds;
+	};
+	
+	this.setCategoryIds = function(categoryIds){
+		if(typeof(categoryIds)=='object'){
+			this.categories = categoryIds;
+		} else if(typeof(categoryIds)=='string'){
+			this.categories = {};
+			var catIds = categoryIds.split(',');
+			for(var i=0; i < catIds.length; i++){
+				this.categories[catIds[i]] = {};
+				this.categories[catIds[i]]['uid'] = catIds[i];
+			}
 		}
 	};
 	
@@ -268,11 +290,11 @@ Calajax.Event.statusTransformator = function(statusId){
 
 Calajax.Event.renderEventForAllDay = function(event){
 	return Calajax.Event.renderEventForMonth(event); 
-}
+};
 
 Calajax.Event.renderEventForMonth = function(event){
 	var pre = '';
-	var post = ''
+	var post = '';
 	var eventStr = event.title;
 	if(event.showTime){
 		if (event.start.getHours() || event.start.getMinutes() || event.end.getHours() || event.end.getMinutes()) {
@@ -320,7 +342,7 @@ Calajax.Event.decodeType = function ( typeID ) {
 	case '4':
 		return 'todo';
 	}
-}
+};
 
 
 Calajax.Event.getEvents = function(start, end, callback){
@@ -350,7 +372,7 @@ Calajax.Event.getEvents = function(start, end, callback){
 		}
 
 	});
-}
+};
 /* Current request number, used to validate request send */
 Calajax.Event.getEvents.requestNumber = 0;
 
@@ -371,7 +393,9 @@ Calajax.Event.startEventSave = function(event){
 			// calendar_uid is not set
 			data[dataItem]['calendar_uid'] = data[dataItem].calendar_id;
 			// we use the style of the calendar to color the events
-			data[dataItem]['headerstyle'] = Calajax.CalendarView.calendar.getCalendar(data[dataItem].calendar_id).headerstyle;
+			if(data[dataItem]['headerstyle'] == undefined){
+				data[dataItem]['headerstyle'] = Calajax.CalendarView.calendar.getCalendar(data[dataItem].calendar_id).headerstyle;
+			}
 			var event = new Calajax.Event(data[dataItem]);
 			newItemArray.push(event);
 			if(event.eventtype == 4){
@@ -381,7 +405,7 @@ Calajax.Event.startEventSave = function(event){
 		Calajax.Main.removeAndAddEvents(event.id,newItemArray);
 		Calajax.CalendarView.task.renderView();
 	});
-}
+};
 
 Calajax.Event.saveEvent = function(event, callback){
 	var allowedParams = Calajax.Registry.options.event.allowedRequestParams;
@@ -395,7 +419,7 @@ Calajax.Event.saveEvent = function(event, callback){
 		"tx_cal_controller[start_time]":event.start_time,
 		"tx_cal_controller[end_time]":event.end_time,
 		"tx_cal_controller[formCheck]" : 1,
-		"tx_cal_controller[maxDate]" :Calajax.MonthView.viewEnd.format('yyyymmdd'),
+		"tx_cal_controller[maxDate]" :Calajax.MonthView.viewEnd.format('yyyymmdd')
 	};
 	for(var i=0; i < allowedParams.length; i++){
 		if(event[allowedParams[i]] != undefined){
@@ -423,11 +447,11 @@ Calajax.Event.saveEvent = function(event, callback){
 		}
 	});
 
-}
+};
 
 Calajax.Event.updateEvent = function(event, callback){
 	Calajax.Event.saveEvent(event, callback);
-}
+};
 
 Calajax.Event.deleteEvent = function(event, callback){
 	
@@ -444,7 +468,7 @@ Calajax.Event.deleteEvent = function(event, callback){
 			"tx_cal_controller[view]":"remove_event",
 			"tx_cal_controller[pid]":Calajax.Registry.request.pid,
 			"tx_cal_controller[uid]":event.uid,
-			"tx_cal_controller[type]":event.model_type,
+			"tx_cal_controller[type]":event.model_type
 		},
 		success : function( data ) {
 
@@ -460,4 +484,4 @@ Calajax.Event.deleteEvent = function(event, callback){
 		Calajax.CalendarView.task.removeTask(event.uid);
 		Calajax.CalendarView.task.renderView();
 	}
-}
+};

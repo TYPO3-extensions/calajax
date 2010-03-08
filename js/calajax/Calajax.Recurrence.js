@@ -629,8 +629,7 @@ Calajax.Recurrence = {
      * @access public
      * @static
      */
-    daysToDate : function(days)
-    {
+    daysToDate : function(days) {
         days   -= 1721119;
         var century = Math.floor((4 * days - 1) / 146097);
         days    = (4 * days) - 1 - (146097 * century);
@@ -776,5 +775,5 @@ Calajax.Recurrence = {
 	
 	pad : function(n) {
 		return (n < 10 ? '0' : '') + n;
-	},
+	}
 }

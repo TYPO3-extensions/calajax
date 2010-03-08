@@ -153,14 +153,17 @@ Calajax.MonthView.prototype	= {
 	
 	next : function () {
 		this.fullcalendarObject.fullCalendar('next');
+		Calajax.Util.hideLoadingMask();
 	},
 	
 	previous : function () {
 		this.fullcalendarObject.fullCalendar('prev');
+		Calajax.Util.hideLoadingMask();
 	},
 	
 	today : function () {
 		this.fullcalendarObject.fullCalendar('today');
+		Calajax.Util.hideLoadingMask();
 	},
 
 
@@ -178,7 +181,9 @@ Calajax.MonthView.prototype	= {
 	},
 	
 	removeAndAddEvents : function (eventId, events) {
-		//this.fullcalendarObject.fullCalendar( 'removeAndAddEvents', eventId, events );
+		for(var key in events){
+			this.fullcalendarObject.fullCalendar( 'updateEvent', events[key] );
+		}
 	}
 
 };

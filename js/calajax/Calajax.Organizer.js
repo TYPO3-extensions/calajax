@@ -2,7 +2,7 @@ Calajax.OrganizerView = function(){
 
 	// Identifier for calendar placeholder.
 	this.placeHolderId = Calajax.Registry.divcontainer.organizerView;
-}
+};
 
 Calajax.OrganizerView.prototype = {
 	organizers : [],
@@ -66,7 +66,7 @@ Calajax.OrganizerView.prototype = {
 				alert('b');
 				//that.beforeCellSubmit,
 			},
-			loadBeforeSend: that.loadBeforeSend,
+			loadBeforeSend: that.loadBeforeSend
 
 		});
 		
@@ -93,7 +93,7 @@ Calajax.OrganizerView.prototype = {
 								'tx_cal_controller[name]':posdata.name,
 								'tx_cal_controller[street]':posdata.street,
 								'tx_cal_controller[zip]':posdata.zip,
-								'tx_cal_controller[city]':posdata.city,
+								'tx_cal_controller[city]':posdata.city
 							};
 					},
 					afterSubmit : function(response, postdata){
@@ -103,7 +103,7 @@ Calajax.OrganizerView.prototype = {
 						that.organizerTable.jqGrid("setRowData",postdata.id,{"uid":organizer.uid,"type":organizer.type,"name":organizer.name,"street":organizer.street,"zip":organizer.zip,"city":organizer.city});
 						return [success];
 					},
-					closeAfterEdit: true,
+					closeAfterEdit: true
 				}, // use default settings for edit
 				{
 					url: Calajax.Registry.request.requestUrl,
@@ -116,7 +116,7 @@ Calajax.OrganizerView.prototype = {
 								'tx_cal_controller[name]':posdata.name,
 								'tx_cal_controller[street]':posdata.street,
 								'tx_cal_controller[zip]':posdata.zip,
-								'tx_cal_controller[city]':posdata.city,
+								'tx_cal_controller[city]':posdata.city
 							};
 					},
 					afterSubmit : function(response, postdata){
@@ -128,7 +128,7 @@ Calajax.OrganizerView.prototype = {
 						that.organizerTable.jqGrid("addRowData",organizer.uid,{"uid":organizer.uid,"type":organizer.type,"name":organizer.name,"street":organizer.street,"zip":organizer.zip,"city":organizer.city});
 						return [success,message,new_id];
 					},
-					closeAfterAdd: true,
+					closeAfterAdd: true
 				}, // use default settings for add
 				{
 					url: Calajax.Registry.request.requestUrl,
@@ -139,7 +139,7 @@ Calajax.OrganizerView.prototype = {
 								'tx_cal_controller[pid]':Calajax.Registry.request.pid,
 								'tx_cal_controller[view]':'remove_organizer',
 								'tx_cal_controller[type]':row.type,
-								'tx_cal_controller[uid]':row.uid,
+								'tx_cal_controller[uid]':row.uid
 							};
 					},
 					afterSubmit : function(response, postdata){
@@ -147,7 +147,7 @@ Calajax.OrganizerView.prototype = {
 						that.organizerTable.jqGrid("delRowData",postdata);
 						return [true];
 					},
-					closeAfterAdd: true,
+					closeAfterAdd: true
 				},  // delete instead that del:false we need this
 				{multipleSearch : true}, // enable the advanced searching
 				{closeOnEscape:true} /* allow the view dialog to be closed when user press ESC key*/
@@ -165,7 +165,7 @@ Calajax.OrganizerView.prototype = {
 				'eID': 'cal_ajax',
 				'tx_cal_controller[pid]': Calajax.Registry.request.pid,
 				'tx_cal_controller[view]': 'load_organizers',
-				'tx_cal_controller[type]': 'tx_cal_organizer',
+				'tx_cal_controller[type]': 'tx_cal_organizer'
 			},
 			function(data) {
 				callback(data);
@@ -180,8 +180,8 @@ Calajax.OrganizerView.prototype = {
 	 */
 	activatedViaCommand : function () {
 		//nothing
-	},
-}
+	}
+};
 
 Calajax.Organizer = function(){};
 
@@ -200,7 +200,7 @@ Calajax.Organizer.loadOrganizer = function(organizerId, callback){
 		},
 		Calajax.Registry.request.dataType // Json by default ( see registry )
 	);
-}
+};
 
 Calajax.Organizer.saveOrganizer = function(organizer, callback){
 	var allowedParams = Calajax.Registry.options.organizer.allowedRequestParams;
@@ -209,7 +209,7 @@ Calajax.Organizer.saveOrganizer = function(organizer, callback){
 		"tx_cal_controller[view]":"save_organizer",
 		"tx_cal_controller[pid]":Calajax.Registry.request.pid,
 		"tx_cal_controller[type]":"tx_cal_organizer",
-		"tx_cal_controller[formCheck]" : 1,
+		"tx_cal_controller[formCheck]" : 1
 	};
 	for(var i=0; i < allowedParams.length; i++){
 		if(organizer[allowedParams[i]] != undefined){
@@ -224,7 +224,7 @@ Calajax.Organizer.saveOrganizer = function(organizer, callback){
 		},
 		Calajax.Registry.request.dataType // Json by default ( see registry )
 	);
-}
+};
 
 Calajax.Organizer.getOrganizerText = function(organizer, plainText) {
 	if(plainText==true){
@@ -232,7 +232,7 @@ Calajax.Organizer.getOrganizerText = function(organizer, plainText) {
 	} else {
 		return organizer.city+",&nbsp;<span class='zip'>"+organizer.zip+"</span>&nbsp;<span class='street'>"+organizer.street+"</span>&nbsp;-&nbsp;<span class='street'>"+organizer.name+"</span>";
 	}
-}
+};
 
 Calajax.CalendarView.registerAdminTask('organizer','Organizer',function(){
 	Calajax.Registry.divcontainer.lastView = Calajax.Registry.divcontainer.currentView;
@@ -253,4 +253,4 @@ Calajax.OrganizerView.prototype.show = function (){
 	jQuery( '#' + this.placeHolderId ).show();
 	this.currentStatus = 2; // Set status to ACTIVE(2)
 	Calajax.Util.hideLoadingMask();
-}
+};

@@ -29,7 +29,7 @@
 	    	<li class="ui-widget-header ui-buttonbar-title"><a href="#">Organizer</a></li>
 		</ul>
 		<br/><br/>
-		<div id="left-accordion">
+		<div id="left-accordion" style="display:none;">
 	    	<h3><a href="#">Date selection</a></h3>
 	    	<div id="calendar-nav" class=""></div>
 	    	<h3><a href="#">My Calendars</a></h3>
@@ -41,8 +41,14 @@
 		</div>
 	</div>
 	<div class="center">
-	  <ul class="ui-buttonbar">
-	    <li class="ui-widget-header"><a href="#" class="ui-buttonbar-icon ui-buttonbar-new">New</a></li>
+	  <ul class="ui-buttonbar" id="superfish-menu">
+	    <li class="ui-widget-header"><a href="#" class="ui-buttonbar-icon ui-buttonbar-new" id="ui-buttonbar-new">New</a>
+	    	<ul class="ui-buttonbar-sub" id="ui-buttonbar-sub-new" style="display:none;">
+	    		<li><a href="#" class="ui-buttonbar-icon ui-buttonbar-new-event">###L_EVENT###</a></li>
+	    		<!--<li><a href="#" class="ui-buttonbar-icon ui-buttonbar-new-task">###L_TASK###</a></li>-->
+	    		<li><a href="#" class="ui-buttonbar-icon ui-buttonbar-new-calendar">###L_CALENDAR###</a></li>
+	    	</ul>
+	    </li>
 	    <li class="ui-widget-header"><a href="#" class="ui-buttonbar-icon ui-buttonbar-refresh">Refresh</a></li>
 	    <li class="ui-widget-header"><input type="text" name="search" class="search-field"/><a href="#" class="ui-buttonbar-icon ui-buttonbar-search">Search</a></li>
 	    <li class="ui-widget-header"><a href="#" class="ui-buttonbar-icon ui-buttonbar-tasklist">Task list</a></li>
@@ -50,36 +56,40 @@
 	    <li class="ui-widget-header"><a href="#" class="ui-buttonbar-icon ui-buttonbar-help">Help</a></li>
 	    <!-- ###USER_LOGIN### start -->
 	    <li class="ui-widget-header cal-login" id="cal_login">
-			<form style="margin-bottom:0;" action="###LOGIN_ACTION###" method="post" name="cal_login_form">
-				<input type="hidden" name="logintype" value="###LOGIN_TYPE###" />
-				<input type="hidden" name="pid" value="###USER_FOLDER###" />
-				<input type="hidden" name="redirect_url" value="###REDIRECT_URL###" />
-				
-				<!-- ###LOGOUT### start --><a href="#" onclick="document.cal_login_form.submit()" class="ui-buttonbar-icon ui-buttonbar-logout" >[###USERNAME###] ###L_LOGIN###</a><!-- ###LOGOUT### end -->
-				
-
-				<!-- ###LOGIN### start -->
-				<a href="#" class="ui-buttonbar-icon ui-buttonbar-login" id="cal_login_link">###L_LOGIN###</a>
-				<table id="cal_login_form_table">
-					<tbody>
-						<tr>
-							<th>###L_USERNAME###:</th>
-							<td><input type="text" name="user" size="10" /></td>
-						</tr>
-						<tr>
-							<th>###L_PASSWORD###:</th>
-							<td><input type="password" name="pass" size="10" /></td>
-						</tr>
-						<tr>
-							<td colspan="2"><input type="submit" value="###L_LOGIN_BUTTON###"/></td>
-						</tr>
-					</tbody>
-				</table>
-				<script type="text/javascript">
-					
-				</script>
-				<!-- ###LOGIN### end -->
-			</form>
+	    	<!-- ###LOGOUT### start -->
+	    	<a href="#" onclick="document.cal_login_form.submit()" class="ui-buttonbar-icon ui-buttonbar-logout" >[###USERNAME###] ###L_LOGIN###</a>
+	    	<!-- ###LOGOUT### end -->
+	    	<!-- ###LOGIN### start -->
+			<a href="#" class="ui-buttonbar-icon ui-buttonbar-login" id="cal_login_link">###L_LOGIN###</a>
+			
+			<ul class="ui-buttonbar-sub" style="display:none;">
+    			<li>
+    				<form style="margin-bottom:0;" action="###LOGIN_ACTION###" method="post" name="cal_login_form">
+						<input type="hidden" name="logintype" value="###LOGIN_TYPE###" />
+						<input type="hidden" name="pid" value="###USER_FOLDER###" />
+						<input type="hidden" name="redirect_url" value="###REDIRECT_URL###" />
+						<table id="cal_login_form_table">
+							<tbody>
+								<tr>
+									<th>###L_USERNAME###:</th>
+									<td><input type="text" name="user" size="10" /></td>
+								</tr>
+								<tr>
+									<th>###L_PASSWORD###:</th>
+									<td><input type="password" name="pass" size="10" /></td>
+								</tr>
+								<tr>
+									<td colspan="2"><input type="submit" value="###L_LOGIN_BUTTON###"/></td>
+								</tr>
+							</tbody>
+						</table>
+						<script type="text/javascript">
+							
+						</script>
+					</form>
+				</li>
+			</ul>
+			<!-- ###LOGIN### end -->
 	    </li>
 	    <!-- ###USER_LOGIN### end -->
 	  </ul>
@@ -250,7 +260,10 @@
 				</tr>
 			</tbody>
 		</table>
-		<div id="edit_event_view_title_details" class="module">
+		<div id="edit_event_view_details" class="module">
+			<h3><a href="#">###L_EVENT_CATEGORY###</a></h3>
+			<div id="category_container">
+			</div>
 			<h3><a href="#">###L_EVENT_FREQUENCY###</a></h3>
 			<div>
 				<table>
@@ -403,7 +416,11 @@
 	<input type="hidden" />
 	<div style="overflow: hidden;">
 		<div class="eb-root">
-			<label class="event-location-label">###L_WHERE###:</label><div class="event-location"></div>
+			<label class="event-category-label">###L_EVENT_CATEGORY###: </label>
+			<div class="event-category"></div>
+			<label class="event-location-label">###L_WHERE###:</label>
+			<div class="event-location"></div>
+			<label class="event-description-label">###L_EVENT_DESCRIPTION###:</label>
 			<div class="event-description"></div>
 		</div>
 	</div>

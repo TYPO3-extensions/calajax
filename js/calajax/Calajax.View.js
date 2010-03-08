@@ -36,7 +36,7 @@ Calajax.View = function() {
 	 * Child classes must implement
 	 */
 	this.placeHolderId = false;
-}
+};
 
 /**
  * Current possible status for weekview are:
@@ -82,6 +82,7 @@ Calajax.View.prototype = {
 	 * If not we request and set a observer on it
 	 */
 	request_waitingCalendarData	:	false,
+	request_waitingCategoryData :	false,
 	request_waitingTSConfData	:	false, // Typoscript conf object ( see registry )
 	request_waitingTranslation	:	false, // Translations
 	request_waitingRights		:	false, // Access rights to views
@@ -101,23 +102,35 @@ Calajax.View.prototype = {
 			} else {
 				// All data is here let's go ...
 				that.request_waitingCalendarData= false;
+				that.request_waitingCategoryData= false;
 				that.request_waitingTSConfData	= false;
 				that.request_waitingTranslation = false;
 				that.request_waitingRights		= false;
 				that.init();
 			}
-		}
+		};
 		
 		var getCalendarData = function() {
 			Calajax.Rights.unsubscribe( getCalendarData );
 			Calajax.CalendarView.calendar.loadData();
 			Calajax.CalendarView.calendar.subscribe(showCalendarList);
 			Calajax.CalendarView.calendar.subscribe(buildIt);
-		}
+		};
+		
+		var getCategoryData = function() {
+			Calajax.Rights.unsubscribe( getCategoryData );
+			Calajax.CategoryView.category.loadData();
+			Calajax.CategoryView.category.subscribe(showCategoryList);
+			Calajax.CategoryView.category.subscribe(buildIt);
+		};
 		
 		var showCalendarList = function() {
 			Calajax.MainObjectFactory.getObject( Calajax.MainObjectFactory.CalendarViewString ).init();
-		}
+		};
+		
+		var showCategoryList = function() {
+			Calajax.MainObjectFactory.getObject( Calajax.MainObjectFactory.CategoryViewString ).init();
+		};
 
 		// +--------------------------------------------------------------------
 		// | Check translation request status
@@ -156,6 +169,7 @@ Calajax.View.prototype = {
 				// Subscribe to the Rights and wait for the arrival.
 				Calajax.Rights.subscribe( buildIt );
 				Calajax.Rights.subscribe( getCalendarData );
+				Calajax.Rights.subscribe( getCategoryData );
 
 				this.request_waitingRights = true;
 
@@ -201,6 +215,18 @@ Calajax.View.prototype = {
 			}
 		
 		}
+		
+		if ( Calajax.CategoryView.category.isDataLoaded == false) {
+
+			if ( this.request_waitingCategoryData == false ) {
+				
+				that.request_waitingCategoryData = true;
+				
+				result = true;
+			
+			}
+		
+		}
 
 		return result;
 
@@ -211,7 +237,7 @@ Calajax.View.prototype = {
 	 * Acts as a bridge for the real translator object
 	 */
 	 translate : function ( tag ) {
-		 return Calajax.Translator.getTranslation( this.getTranslationKey(), tag )
+		 return Calajax.Translator.getTranslation( this.getTranslationKey(), tag );
 	 },
 
 	/**
@@ -239,10 +265,10 @@ Calajax.View.prototype = {
 		/*
 		 * Hide loading mask
 		 */
-		// Calajax.Util.hideLoadingMask();
+		Calajax.Util.hideLoadingMask();
 
 		return;
 
 
 	}
-}
+};

@@ -73,6 +73,7 @@ Calajax.Registry = {
 		weekView :		'calajax-container-weekview',
 		monthView :		'month-large',
 		calendarView :	'calendar-list',
+		categoryView :	'category-list',
 		currentView : 	'monthview',
 		lastView :		'',
 		administration:	'admin-list',
@@ -139,13 +140,13 @@ Calajax.Registry = {
 		 weekstart : 1,
 		 overlapEventsSeparate : false,
 		 calendar : {
-		 	 allowedRequestParams : ["uid","title","headerstyle","owner"],
+		 	 allowedRequestParams : ["uid","title","headerstyle","owner"]
 	 	 },
 		 event : {
-			 allowedRequestParams : ["uid","event_type","title","allday","calendar_id","location","location_id","cal_location","description","frequency_id","interval","count","by_day","by_monthday","until","status","priority","completed"],
+			 allowedRequestParams : ["uid","event_type","title","allday","calendar_id","category_ids","location","location_id","cal_location","description","frequency_id","interval","count","by_day","by_monthday","until","status","priority","completed"]
 		 },
 		 location : {
-			 allowedRequestParams : ["uid","name","street","zip","city"],
+			 allowedRequestParams : ["uid","name","street","zip","city"]
 		 },
 		 myHtmlSettings : {
 		    nameSpace:       "description", // Useful to prevent multi-instances CSS conflict
@@ -160,7 +161,7 @@ Calajax.Registry = {
 				{name:'Picture', key:'P', replaceWith:'<img src="[![Source:!:http://]!]" alt="[![Alternative text]!]" />' },
 				{name:'Link', key:'L', openWith:'<a href="[![Link:!:http://]!]"(!( title="[![Title]!]")!)>', closeWith:'</a>', placeHolder:'Your text to link...' },
 				{separator:'---------------' },
-				{name:'Clean', className:'clean', replaceWith:function(markitup) { return markitup.selection.replace(/<(.*?)>/g, "") } },		
+				{name:'Clean', className:'clean', replaceWith:function(markitup) { return markitup.selection.replace(/<(.*?)>/g, ""); } },		
 				{name:'Preview', className:'preview',  call:'preview'}
 		    ]
 		}

@@ -33,6 +33,9 @@ page.includeJS.150 = EXT:calajax/js/jquery_plugins/jquery-autocomplete/jquery.au
 # jQuery-markItUp ( HTTP: http://markitup.jaysalvat.com/home/ )
 #page.includeJS.160 = EXT:calajax/js/jquery_plugins/jquery-markitup/jquery.markitup.js
 
+# jQuery-superfish ( HTTP: http://users.tpg.com.au/j_birch/plugins/superfish/ )
+page.includeJS.170 = EXT:calajax/js/jquery_plugins/jquery-superfish/1.4.8/js/superfish.js
+
 # jQuery-image-dropdown ( HTTP: http://www.marghoobsuleman.com/blogs/jquery-image-dropdown )
 page.includeJS.180 = EXT:calajax/js/jquery_plugins/jquery-image-dropdown-2.1/uncompressed.jquery.dd.js
 
@@ -62,6 +65,7 @@ page.includeJS.282 = EXT:calajax/js/calajax/Calajax.WeekView.Controller.js
 
 page.includeJS.290 = EXT:calajax/js/calajax/Calajax.MonthView.js
 page.includeJS.300 = EXT:calajax/js/calajax/Calajax.CalendarView.js
+page.includeJS.310 = EXT:calajax/js/calajax/Calajax.CategoryView.js
 page.includeJS.340 = EXT:calajax/js/calajax/Calajax.MainObjectFactory.js
 page.includeJS.320 = EXT:calajax/js/calajax/Calajax.Interface.js
 page.includeJS.330 = EXT:calajax/js/calajax/Calajax.MenuBar.js
@@ -128,6 +132,9 @@ page.includeCSS {
  # jQuery-markItUp stylesheet
  #109 = EXT:calajax/js/jquery_plugins/jquery-markitup/sets/description/style.css
  
+ # jQuery-superfish stylesheet
+ 109 = EXT:calajax/js/jquery_plugins/jquery-superfish/1.4.8/css/superfish.css
+ 
  # jQuery-image-dropdown stylesheet
  110 = EXT:calajax/js/jquery_plugins/jquery-image-dropdown-2.1/dd.css
  
@@ -180,7 +187,7 @@ plugin.tx_calajax_pi1 {
 
 plugin.tx_cal_controller {
 	view {
-		customViews = load_events,load_todos,load_calendars,load_rights,load_locations,load_organizers,search_user_and_group
+		customViews = load_events,load_todos,load_calendars,load_categories,load_rights,load_locations,load_organizers,search_user_and_group
 		enableAjax = 1
 		dontShowConfirmView = 1
 		event {
