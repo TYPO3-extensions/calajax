@@ -1,0 +1,15 @@
+conf.py:
+  copyright: 2008-2015
+  project: CalAjax
+  version: 0.0
+  release: 0.1.0
+  latex_documents:
+  - - Index
+    - calajax.tex
+    - CalAjax
+    - Mario Matzulla, Philip Almeida
+    - manual
+  latex_elements:
+    papersize: a4paper
+    pointsize: 10pt
+    preamble: \usepackage{typo3}
