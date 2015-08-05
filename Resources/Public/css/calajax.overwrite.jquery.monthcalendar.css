@@ -1,0 +1,122 @@
+@CHARSET "ISO-8859-1";
+
+/* overwriting full-calendar theme */
+
+.full-calendar-title  {
+	color: #333;
+	font-size: 1em;
+	margin: 5px;
+}
+
+.full-calendar-buttons {
+	display: none;
+}
+
+.fc-view-month-wrap {
+	background-color: #FFFFFF;
+}
+
+.fc-view-month .fc-day-number {
+	background-color:#E8EEF7;
+	width:95%;
+	text-align:right;
+}
+
+.fc-view-month .fc-other-month .fc-day-number {
+	background-color:#DEE3E9;
+	width:95%;
+	text-align:right;
+	opacity:1;
+	color:#888888;
+}
+
+.fc-view-month td.today {
+	background:#FFFFCC none repeat scroll 0 0;
+}
+
+.event_status_0, .event_status_needs-action, .event_status_completed, .event_status_in-progress, .event_status_cancelled, #task-list .event_status_0, #task-list .event_status_needs-action, #task-list .event_status_completed, #task-list .event_status_in-progress, #task-list .event_status_cancelled {
+	background-repeat:no-repeat;
+	display:inline-block;
+	height:15px;
+	line-height:14px;
+	margin-right:2px;
+	vertical-align:bottom;
+	width:17px;
+	min-height:16px;
+}
+
+.event_status_0, #task-list .event_status_0 {
+	background-image:url(../images/cog_error.png);
+}
+
+.event_status_needs-action, #task-list .event_status_needs-action {
+	background-image:url(../images/cog_error.png);
+}
+
+.event_status_completed,  #task-list .event_status_completed {
+	background-image:url(../images/tick.png);
+}
+
+.event_status_in-progress,  #task-list .event_status_in-progress {
+	background-image:url(../images/cog.png);
+}
+
+.event_status_cancelled,  #task-list .event_status_cancelled {
+	background-image:url(../images/cross.png);
+}
+
+#task-list li span.task-list-item-text {
+	cursor:pointer;cursor:hand;
+}
+
+#task-list li div:first-child {
+	padding: 0;
+	min-width: 3em;
+}
+
+#task-list .task-list-item-text {
+	margin-left: 2em;
+}
+
+.dd .ddTitle span.textTitle img {
+	padding:0 2px;
+}
+
+.dd .ddTitle {
+	background: none;
+	border: none;
+}
+
+.dd .ddChild {
+/*	width: 24px !important;*/
+}
+
+/* overwriting jquery theme */
+
+.ui-dialog .ui-dialog-buttonpane button {
+	padding: 0px;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+	padding:0.1em 0.1em 0.1em 1em;
+}
+
+.ui-widget-header {
+	background: none;
+	background-color: #C3D9FF;
+}
+
+.ui-datepicker {
+	line-height:1em;
+	width: 15.5em;
+	font-size: 0.5em;
+}
+
+.ui-datepicker th {
+	padding: 0px;
+}
+
+#month-large .fc-widget-content, #month-large .fc-view-month thead th {
+	border:0px solid !important;
+	font-weight:normal;
+}

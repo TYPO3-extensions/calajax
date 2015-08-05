@@ -1,0 +1,7 @@
+﻿.. |add_ajax_to_plugin|      image:: ../../Images/add_ajax_to_plugin.png
+.. :align: left
+.. :border: 0
+.. :hspace: 12
+.. :name: Add Ajax to Plugin
+
+

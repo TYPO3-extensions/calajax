@@ -1,0 +1,486 @@
+<!-- ###FE-EDITING### start -->
+	<script type="text/javascript">
+		/*<![CDATA[*/
+	<!--
+		var url = '###AJAX_URL###';
+		var imgPath = '###IMG_PATH###';
+		var pid = '###PID###';
+		var view = '###VIEW###';
+		var availableCalendar = [];
+		
+		var save_label = '###SAVE_LABEL###';
+		var cancel_label = '###CANCEL_LABEL###';
+		var delete_label = '###DELETE_LABEL###';
+		var delete_confirm_label = '###DELETE_CONFIRM_LABEL###';
+		var allowedToCreateEvents = '###ALLOWED_TO_CREATE_EVENTS###';
+		var create_event_label = '###CREATE_EVENT_LABEL###';
+		var edit_event_label = '###EDIT_EVENT_LABEL###';
+	// -->
+		/*]]>*/
+	</script>
+
+	
+<!-- -->
+<!-- EXTENSION MAIN CONTAINER -->
+<!-- -->
+<div class="tx_cal_controller_ajax">
+	<div class="left">
+		<ul class="ui-buttonbar">
+	    	<li class="ui-widget-header ui-buttonbar-title"><a href="#">###L_APPLICATION###</a></li>
+		</ul>
+		<br/><br/>
+		<div id="left-accordion" style="display:none;">
+	    	<h3><a href="#">###L_DATE_SELECTION###</a></h3>
+	    	<div id="calendar-nav" class=""></div>
+	    	<h3><a href="#">###L_MY_CALENDARS###</a></h3>
+	    	<div id="calendar-list-container" class=""><ul id='calendar-list'></ul></div>
+	    	<h3><a href="#">###L_MY_TASKS###</a></h3>
+	    	<div id="task-list-container" class=""><ul id='task-list'></ul></div>
+	    	<h3><a href="#">###L_ADMINISTRATION###</a></h3>
+	    	<div id="admin-list-container" class=""><ul id='admin-list'></ul></div>
+		</div>
+	</div>
+	<div class="center">
+	  <ul class="ui-buttonbar sf-menu" id="superfish-menu">
+	    <li class="ui-widget-header" id="ui-widget-header-new"><a href="#" class="ui-buttonbar-icon ui-buttonbar-new" id="ui-buttonbar-new">###L_NEW###</a>
+	    	<ul class="ui-buttonbar-sub" id="ui-buttonbar-sub-new" style="display:none;">
+	    		<li id="ui-buttonbar-new-event"><a href="#" class="ui-buttonbar-icon ui-buttonbar-new-event">###L_EVENT###</a></li>
+	    		<!--<li><a href="#" class="ui-buttonbar-icon ui-buttonbar-new-task">###L_TASK###</a></li>-->
+	    		<li id="ui-buttonbar-new-calendar"><a href="#" class="ui-buttonbar-icon ui-buttonbar-new-calendar">###L_CALENDAR###</a></li>
+	    	</ul>
+	    </li>
+	    <li class="ui-widget-header" id="ui-buttonbar-refresh"><a href="#" class="ui-buttonbar-icon ui-buttonbar-refresh">&nbsp;</a></li>
+	    <li class="ui-widget-header"><input type="text" name="search" class="search-field"/><a href="#" class="ui-buttonbar-icon ui-buttonbar-search">&nbsp;</a></li>
+	    <li class="ui-widget-header"><a href="#" class="ui-buttonbar-icon ui-buttonbar-tasklist">###L_TASK_LIST###</a></li>
+	    <li class="ui-widget-header"><a href="#" class="ui-buttonbar-icon ui-buttonbar-settings">###L_SETTINGS###</a></li>
+	    <li class="ui-widget-header"><a href="#" class="ui-buttonbar-icon ui-buttonbar-help">###L_HELP###</a></li>
+	    <!-- ###USER_LOGIN### start -->
+	    <li class="ui-widget-header cal-login" id="cal_login">
+	    	<!-- ###LOGOUT### start -->
+	    	<a href="#" onclick="document.cal_login_form.submit()" class="ui-buttonbar-icon ui-buttonbar-logout" >[###USERNAME###] ###L_LOGIN###</a>
+	    	<form style="margin-bottom:0;" action="###LOGIN_ACTION###" method="post" name="cal_login_form">
+				<input type="hidden" name="logintype" value="###LOGIN_TYPE###" />
+				<input type="hidden" name="pid" value="###USER_FOLDER###" />
+				<input type="hidden" name="redirect_url" value="###REDIRECT_URL###" />
+			</form>
+	    	<!-- ###LOGOUT### end -->
+	    	<!-- ###LOGIN### start -->
+			<a href="#" class="ui-buttonbar-icon ui-buttonbar-login" id="cal_login_link">###L_LOGIN###</a>
+			
+			<ul class="ui-buttonbar-sub" style="display:none;">
+    			<li>
+    				<form style="margin-bottom:0;" action="###LOGIN_ACTION###" method="post" name="cal_login_form">
+						<input type="hidden" name="logintype" value="###LOGIN_TYPE###" />
+						<input type="hidden" name="pid" value="###USER_FOLDER###" />
+						<input type="hidden" name="redirect_url" value="###REDIRECT_URL###" />
+						<table id="cal_login_form_table">
+							<tbody>
+								<tr>
+									<th>###L_USERNAME###:</th>
+									<td><input type="text" name="user" size="10" /></td>
+								</tr>
+								<tr>
+									<th>###L_PASSWORD###:</th>
+									<td><input type="password" name="pass" size="10" /></td>
+								</tr>
+								<tr>
+									<td colspan="2"><input type="submit" value="###L_LOGIN_BUTTON###"/></td>
+								</tr>
+							</tbody>
+						</table>
+						<script type="text/javascript">
+							
+						</script>
+					</form>
+				</li>
+			</ul>
+			<!-- ###LOGIN### end -->
+	    </li>
+	    <!-- ###USER_LOGIN### end -->
+	  </ul>
+		<!-- calajax-container: Start -->
+		<div id="calajax-container" class="calajax-container">
+		
+			<!-- -->
+			<!-- VIEW'S CONTAINER -->
+			<!-- -->
+			
+				<!-- -->
+				<!-- LOADING -->
+				<!-- -->
+		
+				<!-- ID set at the registry object -->
+				<!-- calajax-container-loading-main: Start -->
+				<div id="calajax-container-loading-main" class="calajax-container-loading-main">
+		
+					<!-- calajax-container-loading: Start -->
+					<div class="fadingMessage">
+						###L_LOADING###...
+					</div>
+					<!-- calajax-container-loading: End -->
+		
+				</div>
+				<!-- calajax-container-loading-main: End -->
+		
+			<!-- calajax-container-view: Start -->
+				<!-- ID set at the registry object -->
+				<!-- month-large: Start -->
+				<div id='month-large' class="month-large"></div>
+				<!-- month-large: End -->
+			<!-- calajax-container-view: End -->
+		
+		</div>
+		<!-- calajax-container: End -->
+	</div>
+</div>
+
+<!-- -->
+<!-- EVENT DELETE CONFIRMATION -->
+<!-- -->
+
+<div id="eventDeleteConfirmBox" style="display:none;">
+	<p>
+		<span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 0 0;"></span> 
+		###L_DELETE_CONFIRM###
+	</p>
+</div>
+
+<!-- -->
+<!-- EDIT EVENTVIEW -->
+<!-- -->
+
+<div id="edit_event_view" style='display:none'>
+	<form>
+		<table class="modulebody">
+			<tbody>
+				<tr>
+					<td><label for="edit_event_view_title">###L_WHAT###</label></td>
+					<td>
+						<span class="data" id="edit_event_view_title">
+							<input name="tx_cal_controller[title]" type="text" class="fieldinput" />
+						</span>
+					</td>
+					<td><label for="edit_event_view_startdate">###L_EVENT_EDIT_STARTDATE###</label></td>
+					<td>
+						<input name="tx_cal_controller[startdate]" id="edit_event_view_startdate" class="text" size="9">
+					</td>
+					<td><label for="edit_event_view_when">###L_AT###</label></td>
+					<td>	
+						<input name="tx_cal_controller[starttime]" id="edit_event_view_starttime" class="text" size="7">
+					</td>
+				</tr>
+				<tr>
+					<td><label for="edit_event_view_status">###L_STATUS###</label></td>
+					<td>
+						<span class="data" id="edit_event_view_status">
+							<select name="tx_cal_controller[status]" type="text" class="fieldinput" >
+								<option value="NEEDS-ACTION">###L_NEEDS_ACTION###</option>
+								<option value="COMPLETED">###L_COMPLETED###</option>
+								<option value="IN-PROGRESS">###L_IN_PROGRESS###</option>
+								<option value="CANCELLED">###L_CANCELLED###</option>
+							</select>
+						</span>
+					</td>
+					<td><label for="edit_event_view_priority">###L_PRIORITY###</label></td>
+					<td>
+						<span class="data" id="edit_event_view_priority">
+							<select name="tx_cal_controller[priority]" type="text" class="fieldinput" >
+								<option value="0">0</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+							</select>
+						</span>
+					</td>
+					<td><label for="edit_event_view_completed">###L_COMPLETED###</label></td>
+					<td>
+						<span class="data" id="edit_event_view_completed">
+							<input name="tx_cal_controller[completed]" type="text" class="fieldinput" />
+						</span>
+					</td>
+				</tr>
+				<tr>
+					<td><label for="edit_event_view_location">###L_EVENT_LOCATION###</label></td>
+					<td>
+						<span class="data" id="edit_event_view_location">
+							<input type="radio" name="newLocation" value="0" id="existingLocationSelector" checked="checked"> ###L_QUERY_FOR###<span style="width:2em;">&nbsp;</span>
+							<input type="radio" name="newLocation" value="1" id="newLocationSelector"> ###L_CREATE_LOCATION###
+							<span class="newLocation" style="display:none;">
+								<label class="label">###L_LOCATION_NAME###:</label><input name="tx_cal_controller[location_name]" class="fieldinput" type="text">
+								<label class="label">###L_LOCATION_STREET###:</label><input name="tx_cal_controller[location_street]" class="fieldinput" type="text">
+								<label class="label">###L_LOCATION_ZIP###:</label><input name="tx_cal_controller[location_zip]" class="fieldinput" type="text">
+								<label class="label">###L_LOCATION_CITY###:</label><input name="tx_cal_controller[location_city]" class="fieldinput" type="text">
+							</span>
+							<span class="existingLocation">
+								<input name="locationText" class="fieldinput" type="text">
+								<input name="tx_cal_controller[location_id]" type="hidden">
+							</span>
+						</span>
+					</td>
+					<td><label for="edit_event_view_enddate">###L_EVENT_EDIT_ENDDATE###</label></td>
+					<td>
+						<input name="tx_cal_controller[enddate]" id="edit_event_view_enddate" class="text" size="9">
+					</td>
+					<td><label for="edit_event_view_when">###L_AT###</label></td>
+					<td>
+						<input name="tx_cal_controller[endtime]" id="edit_event_view_endtime" class="text" size="7">
+					</td>
+				</tr>
+				<tr>
+					<td><label for="edit_event_view_type">###L_EVENT_TYPE###</label></td>
+					<td>
+						<span class="data" id="edit_event_view_type">
+							<select name="tx_cal_controller[event_type]" type="text" class="fieldinput" >
+								<option value="0">###L_EVENT_TYPE_0###</option>
+								<option value="1">###L_EVENT_TYPE_1###</option>
+								<option value="2">###L_EVENT_TYPE_2###</option>
+								<option value="3">###L_EVENT_TYPE_3###</option>
+								<option value="4">###L_EVENT_TYPE_4###</option>
+							</select>
+						</span>
+					</td>
+					<td><label for="edit_event_view_calendar">###L_CALENDAR###</label></td>
+					<td colspan="3">
+						<span class="" id="edit_event_view_calendar">
+							<select name="tx_cal_controller[calendar_id]" class="fieldinput" id="edit_event_view_calendar_id" size="1">
+							</select>
+						</span>
+					</td>
+				</tr>
+				<tr>
+					<td><label for="edit_event_view_description">###L_EVENT_DESCRIPTION###</label></td>
+					<td colspan="2">
+						<textarea style="overflow: hidden;" class="fieldinput" rows="5" name="tx_cal_controller[description]"></textarea>
+					</td>
+					<td colspan="2"><label for="edit_event_view_allday">###L_EVENT_ALLDAY###</label></td>
+					<td>
+						<input name="tx_cal_controller[allday]" id="edit_event_view_allday" type="checkbox" />
+					</td>	
+				</tr>
+			</tbody>
+		</table>
+		<div id="edit_event_view_details" class="module">
+			<h3><a href="#">###L_EVENT_CATEGORY###</a></h3>
+			<div id="category_container">
+			</div>
+			<h3><a href="#">###L_EVENT_FREQUENCY###</a></h3>
+			<div>
+				<table>
+					<tbody>
+						<tr>
+							<td class="recurring-container" >
+								<span class="group repeat">
+									<h4>###L_REPEATS###:</h4>
+									<select name="tx_cal_controller[freq]">
+										<option value="none">###L_NONE###</option>
+										<option value="day">###L_DAILY###</option>
+										<option value="week">###L_WEEKLY###</option>
+										<option value="month">###L_MONTHLY###</option>
+										<option value="year">###L_YEARLY###</option>
+									</select>
+								</span>
+								<br/>
+								<span class="group interval" id="edit_event_view_interval_container">
+									<span>
+										<h4 class="label">###L_EVENT_INTERVAL###:</h4>
+										<select name="tx_cal_controller[interval]" id="">
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="9">9</option>
+											<option value="10">10</option>
+											<option value="11">11</option>
+											<option value="12">12</option>
+											<option value="13">13</option>
+											<option value="14">14</option>
+											<option value="15">15</option>
+											<option value="16">16</option>
+											<option value="17">17</option>
+											<option value="18">18</option>
+											<option value="19">19</option>
+											<option value="20">20</option>
+											<option value="21">21</option>
+											<option value="22">22</option>
+											<option value="23">23</option>
+											<option value="24">24</option>
+											<option value="25">25</option>
+											<option value="26">26</option>
+											<option value="27">27</option>
+											<option value="28">28</option>
+											<option value="29">29</option>
+											<option value="30">30</option>
+										</select>
+										&nbsp;
+										<span id="r-recur-pdesc"></span>
+									</span>
+									<br/>
+									<span class="group count" id="edit_event_view_count_container">
+										<span>
+											<h4>###L_EVENT_COUNT###</h4>
+											<input type="text" name="tx_cal_controller[count]" class="text" size="4"/>
+										</span>
+									</span>
+									<br/>
+									<span class="group byweekday" id="edit_event_view_byweekday_container">
+										<span>
+											<h4>###L_WEEKDAY###:</h4>
+											<span class="recur-cbg">
+												<span ><input value="su" id="edit_event_view_sunday" type="checkbox" name="tx_cal_controller[su]">&nbsp;<label for="edit_event_view_sunday">S</label></span>
+												&nbsp;&nbsp;
+												<span ><input value="mo" id="edit_event_view_monday" type="checkbox" name="tx_cal_controller[mo]">&nbsp;<label for="edit_event_view_monday">M</label></span>
+												&nbsp;&nbsp;
+												<span ><input value="tu" id="edit_event_view_tuesday" type="checkbox" name="tx_cal_controller[tu]">&nbsp;<label for="edit_event_view_tuesday">T</label></span>
+												&nbsp;&nbsp;
+												<span ><input value="we" id="edit_event_view_wednesday" type="checkbox" name="tx_cal_controller[we]">&nbsp;<label for="edit_event_view_wednesday">W</label></span>
+												&nbsp;&nbsp;
+												<span ><input value="th" id="edit_event_view_thursday" type="checkbox" name="tx_cal_controller[th]">&nbsp;<label for="edit_event_view_thursday">T</label></span>
+												&nbsp;&nbsp;
+												<span ><input value="fr" id="edit_event_view_friday" type="checkbox" name="tx_cal_controller[fr]">&nbsp;<label for="edit_event_view_friday">F</label></span>
+												&nbsp;&nbsp;
+												<span ><input value="sa" id="edit_event_view_saturday" type="checkbox" name="tx_cal_controller[sa]">&nbsp;<label for="edit_event_view_saturday">S</label></span>
+											</span>
+										</span>
+									</span>
+									<br/>
+									<span class="group byday" id="edit_event_view_byday_container">
+										<span>
+											<h4>###L_EVENT_BYDAY###:</h4>
+											<span class="recur-cbg">
+												<span id="byday-container">
+													<span class="byday-row">
+														<!-- filled dynamically -->
+													</span>
+													<input id="byday" type="text" value="tu" name="tx_cal_controller[byday]"/>
+													<span style="padding: 5px 0px;">
+														<img class="addByDayRecurrence" height="16" width="16" alt="Add Recurrence" title="Add Recurrence" src="###IMG_PATH###/create.gif"/>
+														Add Recurrence
+													</span>
+												</span>
+											</span>
+										</span>
+									</span>
+									<br/>
+									<span class="group bymonthday" id="edit_event_view_bymonthday_container">
+										<span>
+											<h4>###L_EVENT_BYMONTHDAY###:</h4>
+											<span class="recur-cbg">
+												<span id="bymonthday-container">
+													<span class="bymonthday-row">
+														<!-- filled dynamically -->
+													</span>
+													<input id="tx_cal_controller[bymonthday]" type="text" value="tu" name="tx_cal_controller[bymonthday]"/>
+													<span style="padding: 5px 0px;">
+														<img class="addByMonthDayRecurrence" height="16" width="16" alt="Add Recurrence" title="Add Recurrence" src="###IMG_PATH###/create.gif"/>
+														Add Recurrence
+													</span>
+												</span>
+											</span>
+										</span>
+									</span>
+								</span>
+								<br/>
+								<span class="group repeat until" id="edit_event_view_until_container">
+									<span>
+										<h4>###L_EVENT_UNTIL###:</h4>
+										<span class="recur-cbg">
+											<input value="never" checked="checked" name="delimiter" id="edit_event_view_forever" type="radio">
+											&nbsp;
+											<label for="edit_event_view_forever">###L_NEVER###</label>
+											&nbsp;&nbsp;
+											<input value="until" name="delimiter" id="edit_event_view_until" type="radio" >
+											<label for="edit_event_view_until">###L_UNTIL###</label>
+											&nbsp;
+											<input type="text" name="tx_cal_controller[until]" class="text" id="edit_event_view_until" size="8">
+										</span>
+									</span>
+								</span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</form>
+</div>
+
+<!-- -->
+<!-- EVENTVIEW -->
+<!-- -->
+<div id="event_display_container" style='display:none'>
+	<input type="hidden" />
+	<div style="overflow: hidden;">
+		<div class="eb-root">
+			<label class="event-category-label">###L_EVENT_CATEGORY###: </label>
+			<div class="event-category"></div>
+			<label class="event-location-label">###L_WHERE###:</label>
+			<div class="event-location"></div>
+			<label class="event-description-label">###L_EVENT_DESCRIPTION###:</label>
+			<div class="event-description"></div>
+		</div>
+	</div>
+</div>
+
+<!-- -->
+<!-- TODOVIEW -->
+<!-- -->
+<div id="todo_display_container" style='display:none'>
+	<input type="hidden" />
+	<div style="overflow: hidden;">
+		<div class="eb-root">
+			<label class="event-status_text-label">###L_STATUS###:</label><div class="event-status_text"></div>
+			<label class="event-priority-label">###L_PRIORITY###:</label><div class="event-priority"></div>
+			<label class="event-completed-label">###L_COMPLETED### (%):</label><div class="event-completed"></div>
+			<label class="event-description-label">###L_DESCRIPTION###:</label><div class="event-description"></div>
+		</div>
+	</div>
+</div>
+
+<!-- -->
+<!-- EDIT CALENDARVIEW -->
+<!-- -->
+		<div id="calendar_edit_container" style='display:none'>
+			<label for="calendar_edit_container_title">###L_CALENDAR_TITLE###</label><input type="text" id="calendar_edit_container_title" name="tx_cal_controller[title]">
+			<label for="calendar_color">###L_COLOR###</label><input type="hidden" name="tx_cal_controller[headerstyle]" /><div id="calendar_color" ></div>
+			<label for="public_calendar">###L_PUBLIC_CALENDAR###</label><input type="checkbox" name="tx_cal_controller[public]" />
+			<label for="calendar_owner">###L_CALENDAR_OWNER###</label>
+			<div id="calendar_owner_container" class="calendar_owner_container">
+			</div>
+		</div>
+
+
+<!-- -->
+<!-- EDIT LOCATIONVIEW -->
+<!-- -->
+		<div id="calajax-container-location" style='display:none'>
+			<table class="location-table"></table>
+			<div id="pager3" class="scroll" style="text-align:center;"></div>
+		</div>
+		
+<!-- -->
+<!-- EDIT ORGANIZERVIEW -->
+<!-- -->
+		<div id="calajax-container-organizer" style='display:none'>
+			<table class="organizer-table"></table>
+			<div id="pager4" class="scroll" style="text-align:center;"></div>
+		</div>
+
+<!-- -->
+<!-- DEBUG -->
+<!-- -->
+		<div id="calajax-debug-container" style='display:none;'>
+			<h3>Debug output</h3>
+			<div id="calajax-debug" class="scroll"></div>
+		</div>
+
+<!-- ###FE-EDITING### end -->

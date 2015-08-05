@@ -1,0 +1,13 @@
+plugin.tx_cal_controller.view {
+	month.monthTemplate = EXT:calajax/Resources/Private/Templates/month.tmpl
+	month.monthLargeTemplate = EXT:calajax/Resources/Private/Templates/month_large.tmpl
+	event.eventModelTemplate = EXT:calajax/Resources/Private/Templates/event_model.tmpl
+	week.weekTemplate = EXT:calajax/Resources/Private/Templates/week.tmpl
+	day.dayTemplate = EXT:calajax/Resources/Private/Templates/day.tmpl
+	month.horizontalSidebarTemplate = EXT:calajax/Resources/Private/Templates/calendar_nav.tmpl
+}
+
+plugin.calajax {
+	# cat=Cal Ajax (General)/general/1; type=options[smoothness, flick, redmond]; label=jQuery theme
+	design = redmond
+}

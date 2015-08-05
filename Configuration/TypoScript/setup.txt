@@ -1,0 +1,236 @@
+################################################################################
+# JAVASCRIPT JQUERY API
+################################################################################
+
+# jQuery Minified
+page.includeJSFooterlibs.jquery = EXT:calajax/Resources/Public/js/jquery/1.3.2/jquery.js
+
+# jQuery-ui Minified
+page.includeJSFooterlibs.calajax_102 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-ui/1.7.2/jquery-ui.min.js
+page.includeJSFooterlibs.calajax_103 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-ui/1.7.2/jquery-ui.draggable.js
+page.includeJSFooterlibs.calajax_104 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-ui/1.7.2/jquery-ui.resizable.js
+
+
+# jQuery-week-calendar Minified ( HTTP: http://www.redredred.com.au/projects/jquery-week-calendar/ )
+#page.includeJS.110 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-weekcalendar/trunk/jquery.weekcalendar.js
+
+# jQuery-fullcalendar ( HTTP: http://arshaw.com/fullcalendar/ )
+page.includeJSFooterlibs.calajax_115 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-fullcalendar/1.4.5/fullcalendar.js
+
+# jQuery-fullcalendar Minified ( HTTP: http://arshaw.com/fullcalendar/ )
+#page.includeJSFooterlibs.calajax_120 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-monthcalendar/1.4.5/fullcalendar.js
+
+
+# jQuery-colorpicker ( HTTP: http://www.syronex.com/software/jquery-color-picker )
+page.includeJSFooterlibs.calajax_130 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-colorpicker/syronex-colorpicker.js
+
+# jQuery-timepicker ( HTTP: http://code.google.com/p/jquery-timepicker/ )
+page.includeJSFooterlibs.calajax_140 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-timepicker/timePicker.js
+
+# jQuery-liveSearch ( HTTP: http://bassistance.de/jquery-plugins/jquery-plugin-autocomplete/ )
+page.includeJSFooterlibs.calajax_150 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-autocomplete/jquery.autocomplete.js
+
+# jQuery-markItUp ( HTTP: http://markitup.jaysalvat.com/home/ )
+#page.includeJSFooterlibs.calajax_160 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-markitup/jquery.markitup.js
+
+# jQuery-superfish ( HTTP: http://users.tpg.com.au/j_birch/plugins/superfish/ )
+page.includeJSFooterlibs.calajax_170 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-superfish/1.4.8/js/superfish.js
+
+# jQuery-image-dropdown ( HTTP: http://www.marghoobsuleman.com/blogs/jquery-image-dropdown )
+page.includeJSFooterlibs.calajax_180 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-image-dropdown-2.1/uncompressed.jquery.dd.js
+
+# jQuery-jqGrid ( HTTP: http://www.trirand.com/blog/ )
+page.includeJSFooterlibs.calajax_190 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-jqGrid/src/grid.loader.js
+
+################################################################################
+# JAVASCRIPT CALAJAX API
+################################################################################
+
+page.includeJSFooterlibs.calajax_210 = EXT:calajax/Resources/Public/js/js_helper.js
+page.includeJSFooterlibs.calajax_220 = EXT:calajax/Resources/Public/js/dateformater.js
+
+page.includeJSFooterlibs.calajax_240 = EXT:calajax/Resources/Public/js/calajax/Calajax.js
+page.includeJSFooterlibs.calajax_255 = EXT:calajax/Resources/Public/js/calajax/Calajax.Util.js
+page.includeJSFooterlibs.calajax_260 = EXT:calajax/Resources/Public/js/calajax/Calajax.Observer.js
+page.includeJSFooterlibs.calajax_270 = EXT:calajax/Resources/Public/js/calajax/Calajax.Translator.js
+page.includeJSFooterlibs.calajax_275 = EXT:calajax/Resources/Public/js/calajax/Calajax.Rights.js
+page.includeJSFooterlibs.calajax_277 = EXT:calajax/Resources/Public/js/calajax/Calajax.View.js
+page.includeJSFooterlibs.calajax_278 = EXT:calajax/Resources/Public/js/calajax/Calajax.EventView.js
+
+page.includeJSFooterlibs.calajax_279 = EXT:calajax/Resources/Public/js/calajax/Calajax.DayView.js
+
+page.includeJSFooterlibs.calajax_280 = EXT:calajax/Resources/Public/js/calajax/Calajax.WeekView.js
+page.includeJSFooterlibs.calajax_281 = EXT:calajax/Resources/Public/js/calajax/Calajax.WeekView.AllDay.js
+page.includeJSFooterlibs.calajax_282 = EXT:calajax/Resources/Public/js/calajax/Calajax.WeekView.Controller.js
+
+page.includeJSFooterlibs.calajax_290 = EXT:calajax/Resources/Public/js/calajax/Calajax.MonthView.js
+page.includeJSFooterlibs.calajax_300 = EXT:calajax/Resources/Public/js/calajax/Calajax.CalendarView.js
+page.includeJSFooterlibs.calajax_310 = EXT:calajax/Resources/Public/js/calajax/Calajax.CategoryView.js
+page.includeJSFooterlibs.calajax_340 = EXT:calajax/Resources/Public/js/calajax/Calajax.MainObjectFactory.js
+page.includeJSFooterlibs.calajax_320 = EXT:calajax/Resources/Public/js/calajax/Calajax.Interface.js
+page.includeJSFooterlibs.calajax_330 = EXT:calajax/Resources/Public/js/calajax/Calajax.MenuBar.js
+page.includeJSFooterlibs.calajax_350 = EXT:calajax/Resources/Public/js/calajax/Calajax.Event.js
+page.includeJSFooterlibs.calajax_360 = EXT:calajax/Resources/Public/js/calajax/Calajax.Recurrence.js
+page.includeJSFooterlibs.calajax_370 = EXT:calajax/Resources/Public/js/calajax/Calajax.Location.js
+page.includeJSFooterlibs.calajax_380 = EXT:calajax/Resources/Public/js/calajax/Calajax.Organizer.js
+
+# ******************************************************************************
+# The following javascript includes must load at the bottom of page
+# We need the page loaded in order to load the registry
+# There is a new config option in 4.3.0 - config.swapJsFromHeaderToFooter
+#
+# We must alert to the need of page.100 free
+# ******************************************************************************
+
+# Registry
+# Registry consumes data from templates/fe_editing.tmpl
+# This is way it must go here
+page.includeJSFooterlibs.calajax_registry = EXT:calajax/Resources/Public/js/calajax/Calajax.Registry.js
+page.includeJSFooterlibs.calajax_client = EXT:calajax/Resources/Public/js/CalajaxFinalClient.js
+
+################################################################################
+# CSS INCLUDES
+################################################################################
+
+page.includeCSS {
+ # jQuery-ui stylesheet
+ 101 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-ui/1.7.2/themes/base/jquery-ui.css
+ 
+ 102 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-ui/1.7.2/themes/{$plugin.calajax.design}/jquery-ui.css
+ 
+
+ # jQuery-week-calendar stylesheet
+ #102 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-weekcalendar/trunk/jquery.weekcalendar.css
+
+ # jQuery-month-calendar stylesheet
+ 104 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-fullcalendar/1.4.5/fullcalendar.css
+
+ # jQuery-colorpicker stylesheet
+ 105 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-colorpicker/syronex-colorpicker.css
+  
+ # jQuery-timepicker stylesheet
+ 106 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-timepicker/timePicker.css
+ 
+ # jQuery-timepicker stylesheet
+ 107 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-autocomplete/jquery.autocomplete.css
+ 
+ # jQuery-markItUp stylesheet
+ #108 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-markitup/skins/markitup/style.css
+ 
+ # jQuery-markItUp stylesheet
+ #109 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-markitup/sets/description/style.css
+ 
+ # jQuery-superfish stylesheet
+ #108 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-superfish/1.4.8/css/superfish.css
+ #109 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-superfish/1.4.8/css/superfish-navbar.css
+ 
+ # jQuery-image-dropdown stylesheet
+ 110 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-image-dropdown-2.1/dd.css
+ 
+ # jQuery-jqGrid ( HTTP: http://www.trirand.com/blog/ )
+ 111 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-jqGrid/css/ui.jqgrid.css
+
+ # Calajax jQuery-fullcalendar stylesheet
+ 200 = EXT:calajax/Resources/Public/css/calajax.fullcalendar.css
+
+ # Calajax jQuery-month-calendar overwrite stylesheet
+ #210 = EXT:calajax/Resources/Public/css/calajax.overwrite.jquery.monthcalendar.css
+ 
+  # Calajax jQuery-week-calendar overwrite stylesheet
+ #220 = EXT:calajax/Resources/Public/css/calajax.overwrite.jquery.weekcalendar.css
+ 
+ 
+ # Main EXT:calajax CSS
+ 300 = EXT:calajax/Resources/Public/css/calajax.css
+
+
+ 
+}
+
+plugin.tx_calajax_pi1 = USER_INT
+plugin.tx_calajax_pi1 {
+
+	icons {
+		
+		dayview		= EXT:calajax/Resources/Public/icons/stock_calendar-view-day.png
+		weekview	= EXT:calajax/Resources/Public/icons/stock_calendar-view-work-week.png
+		monthview	= EXT:calajax/Resources/Public/icons/stock_calendar-view-month.png
+		today		= EXT:calajax/Resources/Public/icons/stock_calendar-today.png
+		next		= EXT:calajax/Resources/Public/icons/old-go-next.png
+		previous	= EXT:calajax/Resources/Public/icons/old-go-previous.png
+
+		# Event Icons
+		exturl		= EXT:cal/Resources/Public/icons/icon_tx_cal_events_exturl.gif
+		intlnk		= EXT:cal/Resources/Public/icons/icon_tx_cal_events_intlnk.gif
+		todo		= EXT:cal/Resources/Public/icons/icon_tx_cal_events_todo.gif
+		event		= EXT:cal/Resources/Public/icons/icon_tx_cal_events.gif
+		meeting		= EXT:cal/Resources/Public/icons/icon_tx_cal_events_meeting.gif
+
+	}
+
+	events {
+		showIcons	= 0 // Show icon near events ( weekview )
+	}
+
+}
+
+plugin.tx_cal_controller {
+	view {
+		customViews = load_events,load_todos,load_calendars,load_categories,load_rights,load_locations,load_organizers,search_user_and_group
+		enableAjax = 1
+		dontShowConfirmView = 1
+		event {
+			useDateSelector = 1
+			ajaxTemplate = EXT:calajax/Resources/Private/Templates/fe_editing.tmpl
+		}
+		search {
+			searchLocationFieldList = name, street, zip, city, description
+		}
+	}
+	rights {
+		edit = 1
+		
+		create {
+			event {
+				enableRTE = 0
+			}
+		}
+		edit {
+			event {
+				additionalFields = priority
+			}
+			calendar {
+				additionalFields = headerstyle
+			}
+		}
+	}
+}
+
+ics.10.view.allowedViews = ics,single_ics,event
+
+plugin.tx_cal_controller._LOCAL_LANG {
+	default {
+		l_new = New
+		l_task_list = Task list
+		l_settings = Settings
+		l_help = Help
+		l_application = Organizer
+		l_date_selection = Date Selection
+		l_my_calendars = My Calendars
+		l_my_tasks = My Tasks
+		l_administration = Administration
+		l_loading = loading
+	}
+	de {
+		l_new = Neu
+		l_task_list = Aufgabenliste
+		l_settings = Einstellungen
+		l_help = Hilfe
+		l_application = Organizer
+		l_date_selection = Datumsauswahl
+		l_my_calendars = Meine Kalender
+		l_my_tasks = Meine Aufgaben
+		l_administration = Administration
+		l_loading = laden
+	}
+}

@@ -1,0 +1,7 @@
+﻿.. |add_static_template|      image:: ../../Images/add_static_template.png
+.. :align: left
+.. :border: 0
+.. :hspace: 12
+.. :name: Add static TypoScript template
+
+

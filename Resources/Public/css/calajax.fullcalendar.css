@@ -1,0 +1,109 @@
+/*
+ * FullCalendar v1.3.1 Stylesheet
+ *
+ * Feel free to edit this file to customize the look of FullCalendar.
+ * When upgrading to newer versions, please upgrade this file as well,
+ * porting over any customizations afterwards.
+ *
+ */
+
+/* Buttons
+------------------------------------------------------------------------*/
+
+.fc-header .fc-state-default, .fc-header .ui-state-default {
+	cursor:pointer;
+	margin-bottom:0em;
+}
+
+h2.fc-header-title {
+	margin-bottom: 0;
+	color: #2E6E9E;
+}
+
+.fc-content th {
+	background:url("../../js/jquery_plugins/jquery-ui/1.7.2/themes/redmond/images/ui-bg_inset-hard_100_f5f8f9_1x100.png") repeat-x scroll 50% 50% #DFEFFC !important;
+}
+
+.fc-header .fc-state-default, .fc-header .fc-state-active {
+	border: 0px;
+	border-top: 1px solid #C5DBEC;
+	border-left: 1px solid #C5DBEC;
+	border-right: 1px solid #C5DBEC;
+	
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	margin-right: 5px;
+}
+
+.fc-header .fc-state-active {
+	border-top: 1px solid #2E6E9E;
+	border-left: 1px solid #2E6E9E;
+	border-right: 1px solid #2E6E9E;
+}
+
+.fc-header .fc-state-active span {
+	color: #FFFFFF;
+}
+
+.fc-header .fc-state-default a {
+	border-width: 0px;
+	margin: 0px;
+	color:#2E6E9E;
+	outline:medium none;
+	text-decoration:none;
+	font-size: 0.8em;
+	line-height: 1.3em;
+}
+
+.fc-header-right .fc-state-default:hover {
+	background:url("../../js/jquery_plugins/jquery-ui/1.7.2/themes/redmond/images/ui-bg_glass_75_d0e5f5_1x400.png") repeat-x scroll 50% 50% #D0E5F5;
+	outline:medium none;
+	border-top: 1px solid #79B7E7;
+	border-left: 1px solid #79B7E7;
+	border-right: 1px solid #79B7E7;
+}
+
+.fc-header-right .fc-state-default span:hover {
+	color:#1D5987;
+}
+
+.fc-header .fc-state-default span {
+	background:url("../../js/jquery_plugins/jquery-ui/1.7.2/themes/redmond/images/ui-bg_glass_85_dfeffc_1x400.png") repeat-x scroll 50% 50% #DFEFFC !important;
+	border-style: hidden;
+	border-width: 0px;
+	
+}
+
+.fc-header .fc-state-active span {
+	background:url("../../js/jquery_plugins/jquery-ui/1.7.2/themes/redmond/images/ui-bg_gloss-wave_55_5c9ccc_500x100.png") repeat-x scroll 50% 50% #DFEFFC !important;
+	border: 0px;
+}
+
+.fc-content .fc-state-highlight {
+	background-color: transparent;
+	border: 1px solid red;
+}
+
+.fc-header .fc-button-prev {
+	background:url("../images/resultset_previous.png") no-repeat;
+	width: 16px;
+	height: 16px;
+}
+
+.fc-header .fc-button-next {
+	background:url("../images/resultset_next.png") no-repeat;
+	width: 16px;
+	height: 16px;
+}
+
+.fc-header .fc-button-prev a, .fc-header .fc-button-next a {
+	display: none;
+}
+
+.fc-header .fc-button-prev, .fc-header .fc-button-next, .fc-header .fc-button-today {
+	border: 0px;
+}
+
+.fc-header .fc-button-today, .fc-header .fc-button-today span {
+	background:transparent !important;
+}
