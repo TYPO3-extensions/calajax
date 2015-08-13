@@ -85,23 +85,25 @@ Calajax.MonthView.prototype	= {
 				if (bool) jQuery('#'+Calajax.Registry.divcontainer.loading).show();
 				else jQuery('#'+Calajax.Registry.divcontainer.loading).hide();
 			},
-			eventDrop: function(ev, dayDelta, minuteDelta, revertFunc, jsEvent, ui, view) {
+			eventDrop: function(ev, delta, revertFunc, jsEvent, ui, view) {
 				if(ev.freq!='none' && ev.parent_startdate != undefined){
 					ev.start_date = ev.parent_startdate;
 					ev.end_date = ev.parent_enddate;
 					ev.start_time = ev.parent_starttime;
 					ev.end_time = ev.parent_endtime;
 				}
-				delete ev.startObject;
-				delete ev.endObject;
+				//delete ev.startObject;
+				//delete ev.endObject;
 				ev = new Calajax.Event(ev);
-				ev.start_time = ev.start_time + minuteDelta * 60;
-				ev.end_time = ev.end_time + minuteDelta * 60;
-				ev.startObject = new Date(ev.startObject.getTime()+(dayDelta*60*60*24*1000)+(minuteDelta * 60));
-				ev.endObject = new Date(ev.endObject.getTime()+(dayDelta*60*60*24*1000)+(minuteDelta * 60));
+				ev.startObject.setTime(ev.startObject.getTime() + delta.days() * 86400000);
+				ev.endObject.setTime(ev.endObject.getTime() + delta.days() * 86400000);
 				ev.start = ev.startObject;
 				ev.end = ev.endObject;
-				Calajax.Event.startEventSave(ev);
+				try {
+					Calajax.Event.startEventSave(ev);
+				} catch (e) {
+					revertFunc();
+				}
 				
 			},
 			eventRender: function(event, element){
@@ -181,8 +183,9 @@ Calajax.MonthView.prototype	= {
 	},
 	
 	removeAndAddEvents : function (eventId, events) {
-		for(var key in events){
-			this.fullcalendarObject.fullCalendar( 'updateEvent', events[key] );
+		for(var i = 0; i < events.length; i++){
+			this.fullcalendarObject.fullCalendar( 'removeEvent', eventId);
+			this.fullcalendarObject.fullCalendar( 'addEvent', events[i]);
 		}
 	}
 
@@ -196,13 +199,13 @@ var MILLIS_IN_WEEK = MILLIS_IN_DAY * 7;
 
 Calajax.MonthView.loadEvents = function() {
 			
-	return function(start, end, callback) {
-		Calajax.MonthView.viewStart = start;
-		Calajax.MonthView.viewEnd = end;
+	return function(start, end, timezone, callback) {
+		Calajax.MonthView.viewStart = start.toDate();
+		Calajax.MonthView.viewEnd = end.toDate();
 		
 		Calajax.Util.refreshInfoText();
 
-		Calajax.Event.getEvents(start, end, function(data){
+		Calajax.Event.getEvents(Calajax.MonthView.viewStart, Calajax.MonthView.viewEnd, function(data){
 			var events = [];
 			if (data){
 				jQuery.each(data, function(i, entry) {

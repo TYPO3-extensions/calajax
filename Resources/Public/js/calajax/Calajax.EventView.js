@@ -798,7 +798,11 @@ Calajax.EventView.prototype	= {
 
 Calajax.EventView.displayEvent = function(eventRef){
 	var dialogContent = jQuery("#"+eventRef.objecttype+"_display_container");
-	dialogContent.dialog("destroy");
+	try {
+		dialogContent.dialog("destroy");
+	} catch(e){
+		
+	}
 
 	if(eventRef.startObject.format('yyyymmdd') == eventRef.endObject.format('yyyymmdd')){
 		//same day

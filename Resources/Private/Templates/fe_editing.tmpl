@@ -25,79 +25,10 @@
 <!-- -->
 <div class="tx_cal_controller_ajax">
 	<div class="left">
-		<ul class="ui-buttonbar">
-	    	<li class="ui-widget-header ui-buttonbar-title"><a href="#">###L_APPLICATION###</a></li>
-		</ul>
-		<br/><br/>
-		<div id="left-accordion" style="display:none;">
-	    	<h3><a href="#">###L_DATE_SELECTION###</a></h3>
-	    	<div id="calendar-nav" class=""></div>
-	    	<h3><a href="#">###L_MY_CALENDARS###</a></h3>
-	    	<div id="calendar-list-container" class=""><ul id='calendar-list'></ul></div>
-	    	<h3><a href="#">###L_MY_TASKS###</a></h3>
-	    	<div id="task-list-container" class=""><ul id='task-list'></ul></div>
-	    	<h3><a href="#">###L_ADMINISTRATION###</a></h3>
-	    	<div id="admin-list-container" class=""><ul id='admin-list'></ul></div>
-		</div>
+		
 	</div>
 	<div class="center">
-	  <ul class="ui-buttonbar sf-menu" id="superfish-menu">
-	    <li class="ui-widget-header" id="ui-widget-header-new"><a href="#" class="ui-buttonbar-icon ui-buttonbar-new" id="ui-buttonbar-new">###L_NEW###</a>
-	    	<ul class="ui-buttonbar-sub" id="ui-buttonbar-sub-new" style="display:none;">
-	    		<li id="ui-buttonbar-new-event"><a href="#" class="ui-buttonbar-icon ui-buttonbar-new-event">###L_EVENT###</a></li>
-	    		<!--<li><a href="#" class="ui-buttonbar-icon ui-buttonbar-new-task">###L_TASK###</a></li>-->
-	    		<li id="ui-buttonbar-new-calendar"><a href="#" class="ui-buttonbar-icon ui-buttonbar-new-calendar">###L_CALENDAR###</a></li>
-	    	</ul>
-	    </li>
-	    <li class="ui-widget-header" id="ui-buttonbar-refresh"><a href="#" class="ui-buttonbar-icon ui-buttonbar-refresh">&nbsp;</a></li>
-	    <li class="ui-widget-header"><input type="text" name="search" class="search-field"/><a href="#" class="ui-buttonbar-icon ui-buttonbar-search">&nbsp;</a></li>
-	    <li class="ui-widget-header"><a href="#" class="ui-buttonbar-icon ui-buttonbar-tasklist">###L_TASK_LIST###</a></li>
-	    <li class="ui-widget-header"><a href="#" class="ui-buttonbar-icon ui-buttonbar-settings">###L_SETTINGS###</a></li>
-	    <li class="ui-widget-header"><a href="#" class="ui-buttonbar-icon ui-buttonbar-help">###L_HELP###</a></li>
-	    <!-- ###USER_LOGIN### start -->
-	    <li class="ui-widget-header cal-login" id="cal_login">
-	    	<!-- ###LOGOUT### start -->
-	    	<a href="#" onclick="document.cal_login_form.submit()" class="ui-buttonbar-icon ui-buttonbar-logout" >[###USERNAME###] ###L_LOGIN###</a>
-	    	<form style="margin-bottom:0;" action="###LOGIN_ACTION###" method="post" name="cal_login_form">
-				<input type="hidden" name="logintype" value="###LOGIN_TYPE###" />
-				<input type="hidden" name="pid" value="###USER_FOLDER###" />
-				<input type="hidden" name="redirect_url" value="###REDIRECT_URL###" />
-			</form>
-	    	<!-- ###LOGOUT### end -->
-	    	<!-- ###LOGIN### start -->
-			<a href="#" class="ui-buttonbar-icon ui-buttonbar-login" id="cal_login_link">###L_LOGIN###</a>
-			
-			<ul class="ui-buttonbar-sub" style="display:none;">
-    			<li>
-    				<form style="margin-bottom:0;" action="###LOGIN_ACTION###" method="post" name="cal_login_form">
-						<input type="hidden" name="logintype" value="###LOGIN_TYPE###" />
-						<input type="hidden" name="pid" value="###USER_FOLDER###" />
-						<input type="hidden" name="redirect_url" value="###REDIRECT_URL###" />
-						<table id="cal_login_form_table">
-							<tbody>
-								<tr>
-									<th>###L_USERNAME###:</th>
-									<td><input type="text" name="user" size="10" /></td>
-								</tr>
-								<tr>
-									<th>###L_PASSWORD###:</th>
-									<td><input type="password" name="pass" size="10" /></td>
-								</tr>
-								<tr>
-									<td colspan="2"><input type="submit" value="###L_LOGIN_BUTTON###"/></td>
-								</tr>
-							</tbody>
-						</table>
-						<script type="text/javascript">
-							
-						</script>
-					</form>
-				</li>
-			</ul>
-			<!-- ###LOGIN### end -->
-	    </li>
-	    <!-- ###USER_LOGIN### end -->
-	  </ul>
+	  
 		<!-- calajax-container: Start -->
 		<div id="calajax-container" class="calajax-container">
 		

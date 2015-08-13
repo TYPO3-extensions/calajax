@@ -229,6 +229,16 @@ Calajax.StartingView.prototype = {
 // +----------------------------------------------------------------------------
 jQuery.extend( true, Calajax.StartingView.prototype, new Calajax.View() );
 
+jQuery.widget("ui.dialog", jQuery.extend({}, jQuery.ui.dialog.prototype, {
+    _title: function(title) {
+        if (!this.options.title ) {
+            title.html("&#160;");
+        } else {
+            title.html(this.options.title);
+        }
+    }
+}));
+
 // +----------------------------------------------------------------------------
 // | Start Object
 // +----------------------------------------------------------------------------

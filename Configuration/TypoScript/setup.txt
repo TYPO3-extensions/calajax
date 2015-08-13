@@ -3,19 +3,20 @@
 ################################################################################
 
 # jQuery Minified
-page.includeJSFooterlibs.jquery = EXT:calajax/Resources/Public/js/jquery/1.3.2/jquery.js
+page.includeJSFooterlibs.jquery = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-fullcalendar/2.3.2/lib/jquery.min.js
 
 # jQuery-ui Minified
-page.includeJSFooterlibs.calajax_102 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-ui/1.7.2/jquery-ui.min.js
-page.includeJSFooterlibs.calajax_103 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-ui/1.7.2/jquery-ui.draggable.js
-page.includeJSFooterlibs.calajax_104 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-ui/1.7.2/jquery-ui.resizable.js
+page.includeJSFooterlibs.calajax_102 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-fullcalendar/2.3.2/lib/jquery-ui.min.js
+#page.includeJSFooterlibs.calajax_103 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-ui/1.11.4/jquery-ui.draggable.js
+#page.includeJSFooterlibs.calajax_104 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-ui/1.11.4/jquery-ui.resizable.js
 
 
 # jQuery-week-calendar Minified ( HTTP: http://www.redredred.com.au/projects/jquery-week-calendar/ )
 #page.includeJS.110 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-weekcalendar/trunk/jquery.weekcalendar.js
 
 # jQuery-fullcalendar ( HTTP: http://arshaw.com/fullcalendar/ )
-page.includeJSFooterlibs.calajax_115 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-fullcalendar/1.4.5/fullcalendar.js
+page.includeJSFooterlibs.calajax_113 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-fullcalendar/2.3.2/lib/moment.min.js
+page.includeJSFooterlibs.calajax_115 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-fullcalendar/2.3.2/fullcalendar.js
 
 # jQuery-fullcalendar Minified ( HTTP: http://arshaw.com/fullcalendar/ )
 #page.includeJSFooterlibs.calajax_120 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-monthcalendar/1.4.5/fullcalendar.js
@@ -34,13 +35,13 @@ page.includeJSFooterlibs.calajax_150 = EXT:calajax/Resources/Public/js/jquery_pl
 #page.includeJSFooterlibs.calajax_160 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-markitup/jquery.markitup.js
 
 # jQuery-superfish ( HTTP: http://users.tpg.com.au/j_birch/plugins/superfish/ )
-page.includeJSFooterlibs.calajax_170 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-superfish/1.4.8/js/superfish.js
+#page.includeJSFooterlibs.calajax_170 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-superfish/1.4.8/js/superfish.js
 
 # jQuery-image-dropdown ( HTTP: http://www.marghoobsuleman.com/blogs/jquery-image-dropdown )
 page.includeJSFooterlibs.calajax_180 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-image-dropdown-2.1/uncompressed.jquery.dd.js
 
 # jQuery-jqGrid ( HTTP: http://www.trirand.com/blog/ )
-page.includeJSFooterlibs.calajax_190 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-jqGrid/src/grid.loader.js
+#page.includeJSFooterlibs.calajax_190 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-jqGrid/src/grid.loader.js
 
 ################################################################################
 # JAVASCRIPT CALAJAX API
@@ -94,16 +95,16 @@ page.includeJSFooterlibs.calajax_client = EXT:calajax/Resources/Public/js/Calaja
 
 page.includeCSS {
  # jQuery-ui stylesheet
- 101 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-ui/1.7.2/themes/base/jquery-ui.css
+ 101 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-fullcalendar/2.3.2/lib/jquery-ui.min.css
  
- 102 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-ui/1.7.2/themes/{$plugin.calajax.design}/jquery-ui.css
+ 102 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-ui/1.7.2/themes/{$plugin.calajax.design}/jquery-ui.min.css
  
 
  # jQuery-week-calendar stylesheet
  #102 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-weekcalendar/trunk/jquery.weekcalendar.css
 
  # jQuery-month-calendar stylesheet
- 104 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-fullcalendar/1.4.5/fullcalendar.css
+ 104 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-fullcalendar/2.3.2/fullcalendar.css
 
  # jQuery-colorpicker stylesheet
  105 = EXT:calajax/Resources/Public/js/jquery_plugins/jquery-colorpicker/syronex-colorpicker.css

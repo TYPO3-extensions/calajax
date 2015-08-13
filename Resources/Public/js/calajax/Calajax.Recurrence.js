@@ -11,7 +11,7 @@ Calajax.Recurrence = {
 		var rrule_array = event.getRecurringRule();
 		var count = parseInt(event.cnt,10);
 
-		if(Calajax.MonthView.viewEnd.getTime() < until.getTime()) {
+		if(moment.unix(Calajax.MonthView.viewEnd) < until.getTime()) {
 			until = Calajax.MonthView.viewEnd;
 		}
 		var byyear = [];

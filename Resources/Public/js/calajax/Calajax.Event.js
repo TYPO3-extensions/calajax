@@ -55,33 +55,28 @@ Calajax.Event = function (data) {
 	this.event_type = this.eventtype;
 	this.interval = this.intrval;
 	
-	if(data['startObject'] == undefined ){
-		if(this.start_date){
-			this.startObject = Calajax.Util.getDateFromYYYYMMDD(this.start_date);
-		}
-		if(this.start_time){
-			var minutes = (this.start_time%3600)/60;
-			var hours = this.start_time/3600;
-			this.startObject.setMinutes(minutes);
-			this.startObject.setHours(Math.floor(hours));
-			this.startObject.setSeconds(0);
-			this.startObject.setMilliseconds(0);
-		}
+	if(this.start_date){
+		this.startObject = Calajax.Util.getDateFromYYYYMMDD(this.start_date);
+	}
+	if(this.start_time){
+		var minutes = (this.start_time%3600)/60;
+		var hours = this.start_time/3600;
+		this.startObject.setMinutes(minutes);
+		this.startObject.setHours(Math.floor(hours));
+		this.startObject.setSeconds(0);
+		this.startObject.setMilliseconds(0);
 	}
 	
-	if(data['endObject'] == undefined ) {
-
-		if(this.end_date){
-			this.endObject = Calajax.Util.getDateFromYYYYMMDD(this.end_date);
-		}
-		if(this.end_time){
-			var minutes = (this.end_time%3600)/60;
-			var hours = this.end_time/3600;
-			this.endObject.setMinutes(minutes);
-			this.endObject.setHours(Math.floor(hours));
-			this.endObject.setSeconds(0);
-			this.endObject.setMilliseconds(0);
-		}
+	if(this.end_date){
+		this.endObject = Calajax.Util.getDateFromYYYYMMDD(this.end_date);
+	}
+	if(this.end_time){
+		var minutes = (this.end_time%3600)/60;
+		var hours = this.end_time/3600;
+		this.endObject.setMinutes(minutes);
+		this.endObject.setHours(Math.floor(hours));
+		this.endObject.setSeconds(0);
+		this.endObject.setMilliseconds(0);
 	}
 	
 	this.start = this.startObject;
@@ -297,8 +292,16 @@ Calajax.Event.renderEventForMonth = function(event){
 	var post = '';
 	var eventStr = event.title;
 	if(event.showTime){
-		if (event.start.getHours() || event.start.getMinutes() || event.end.getHours() || event.end.getMinutes()) {
-			eventStr = jQuery.fullCalendar.formatDate(event.start, Calajax.Registry.format.monthEventTime) + ' ' + eventStr;
+		if(event.startObject == undefined){
+			event.startObject = event.start.toDate();
+		}
+		if(event.endObject == undefined){
+			event.endObject = event.end.toDate();
+		}
+		
+		if (event.startObject.getHours() || event.startObject.getMinutes() || event.endObject.getHours() || event.endObject.getMinutes()) {
+			//eventStr = event.startObject.format(Calajax.Registry.format.monthEventTime) + ' ' + eventStr;
+			eventStr = event.startObject.format('HH:MM') + ' ' + eventStr;
 		}
 	}
 	
@@ -384,7 +387,7 @@ Calajax.Event.startEventSave = function(event){
 	if(event.uid > 0){
 		var newRecurringEvents = Calajax.Recurrence.recurringEvent(event);
 		// Updating events on clientside first
-		Calajax.Main.removeAndAddEvents(event.id,newRecurringEvents);
+		//Calajax.Main.removeAndAddEvents(event.id,newRecurringEvents);
 	}
 	
 	Calajax.Event.updateEvent(event, function(data){
@@ -402,7 +405,7 @@ Calajax.Event.startEventSave = function(event){
 				Calajax.CalendarView.task.addTask(event);
 			}
 		}
-		Calajax.Main.removeAndAddEvents(event.id,newItemArray);
+		//Calajax.Main.removeAndAddEvents(event.id,newItemArray);
 		Calajax.CalendarView.task.renderView();
 	});
 };
@@ -411,13 +414,13 @@ Calajax.Event.saveEvent = function(event, callback){
 	var allowedParams = Calajax.Registry.options.event.allowedRequestParams;
 	var params = {
 		"eID":"cal_ajax",
-		"tx_cal_controller[view]":"save_event",
+		"tx_cal_controller[view]":"create_event",
 		"tx_cal_controller[pid]":Calajax.Registry.request.pid,
 		"tx_cal_controller[type]":event.model_type,
-		"tx_cal_controller[start_date]":event.startObject.format('yyyymmdd'),
-		"tx_cal_controller[end_date]":event.endObject.format('yyyymmdd'),
-		"tx_cal_controller[start_time]":event.start_time,
-		"tx_cal_controller[end_time]":event.end_time,
+		"tx_cal_controller[startdate]":event.startObject.format('yyyymmdd'),
+		"tx_cal_controller[enddate]":event.endObject.format('yyyymmdd'),
+		"tx_cal_controller[starttime]":event.startObject.format('HHMM'),//event.start_time,
+		"tx_cal_controller[endtime]":event.endObject.format('HHMM'),//event.end_time,
 		"tx_cal_controller[formCheck]" : 1,
 		"tx_cal_controller[maxDate]" :Calajax.MonthView.viewEnd.format('yyyymmdd')
 	};

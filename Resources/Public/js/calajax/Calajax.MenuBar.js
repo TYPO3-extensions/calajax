@@ -64,7 +64,7 @@ Calajax.MenuBar = function( container ) { // implements Composite, MenuObject
   this.element = document.createElement('ul');
   this.element.style.display = 'none';
   
-  jQuery('#superfish-menu').superfish();
+  //jQuery('#superfish-menu').superfish();
   //jQuery('#ui-buttonbar-new').click(function() { jQuery('#ui-buttonbar-sub-new').toggle('blind',{},500)});
   //jQuery('#cal_login_link').click(function() { jQuery('#cal_login_form_table').toggle('blind',{},500)});
   jQuery('#left-accordion').accordion({autoHeight:false}).show();
